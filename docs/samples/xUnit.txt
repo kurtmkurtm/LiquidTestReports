@@ -1,0 +1,8 @@
+Test Statistics:
+
+None: 0
+Passed: 2
+Failed: 3
+Skipped: 1
+Not Found: 0
+Total: 6

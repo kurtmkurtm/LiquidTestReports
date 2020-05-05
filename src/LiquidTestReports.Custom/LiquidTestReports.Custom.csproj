@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>LiquidTestReports.Custom.TestLogger</AssemblyName>
+    <TargetFrameworks>netstandard2.0;net451</TargetFrameworks>
+    <RepositoryUrl>https://github.com/kurtmkurtm/LiquidTestReports</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/kurtmkurtm/LiquidTestReports</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>nuget_custom.png</PackageIcon>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\..\assets\nuget_custom.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="16.6.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LiquidTestReports.Core\LiquidTestReports.Core.csproj" />
+  </ItemGroup>
+  <PropertyGroup Label="Configuration">
+    <RootNamespace>LiquidTestReports.Custom</RootNamespace>
+    <Authors>Kurt Murrell</Authors>
+    <PackageId>LiquidTestReports.Custom</PackageId>
+    <Product>LiquidTestReports.Custom</Product>
+    <Copyright>2020</Copyright>
+    <Description>VS Test logger for generating reports from user provided liquid templates</Description>
+  </PropertyGroup>
+</Project>

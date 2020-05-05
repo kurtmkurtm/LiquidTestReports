@@ -1,0 +1,71 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  buildConfiguration: 'Release'
+  majorVersion: 0
+  minorVersion: 0
+  suffix: 'beta'
+
+stages:
+  - stage: Version
+    displayName: Versioning
+    condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+    jobs: 
+     - job:       
+       variables:
+         patch: $[counter(variables['build.sourcebranchname'], 0)]
+       steps:
+        - task: PowerShell@2
+          inputs:
+           targetType: 'inline'
+           script: |
+             Write-Host "##vso[build.updatebuildnumber]$(majorVersion).$(minorVersion).$(patch)"
+  - stage: Build
+    jobs:  
+    - job: 
+      displayName: Build_Projects
+      steps:
+      - task: DotNetCoreCLI@2
+        displayName: 'dotnet restore'
+        inputs:
+          command: restore
+          projects: '**/*.csproj'
+
+      - task: DotNetCoreCLI@2
+        displayName: 'dotnet build'
+        inputs:
+          projects: |
+           **/*.sln
+          arguments: '-p:Version=$(Build.BuildNumber) -c $(buildConfiguration)'
+
+      - task: DotNetCoreCLI@2
+        displayName: 'dotnet test'
+        inputs:
+          command: test
+          projects: '**/LiquidTestReports.Core.Tests.csproj'
+          arguments: '--no-build -c $(buildConfiguration)'
+
+      - task: DotNetCoreCLI@2
+        displayName: 'dotnet pack'
+        condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+        inputs:
+          command: custom
+          projects: |
+           **/LiquidTestReports.Core.csproj
+           **/LiquidTestReports.Markdown.csproj
+           **/LiquidTestReports.Custom.csproj
+          custom: pack
+          arguments: '--no-build -o $(Build.ArtifactStagingDirectory)  -c $(buildConfiguration) -p:PackageVersion=$(Build.BuildNumber)-$(suffix)'
+          versioningScheme: byBuildNumber
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Artifact'
+        condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+        inputs:
+          PathtoPublish: $(Build.ArtifactStagingDirectory)
+          ArtifactName: 'drop'
+          publishLocation: 'Container'

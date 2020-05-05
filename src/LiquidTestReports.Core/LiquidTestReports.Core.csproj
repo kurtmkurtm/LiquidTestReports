@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>LiquidTestReports.Core</AssemblyName>
+    <TargetFrameworks>netstandard2.0;net451</TargetFrameworks>
+    <RepositoryUrl>https://github.com/kurtmkurtm/LiquidTestReports</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/kurtmkurtm/LiquidTestReports</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>nuget_core.png</PackageIcon>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="DotLiquid" Version="2.0.333" />
+    <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="16.6.1" />
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\assets\nuget_core.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+  <PropertyGroup Label="Configuration">
+    <RootNamespace>LiquidTestReports.Core</RootNamespace>
+    <Authors>Kurt Murrell</Authors>
+    <PackageId>LiquidTestReports.Core</PackageId>
+    <Product>LiquidTestReports.Core</Product>
+    <Copyright>2020</Copyright>
+    <Description>Core library for creating custom VS Test loggers with liquid template support</Description>
+  </PropertyGroup>
+</Project>

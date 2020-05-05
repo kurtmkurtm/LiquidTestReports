@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>LiquidTestReports.Markdown.TestLogger</AssemblyName>
+    <TargetFrameworks>netstandard2.0;net451</TargetFrameworks>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/kurtmkurtm/LiquidTestReports</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/kurtmkurtm/LiquidTestReports</RepositoryUrl>
+    <PackageIcon>nuget_md.png</PackageIcon>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="16.6.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LiquidTestReports.Core\LiquidTestReports.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Resources\Templates.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Templates.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Templates.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Templates.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\assets\nuget_md.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+  <PropertyGroup Label="Configuration">
+    <RootNamespace>LiquidTestReports.Markdown</RootNamespace>
+    <PackageId>LiquidTestReports.Markdown</PackageId>
+    <Authors>Kurt Murrell</Authors>
+    <Company>Kurt Murrell</Company>
+    <Product>LiquidTestReports.Markdown</Product>
+    <Copyright>2020</Copyright>
+    <Description>VS Test logger for generating test reports in Markdown format</Description>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,8 @@
+﻿Test Statistics:
+
+None: {{ run.test_run_statistics.none_count }}
+Passed: {{ run.test_run_statistics.passed_count }}
+Failed: {{ run.test_run_statistics.failed_count }}
+Skipped: {{ run.test_run_statistics.skipped_count }}
+Not Found: {{ run.test_run_statistics.not_found_count }}
+Total: {{ run.test_run_statistics.executed_tests_count }}

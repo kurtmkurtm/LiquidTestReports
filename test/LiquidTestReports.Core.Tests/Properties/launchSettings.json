@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "TestPlatform.Extensions.MdLogger.Tests": {
+      "commandName": "Executable"
+    }
+  }
+}
