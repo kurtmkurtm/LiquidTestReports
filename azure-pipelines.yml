@@ -24,7 +24,9 @@ stages:
            targetType: 'inline'
            script: |
              Write-Host "##vso[build.updatebuildnumber]$(majorVersion).$(minorVersion).$(patch)"
+
   - stage: Build
+    condition: and(always(), eq(variables['Build.Reason'], 'PullRequest'))
     jobs:  
     - job: 
       displayName: Build_Projects
