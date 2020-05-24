@@ -23,10 +23,11 @@
 ### {{ set.source | split: '\' | last }}
 {% for result in set.results %}
 ##### {% case result.outcome %} - {% when 'Passed' %}✔️{% when 'Failed' %}❌{% else %}⚠️{% endcase %} {{ result.outcome }} - {{ result.test_case.display_name }} - {{ result.duration | format_duration }}
-{% if result.outcome == 'Failed' %} 
+{% if result.outcome == 'Failed' and library.parameters.IncludeMessages == true %} 
 > {{ result.error_message }}{% endif -%}
 {% endfor %}
 {% endfor %}
+{% if library.parameters.IncludeMessages == true %}
 ----
 ## Run Messages
 ### Informational {% assign information =  run.messages | where: "level", "Informational" %}
@@ -36,6 +37,6 @@
 ### Warning & Error {% assign warnings_errors =  run.messages | where: "level", "Warning|Error" %}
 > {% for message in warnings_errors %}{{ message.level }} - {{message.message}}
 {% endfor %}
-
+{% endif -%}
 ----
 [{{ library.text }}]({{ library.link }})

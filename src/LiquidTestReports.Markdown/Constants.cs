@@ -19,5 +19,9 @@
         /// The file extension of MD file.
         /// </summary>
         public const string MdFileExtension = ".md";
+        /// <summary>
+        /// Key for run messages toggle.
+        /// </summary>
+        public const string IncludeRunMessagesKey = "IncludeMessages";
     }
 }
