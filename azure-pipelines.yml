@@ -7,13 +7,12 @@ pool:
 variables:
   buildConfiguration: 'Release'
   majorVersion: 0
-  minorVersion: 0
+  minorVersion: 1
   suffix: 'beta'
 
 stages:
   - stage: Version
     displayName: Versioning
-    condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
     jobs: 
      - job:       
        variables:
