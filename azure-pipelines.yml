@@ -16,7 +16,7 @@ stages:
     jobs: 
      - job:       
        variables:
-         patch: $[counter(variables['build.sourcebranchname'], 0)]
+         patch: $[counter(format('{0}.{1}', variables['majorVersion'], variables['minorVersion']), 0)]
        steps:
         - task: PowerShell@2
           inputs:
