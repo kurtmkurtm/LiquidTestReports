@@ -2,6 +2,19 @@
 
 Liquid Test Reports are logger extensions for the [Visual Studio Test Platform](https://gtihub.com/microsoft/vstest) that provide flexible test report generation using liquid templates. This project contains an extensible core for code based extension, a custom logger for providing your own templates without code, and a Markdown implementation.
 
+## Changelog
+
+#### v0.1.4
+
+**Added**
+
+- [Markdown] Option to exclude run messages from test report enabled through parameter
+  `IncludeMessages=false;`
+
+**Changed**
+
+- [All] Update targets to .NET standard 2.1 / .NET framework 4.5.1+
+
 
 ## LiquidTestReports.Markdown
 [![NuGet Badge](https://buildstats.info/nuget/LiquidTestReports.Markdown?includePreReleases=true)](https://www.nuget.org/packages/LiquidTestReports.Markdown) 
