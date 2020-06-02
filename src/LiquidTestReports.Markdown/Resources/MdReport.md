@@ -18,12 +18,16 @@
 
 # {{ library.parameters.Title }}
 ### Run Summary
-**Overall Result:** {{overall}}
-**Pass Rate:** {{pass_percentage}}%
-**Run Duration:** {{ run.elapsed_time_in_running_tests | format_duration }}
-**Date:** {{ run.started | local_time | date: '%Y-%m-%d %H:%M:%S' }} - {{ run.finished | local_time | date: '%Y-%m-%d %H:%M:%S' }}
-**Framework:** {{ parameters.TargetFramework }}
-**Total Tests:** {{total}}
+
+<p>
+<strong>Overall Result:</strong> {{overall}} <br />
+<strong>Pass Rate:</strong> {{pass_percentage}}% <br />
+<strong>Run Duration:</strong> {{ run.elapsed_time_in_running_tests | format_duration }} <br />
+<strong>Date:</strong> {{ run.started | local_time | date: '%Y-%m-%d %H:%M:%S' }} - {{ run.finished | local_time | date: '%Y-%m-%d %H:%M:%S' }} <br />
+<strong>Framework:</strong> {{ parameters.TargetFramework }} <br />
+<strong>Total Tests:</strong> {{total}} <br />
+</p>
+
 <table>
 <thead>
 <tr>
