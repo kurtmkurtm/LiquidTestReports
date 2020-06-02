@@ -61,6 +61,10 @@ namespace LiquidTestReports.Core.Models
         /// </summary>
         public long ExecutedTests { get; private set; }
 
+        /// <summary>
+        /// Adds test result to set and stats.
+        /// </summary>
+        /// <param name="testResult">Test result to include</param>
         public void Add(TestResult testResult)
         {
             Results.Add(testResult);
