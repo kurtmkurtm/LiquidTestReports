@@ -1,84 +1,147 @@
-﻿# Test Run Details
-**Started:** 2020-05-10 12:29:52
+﻿
+# Test Run
+### Run Summary
+**Overall Result:** ❌ Fail
+**Pass Rate:** 33.33%
+**Run Duration:** 2s 667ms
+**Date:** 2020-06-03 07:59:50 - 2020-06-03 07:59:52
+**Framework:** .NETCoreApp,Version=v3.1
+**Total Tests:** 6
+<table>
+<thead>
+<tr>
+<th>✔️ Passed</th>
+<th>❌ Failed</th>
+<th>⚠️ Skipped</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr>
+<td>33.33%</td>
+<td>50%</td>
+<td>16.67%</td>
+</tr>
+</tbody>
+</table>
 
-**Finished:** 2020-05-10 12:29:53
-
-**Framework**: .NETCoreApp,Version=v3.1
-
-### Total Tests
-**6**
-
-### Pass Percentage
-**33.33 %**
-
-### Run Duration
-**1s 200ms**
-
-| Passed | Failed | Skipped |
-| :------ | :------ | :------ |
-|2|3|1|
-
-## Results
-
-### SampleProject.xUnit.dll
-
-##### ✔️ Passed - SampleProject.xUnit.TestServiceTests.TestTheory(expected: True) - 6ms
-
-##### ❌ Failed - SampleProject.xUnit.TestServiceTests.TestTheory(expected: False) - 4ms
- 
-> Assert.Equal() Failure
+### Result Sets
+#### SampleProject.xUnit.dll - 33.33%
+<details>
+<summary>Full Results</summary>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Test</th>
+<th>Duration</th>
+</tr>
+</thead>
+<tr>
+<td> ✔️ Passed </td>
+<td>SampleProject.xUnit.TestServiceTests.TestTheory(expected: True)</td>
+<td>9ms</td>
+</tr>
+<tr>
+<td> ❌ Failed </td>
+<td>SampleProject.xUnit.TestServiceTests.TestTheory(expected: False)<blockquote><details>
+<summary>Error Message</summary>
+<pre><code>Assert.Equal() Failure
 Expected: False
-Actual:   True
-##### ⚠️ Skipped - SampleProject.xUnit.TestServiceTests.SkipTest - 1ms
-
-##### ❌ Failed - SampleProject.xUnit.TestServiceTests.TestThrowingException - < 1ms
- 
-> System.Exception : Pretty good exception
-##### ✔️ Passed - SampleProject.xUnit.TestServiceTests.PassingTest - < 1ms
-
-##### ❌ Failed - SampleProject.xUnit.TestServiceTests.FailTest - < 1ms
- 
-> Assert.True() Failure
+Actual:   True</code></pre>
+</details></blockquote>
+</td>
+<td>7ms</td>
+</tr>
+<tr>
+<td> ⚠️ Skipped </td>
+<td>SampleProject.xUnit.TestServiceTests.SkipTest</td>
+<td>1ms</td>
+</tr>
+<tr>
+<td> ❌ Failed </td>
+<td>SampleProject.xUnit.TestServiceTests.TestThrowingException<blockquote><details>
+<summary>Error Message</summary>
+<pre><code>System.Exception : Pretty good exception</code></pre>
+</details></blockquote>
+</td>
+<td>< 1ms</td>
+</tr>
+<tr>
+<td> ✔️ Passed </td>
+<td>SampleProject.xUnit.TestServiceTests.PassingTest</td>
+<td>< 1ms</td>
+</tr>
+<tr>
+<td> ❌ Failed </td>
+<td>SampleProject.xUnit.TestServiceTests.FailTest<blockquote><details>
+<summary>Error Message</summary>
+<pre><code>Assert.True() Failure
 Expected: True
-Actual:   False
+Actual:   False</code></pre>
+</details></blockquote>
+</td>
+<td>< 1ms</td>
+</tr>
+</tbody>
+</table>
+</details>
+
+### Run Messages
+<details>
+<summary>Informational</summary>
+<pre><code>
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.4.1 (64-bit .NET Core 3.1.3)
+[xUnit.net 00:00:00.89]   Discovering: SampleProject.xUnit
+[xUnit.net 00:00:00.97]   Discovered:  SampleProject.xUnit
+[xUnit.net 00:00:00.98]   Starting:    SampleProject.xUnit
+[xUnit.net 00:00:01.13]       Assert.Equal() Failure
+[xUnit.net 00:00:01.13]       Expected: False
+[xUnit.net 00:00:01.13]       Actual:   True
+[xUnit.net 00:00:01.13]       Stack Trace:
+[xUnit.net 00:00:01.13]         C:\github\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\TestServiceTests.cs(29,0): at SampleProject.xUnit.TestServiceTests.TestTheory(Boolean expected)
+[xUnit.net 00:00:01.13]       Output:
+[xUnit.net 00:00:01.14]         Running SampleProject.Tests.xUnit tests
+[xUnit.net 00:00:01.14]       Skipped
+[xUnit.net 00:00:01.14]       System.Exception : Pretty good exception
+[xUnit.net 00:00:01.14]       Stack Trace:
+[xUnit.net 00:00:01.14]         C:\github\LiquidTestReports\test\SampleProject\SampleProject\TestService.cs(19,0): at SampleProject.TestService.GetException()
+[xUnit.net 00:00:01.14]         C:\github\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\TestServiceTests.cs(54,0): at SampleProject.xUnit.TestServiceTests.TestThrowingException()
+[xUnit.net 00:00:01.14]       Output:
+[xUnit.net 00:00:01.14]         Running SampleProject.Tests.xUnit tests
+[xUnit.net 00:00:01.14]       Assert.True() Failure
+[xUnit.net 00:00:01.14]       Expected: True
+[xUnit.net 00:00:01.14]       Actual:   False
+[xUnit.net 00:00:01.14]       Stack Trace:
+[xUnit.net 00:00:01.14]         C:\github\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\TestServiceTests.cs(65,0): at SampleProject.xUnit.TestServiceTests.FailTest()
+[xUnit.net 00:00:01.14]       Output:
+[xUnit.net 00:00:01.14]         Running SampleProject.Tests.xUnit tests
+[xUnit.net 00:00:01.14]         This test will fail
+[xUnit.net 00:00:01.15]   Finished:    SampleProject.xUnit
+</code></pre>
+</details>
+
+<details>
+<summary>Warning</summary>
+<pre><code>
+[xUnit.net 00:00:01.14]     SampleProject.xUnit.TestServiceTests.SkipTest [SKIP]
+</code></pre>
+</details>
+
+<details>
+<summary>Error</summary>
+<pre><code>
+[xUnit.net 00:00:01.13]     SampleProject.xUnit.TestServiceTests.TestTheory(expected: False) [FAIL]
+[xUnit.net 00:00:01.14]     SampleProject.xUnit.TestServiceTests.TestThrowingException [FAIL]
+[xUnit.net 00:00:01.14]     SampleProject.xUnit.TestServiceTests.FailTest [FAIL]
+</code></pre>
+</details>
+
 
 ----
-## Run Messages
-### Informational 
-> Informational - [xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.4.1 (64-bit .NET Core 3.1.3)
-Informational - [xUnit.net 00:00:00.34]   Discovering: SampleProject.xUnit
-Informational - [xUnit.net 00:00:00.42]   Discovered:  SampleProject.xUnit
-Informational - [xUnit.net 00:00:00.42]   Starting:    SampleProject.xUnit
-Informational - [xUnit.net 00:00:00.53]       Assert.Equal() Failure
-Informational - [xUnit.net 00:00:00.53]       Expected: False
-Informational - [xUnit.net 00:00:00.53]       Actual:   True
-Informational - [xUnit.net 00:00:00.53]       Stack Trace:
-Informational - [xUnit.net 00:00:00.53]         C:\Users\kurt\source\repos\github\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\TestServiceTests.cs(29,0): at SampleProject.xUnit.TestServiceTests.TestTheory(Boolean expected)
-Informational - [xUnit.net 00:00:00.53]       Output:
-Informational - [xUnit.net 00:00:00.53]         Running SampleProject.Tests.xUnit tests
-Informational - [xUnit.net 00:00:00.53]       Skipped
-Informational - [xUnit.net 00:00:00.53]       System.Exception : Pretty good exception
-Informational - [xUnit.net 00:00:00.53]       Stack Trace:
-Informational - [xUnit.net 00:00:00.53]         C:\Users\kurt\source\repos\github\LiquidTestReports\test\SampleProject\SampleProject\TestService.cs(19,0): at SampleProject.TestService.GetException()
-Informational - [xUnit.net 00:00:00.53]         C:\Users\kurt\source\repos\github\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\TestServiceTests.cs(54,0): at SampleProject.xUnit.TestServiceTests.TestThrowingException()
-Informational - [xUnit.net 00:00:00.53]       Output:
-Informational - [xUnit.net 00:00:00.53]         Running SampleProject.Tests.xUnit tests
-Informational - [xUnit.net 00:00:00.53]       Assert.True() Failure
-Informational - [xUnit.net 00:00:00.53]       Expected: True
-Informational - [xUnit.net 00:00:00.53]       Actual:   False
-Informational - [xUnit.net 00:00:00.53]       Stack Trace:
-Informational - [xUnit.net 00:00:00.53]         C:\Users\kurt\source\repos\github\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\TestServiceTests.cs(65,0): at SampleProject.xUnit.TestServiceTests.FailTest()
-Informational - [xUnit.net 00:00:00.53]       Output:
-Informational - [xUnit.net 00:00:00.53]         Running SampleProject.Tests.xUnit tests
-Informational - [xUnit.net 00:00:00.53]         This test will fail
-Informational - [xUnit.net 00:00:00.53]   Finished:    SampleProject.xUnit
 
-
-### Warning & Error 
-> Error - [xUnit.net 00:00:00.53]     SampleProject.xUnit.TestServiceTests.TestTheory(expected: False) [FAIL]
-Warning - [xUnit.net 00:00:00.53]     SampleProject.xUnit.TestServiceTests.SkipTest [SKIP]
-Error - [xUnit.net 00:00:00.53]     SampleProject.xUnit.TestServiceTests.TestThrowingException [FAIL]
-Error - [xUnit.net 00:00:00.53]     SampleProject.xUnit.TestServiceTests.FailTest [FAIL]
-
-----
 [Created using Liquid Test Reports](https://github.com/kurtmkurtm/LiquidTestReports)
