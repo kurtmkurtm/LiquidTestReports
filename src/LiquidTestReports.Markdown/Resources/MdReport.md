@@ -1,42 +1,115 @@
-﻿# Test Run Details
-**Started:** {{ run.started | local_time | date: '%Y-%m-%d %H:%M:%S' }}
+﻿{%- assign passed = run.test_run_statistics.passed_count -%}
+{%- assign failed = run.test_run_statistics.failed_count -%}
+{%- assign skipped = run.test_run_statistics.skipped_count -%}
+{%- assign total = run.test_run_statistics.executed_tests_count -%}
+{%- assign pass_percentage = passed | divided_by: total | times: 100.0 | round: 2  *-%}
+{%- assign failed_percentage = failed | divided_by: total | times: 100.0 | round: 2  *-%}
+{%- assign skipped_percentage = skipped | divided_by: total | times: 100.0 | round: 2  *-%}
+{%- assign information =  run.messages | where: "level", "Informational" -%}
+{%- assign warnings =  run.messages | where: "level", "Warning" -%}
+{%- assign errors =  run.messages | where: "level", "Error" -%}
+{%- if passed == total -%}
+{%- assign overall = "✔️ Pass" *-%}
+{%- elsif failed == 0 -%}
+{%- assign overall = "⚠️ Indeterminate" *-%}
+{%- else -%}
+{%- assign overall = "❌ Fail" *-%}
+{%- endif -%}
 
-**Finished:** {{ run.finished | local_time | date: '%Y-%m-%d %H:%M:%S' }}
-
+# {{ library.parameters.Title }}
+### Run Summary
+**Overall Result:** {{overall}}
+**Pass Rate:** {{pass_percentage}}%
+**Run Duration:** {{ run.elapsed_time_in_running_tests | format_duration }}
+**Date:** {{ run.started | local_time | date: '%Y-%m-%d %H:%M:%S' }} - {{ run.finished | local_time | date: '%Y-%m-%d %H:%M:%S' }}
 **Framework:** {{ parameters.TargetFramework }}
+**Total Tests:** {{total}}
+<table>
+<thead>
+<tr>
+<th>✔️ Passed</th>
+<th>❌ Failed</th>
+<th>⚠️ Skipped</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>{{passed}}</td>
+<td>{{failed}}</td>
+<td>{{skipped}}</td>
+</tr>
+<tr>
+<td>{{pass_percentage}}%</td>
+<td>{{failed_percentage}}%</td>
+<td>{{skipped_percentage}}%</td>
+</tr>
+</tbody>
+</table>
 
-### Total Tests
-**{{ run.test_run_statistics.executed_tests_count }}**
+### Result Sets
+{%- for set in run.result_sets -%}
+#### {{ set.source | path_split | last }} - {{set.passed_count | divided_by: set.executed_tests_count | times: 100.0 | round: 2 }}%
+<details>
+<summary>Full Results</summary>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Test</th>
+<th>Duration</th>
+</tr>
+</thead>
+{%- for result in set.results -%}
+<tr>
+<td> {% case result.outcome %} {% when 'Passed' %}✔️{% when 'Failed' %}❌{% else %}⚠️{% endcase %} {{ result.outcome }} </td>
+<td> {{- result.test_case.display_name -}}
+{%- if result.outcome == 'Failed' and library.parameters.IncludeMessages == true -%}
+<blockquote><details>
+<summary>Error Message</summary>
+<pre><code>{{result.error_message}}</code></pre>
+</details></blockquote>
+{%- endif -%}
+</td>
+<td>{{ result.duration | format_duration }}</td>
+</tr>
+{%- endfor -%}
+</tbody>
+</table>
+</details>
+{%- endfor -%}
+{%- if library.parameters.IncludeMessages == true -%}
 
-### Pass Percentage
-**{{ run.test_run_statistics.passed_count | divided_by: run.test_run_statistics.executed_tests_count | times: 100.0 | round: 2 }} %**
+### Run Messages
+<details>
+<summary>Informational</summary>
+<pre><code>
+{%- for message in information -%}
+{{ message.message }}
+{%- endfor -%}
+</code></pre>
+</details>
 
-### Run Duration
-**{{ run.elapsed_time_in_running_tests | format_duration }}**
+<details>
+<summary>Warning</summary>
+<pre><code>
+{%- for message in warnings -%}
+{{message.message}}
+{%- endfor -%}
+</code></pre>
+</details>
 
-| Passed | Failed | Skipped |
-| :------ | :------ | :------ |
-|{{ run.test_run_statistics.passed_count }}|{{ run.test_run_statistics.failed_count }}|{{ run.test_run_statistics.skipped_count }}|
+<details>
+<summary>Error</summary>
+<pre><code>
+{%- for message in errors -%}
+{{message.message}}
+{%- endfor -%}
+</code></pre>
+</details>
 
-## Results
-{% for set in run.result_sets %}
-### {{ set.source | split: '\' | last }}
-{% for result in set.results %}
-##### {% case result.outcome %} - {% when 'Passed' %}✔️{% when 'Failed' %}❌{% else %}⚠️{% endcase %} {{ result.outcome }} - {{ result.test_case.display_name }} - {{ result.duration | format_duration }}
-{% if result.outcome == 'Failed' and library.parameters.IncludeMessages == true %} 
-> {{ result.error_message }}{% endif -%}
-{% endfor %}
-{% endfor %}
-{% if library.parameters.IncludeMessages == true %}
+{%- endif -%}
+
+
 ----
-## Run Messages
-### Informational {% assign information =  run.messages | where: "level", "Informational" %}
-> {% for message in information %}{{ message.level }} - {{message.message}}
-{% endfor %}
 
-### Warning & Error {% assign warnings_errors =  run.messages | where: "level", "Warning|Error" %}
-> {% for message in warnings_errors %}{{ message.level }} - {{message.message}}
-{% endfor %}
-{% endif -%}
-----
 [{{ library.text }}]({{ library.link }})

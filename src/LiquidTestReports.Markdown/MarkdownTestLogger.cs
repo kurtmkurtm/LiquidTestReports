@@ -24,7 +24,8 @@ namespace LiquidTestReports.Markdown
         protected override void OnInitialize(IReadOnlyDictionary<string, string> parameters)
         {
             var includeMessages = true;
-
+            var reportTitle = "Test Run";
+           
             if (parameters.TryGetValue(Constants.IncludeRunMessagesKey, out var includeRunMessages))
             {
                 if (bool.TryParse(includeRunMessages, out var value))
@@ -33,7 +34,16 @@ namespace LiquidTestReports.Markdown
                 }
             }
 
+            if(parameters.TryGetValue(Constants.TitleKey, out var title))
+            {
+                if (!string.IsNullOrEmpty(title))
+                {
+                    reportTitle = title;
+                }
+            }
+
             LibraryParameters.Add(Constants.IncludeRunMessagesKey, includeMessages);
+            LibraryParameters.Add(Constants.TitleKey, reportTitle);
         }
     }
 }

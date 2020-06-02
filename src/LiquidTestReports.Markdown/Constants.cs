@@ -24,5 +24,10 @@
         /// Key for run messages toggle.
         /// </summary>
         public const string IncludeRunMessagesKey = "IncludeMessages";
+
+        /// <summary>
+        /// Key for run messages toggle.
+        /// </summary>
+        public const string TitleKey = "Title";
     }
 }
