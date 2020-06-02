@@ -1,12 +1,16 @@
 ﻿
 # Test Run
 ### Run Summary
-**Overall Result:** ❌ Fail
-**Pass Rate:** 33.33%
-**Run Duration:** 2s 667ms
-**Date:** 2020-06-03 07:59:50 - 2020-06-03 07:59:52
-**Framework:** .NETCoreApp,Version=v3.1
-**Total Tests:** 6
+
+<p>
+<strong>Overall Result:</strong> ❌ Fail <br />
+<strong>Pass Rate:</strong> 33.33% <br />
+<strong>Run Duration:</strong> 1s 720ms <br />
+<strong>Date:</strong> 2020-06-03 08:41:18 - 2020-06-03 08:41:19 <br />
+<strong>Framework:</strong> .NETCoreApp,Version=v3.1 <br />
+<strong>Total Tests:</strong> 6 <br />
+</p>
+
 <table>
 <thead>
 <tr>
@@ -44,7 +48,7 @@
 <tr>
 <td> ✔️ Passed </td>
 <td>SampleProject.xUnit.TestServiceTests.TestTheory(expected: True)</td>
-<td>9ms</td>
+<td>8ms</td>
 </tr>
 <tr>
 <td> ❌ Failed </td>
@@ -55,7 +59,7 @@ Expected: False
 Actual:   True</code></pre>
 </details></blockquote>
 </td>
-<td>7ms</td>
+<td>4ms</td>
 </tr>
 <tr>
 <td> ⚠️ Skipped </td>
@@ -69,7 +73,7 @@ Actual:   True</code></pre>
 <pre><code>System.Exception : Pretty good exception</code></pre>
 </details></blockquote>
 </td>
-<td>< 1ms</td>
+<td>1ms</td>
 </tr>
 <tr>
 <td> ✔️ Passed </td>
@@ -85,7 +89,7 @@ Expected: True
 Actual:   False</code></pre>
 </details></blockquote>
 </td>
-<td>< 1ms</td>
+<td>1ms</td>
 </tr>
 </tbody>
 </table>
@@ -96,48 +100,48 @@ Actual:   False</code></pre>
 <summary>Informational</summary>
 <pre><code>
 [xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.4.1 (64-bit .NET Core 3.1.3)
-[xUnit.net 00:00:00.89]   Discovering: SampleProject.xUnit
-[xUnit.net 00:00:00.97]   Discovered:  SampleProject.xUnit
-[xUnit.net 00:00:00.98]   Starting:    SampleProject.xUnit
-[xUnit.net 00:00:01.13]       Assert.Equal() Failure
-[xUnit.net 00:00:01.13]       Expected: False
-[xUnit.net 00:00:01.13]       Actual:   True
-[xUnit.net 00:00:01.13]       Stack Trace:
-[xUnit.net 00:00:01.13]         C:\github\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\TestServiceTests.cs(29,0): at SampleProject.xUnit.TestServiceTests.TestTheory(Boolean expected)
-[xUnit.net 00:00:01.13]       Output:
-[xUnit.net 00:00:01.14]         Running SampleProject.Tests.xUnit tests
-[xUnit.net 00:00:01.14]       Skipped
-[xUnit.net 00:00:01.14]       System.Exception : Pretty good exception
-[xUnit.net 00:00:01.14]       Stack Trace:
-[xUnit.net 00:00:01.14]         C:\github\LiquidTestReports\test\SampleProject\SampleProject\TestService.cs(19,0): at SampleProject.TestService.GetException()
-[xUnit.net 00:00:01.14]         C:\github\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\TestServiceTests.cs(54,0): at SampleProject.xUnit.TestServiceTests.TestThrowingException()
-[xUnit.net 00:00:01.14]       Output:
-[xUnit.net 00:00:01.14]         Running SampleProject.Tests.xUnit tests
-[xUnit.net 00:00:01.14]       Assert.True() Failure
-[xUnit.net 00:00:01.14]       Expected: True
-[xUnit.net 00:00:01.14]       Actual:   False
-[xUnit.net 00:00:01.14]       Stack Trace:
-[xUnit.net 00:00:01.14]         C:\github\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\TestServiceTests.cs(65,0): at SampleProject.xUnit.TestServiceTests.FailTest()
-[xUnit.net 00:00:01.14]       Output:
-[xUnit.net 00:00:01.14]         Running SampleProject.Tests.xUnit tests
-[xUnit.net 00:00:01.14]         This test will fail
-[xUnit.net 00:00:01.15]   Finished:    SampleProject.xUnit
+[xUnit.net 00:00:00.58]   Discovering: SampleProject.xUnit
+[xUnit.net 00:00:00.67]   Discovered:  SampleProject.xUnit
+[xUnit.net 00:00:00.67]   Starting:    SampleProject.xUnit
+[xUnit.net 00:00:00.82]       Assert.Equal() Failure
+[xUnit.net 00:00:00.82]       Expected: False
+[xUnit.net 00:00:00.82]       Actual:   True
+[xUnit.net 00:00:00.82]       Stack Trace:
+[xUnit.net 00:00:00.82]         C:\github\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\TestServiceTests.cs(29,0): at SampleProject.xUnit.TestServiceTests.TestTheory(Boolean expected)
+[xUnit.net 00:00:00.82]       Output:
+[xUnit.net 00:00:00.82]         Running SampleProject.Tests.xUnit tests
+[xUnit.net 00:00:00.82]       Skipped
+[xUnit.net 00:00:00.82]       System.Exception : Pretty good exception
+[xUnit.net 00:00:00.82]       Stack Trace:
+[xUnit.net 00:00:00.82]         C:\github\LiquidTestReports\test\SampleProject\SampleProject\TestService.cs(19,0): at SampleProject.TestService.GetException()
+[xUnit.net 00:00:00.82]         C:\github\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\TestServiceTests.cs(54,0): at SampleProject.xUnit.TestServiceTests.TestThrowingException()
+[xUnit.net 00:00:00.82]       Output:
+[xUnit.net 00:00:00.82]         Running SampleProject.Tests.xUnit tests
+[xUnit.net 00:00:00.83]       Assert.True() Failure
+[xUnit.net 00:00:00.83]       Expected: True
+[xUnit.net 00:00:00.83]       Actual:   False
+[xUnit.net 00:00:00.83]       Stack Trace:
+[xUnit.net 00:00:00.83]         C:\github\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\TestServiceTests.cs(65,0): at SampleProject.xUnit.TestServiceTests.FailTest()
+[xUnit.net 00:00:00.83]       Output:
+[xUnit.net 00:00:00.83]         Running SampleProject.Tests.xUnit tests
+[xUnit.net 00:00:00.83]         This test will fail
+[xUnit.net 00:00:00.83]   Finished:    SampleProject.xUnit
 </code></pre>
 </details>
 
 <details>
 <summary>Warning</summary>
 <pre><code>
-[xUnit.net 00:00:01.14]     SampleProject.xUnit.TestServiceTests.SkipTest [SKIP]
+[xUnit.net 00:00:00.82]     SampleProject.xUnit.TestServiceTests.SkipTest [SKIP]
 </code></pre>
 </details>
 
 <details>
 <summary>Error</summary>
 <pre><code>
-[xUnit.net 00:00:01.13]     SampleProject.xUnit.TestServiceTests.TestTheory(expected: False) [FAIL]
-[xUnit.net 00:00:01.14]     SampleProject.xUnit.TestServiceTests.TestThrowingException [FAIL]
-[xUnit.net 00:00:01.14]     SampleProject.xUnit.TestServiceTests.FailTest [FAIL]
+[xUnit.net 00:00:00.82]     SampleProject.xUnit.TestServiceTests.TestTheory(expected: False) [FAIL]
+[xUnit.net 00:00:00.82]     SampleProject.xUnit.TestServiceTests.TestThrowingException [FAIL]
+[xUnit.net 00:00:00.83]     SampleProject.xUnit.TestServiceTests.FailTest [FAIL]
 </code></pre>
 </details>
 
