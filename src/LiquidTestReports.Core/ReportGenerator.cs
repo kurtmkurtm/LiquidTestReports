@@ -24,6 +24,7 @@ namespace LiquidTestReports.Core
             Template.RegisterFilter(typeof(TimespanFilters));
             Template.RegisterFilter(typeof(EnumFilters));
             Template.RegisterFilter(typeof(ArrayFilters));
+            Template.RegisterFilter(typeof(StringFilters));
         }
 
         /// <summary>
