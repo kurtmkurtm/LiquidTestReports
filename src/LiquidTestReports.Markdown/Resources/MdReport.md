@@ -69,8 +69,11 @@
 <td> {{- result.test_case.display_name -}}
 {%- if result.outcome == 'Failed' and library.parameters.IncludeMessages == true -%}
 <blockquote><details>
-<summary>Error Message</summary>
+<summary>Error</summary>
+<strong>Message:</strong>
 <pre><code>{{result.error_message}}</code></pre>
+<strong>Stack Trace:</strong>
+<pre><code>{{result.error_stack_trace}}</code></pre>
 </details></blockquote>
 {%- endif -%}
 </td>
