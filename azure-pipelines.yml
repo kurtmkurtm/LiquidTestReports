@@ -6,9 +6,9 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  majorVersion: 0
-  minorVersion: 2
-  suffix: 'beta'
+  majorVersion: 1
+  minorVersion: 0
+
 
 stages:
   - stage: Version
@@ -58,7 +58,7 @@ stages:
            **/LiquidTestReports.Markdown.csproj
            **/LiquidTestReports.Custom.csproj
           custom: pack
-          arguments: '--no-build -o $(Build.ArtifactStagingDirectory)  -c $(buildConfiguration) -p:PackageVersion=$(Build.BuildNumber)-$(suffix)'
+          arguments: '--no-build -o $(Build.ArtifactStagingDirectory) -c $(buildConfiguration) -p:PackageVersion=$(Build.BuildNumber)'
           versioningScheme: byBuildNumber
 
       - task: PublishBuildArtifacts@1
