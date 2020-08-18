@@ -21,7 +21,7 @@ namespace LiquidTestReports.Core.Drops
 
         public string DisplayName => _testCase.DisplayName;
 
-        public Uri ExecutorUri => _testCase.ExecutorUri;
+        public string ExecutorUri => _testCase.ExecutorUri.ToString();
 
         public string Source => _testCase.Source;
 
