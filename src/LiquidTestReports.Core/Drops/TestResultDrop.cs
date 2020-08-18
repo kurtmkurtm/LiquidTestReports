@@ -17,7 +17,7 @@ namespace LiquidTestReports.Core.Drops
 
         public TestCaseDrop TestCase => new TestCaseDrop(_testResult.TestCase);
 
-        public IList<AttachmentSetDrop> Attachments => _testResult.Attachments.Select(a => new AttachmentSetDrop(a)).ToList();
+        public IList<AttachmentSetDrop> AttachmentSets => _testResult.Attachments.Select(a => new AttachmentSetDrop(a)).ToList();
 
         public string Outcome => _testResult.Outcome.ToString();
 
@@ -27,7 +27,7 @@ namespace LiquidTestReports.Core.Drops
 
         public string DisplayName => _testResult.DisplayName;
 
-        public IList<TestResultMessage> Messages => _testResult.Messages;
+        public IList<TestResultMessageDrop> Messages => _testResult.Messages.Select(m => new TestResultMessageDrop(m)).ToList();
 
         public string ComputerName => _testResult.ComputerName;
 

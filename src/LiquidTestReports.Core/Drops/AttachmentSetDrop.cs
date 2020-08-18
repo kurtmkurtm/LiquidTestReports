@@ -15,7 +15,7 @@ namespace LiquidTestReports.Core.Drops
             _attachmentSet = attachmentSet;
         }
 
-        public Uri Uri => _attachmentSet.Uri;
+        public string Uri => _attachmentSet.Uri.ToString();
 
         public string DisplayName => _attachmentSet.DisplayName;
 

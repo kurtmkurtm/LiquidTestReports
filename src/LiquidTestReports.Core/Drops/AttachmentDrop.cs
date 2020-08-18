@@ -15,6 +15,6 @@ namespace LiquidTestReports.Core.Drops
 
         public string Description => _uriDataAttachment.Description;
 
-        public Uri Uri => _uriDataAttachment.Uri;
+        public string Uri => _uriDataAttachment.Uri.ToString();
     }
 }
