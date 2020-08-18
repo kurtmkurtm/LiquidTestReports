@@ -13,8 +13,8 @@ Naming - As this library utilises dotliquid for liquid templates, the default ru
 The only exception to this naming, is with dictionary keys, the retain the original casing as shown below.
 
 ```
-*.NETCoreApp,Version=v3.1*
-*.NETCoreApp,Version=v3.1*
+*{{parameters['TargetFramework']}}*
+*{{parameters.TargetFramework}}*
 ```
 
 ## Run
@@ -26,25 +26,25 @@ Gets the number of tests per outcome in the test run
 **Input**
 
 ```
-
+{% raw %}
 None: {{ run.test_run_statistics.none_count }}
 Passed: {{ run.test_run_statistics.passed_count }}
 Failed: {{ run.test_run_statistics.failed_count }}
 Skipped: {{ run.test_run_statistics.skipped_count }}
 Not Found: {{ run.test_run_statistics.not_found_count }}
 Total: {{ run.test_run_statistics.executed_tests_count }}
-
+{% endraw %}
 ```
 
 **Output**
 
 ```
-None: 0
-Passed: 2
-Failed: 3
-Skipped: 1
-Not Found: 0
-Total: 6
+None: {{ run.test_run_statistics.none_count }}
+Passed: {{ run.test_run_statistics.passed_count }}
+Failed: {{ run.test_run_statistics.failed_count }}
+Skipped: {{ run.test_run_statistics.skipped_count }}
+Not Found: {{ run.test_run_statistics.not_found_count }}
+Total: {{ run.test_run_statistics.executed_tests_count }}
 ```
 
 
@@ -53,15 +53,15 @@ Specifies whether the test run is canceled
 
 **Input**
 ```
-
+{% raw %}
 Is Cancelled: {{ run.is_canceled }}
-
+{% endraw %}
 ```
 
 **Output**
 
 ```
-Is Cancelled: false
+Is Cancelled: {{ run.is_canceled }}
 ```
 
 ### is_aborted
@@ -69,14 +69,14 @@ Specifies whether the test run is aborted
 **Input**
 
 ```
-
+{% raw %}
 Is Aborted: {{ run.is_aborted }}
-
+{% endraw %}
 ```
 
 **Output**
 ```
-Is Aborted: false
+Is Aborted: {{ run.is_aborted }}
 ```
 
 ### error
@@ -84,14 +84,14 @@ Gets the error encountered during the execution of the test run. Null if there i
 **Input**
 
 ```
-
+{% raw %}
 Error: {{ run.error }}
-
+{% endraw %}
 ```
 
 **Output**
 ```
-Error: 
+Error: {{ run.error }}
 ```
 
 ### attachment_sets
@@ -99,7 +99,7 @@ Gets the attachment sets associated with the test run.
 
 **Input**
 ```
-
+{% raw %}
 Attachment Set URI: {{run.attachment_sets[0].uri}}
 Attachment Set Display Name: {{run.attachment_sets[0].display_name}}
 
@@ -107,18 +107,18 @@ Attachment Set Display Name: {{run.attachment_sets[0].display_name}}
 Attachment Item: {{attachment_sets[0].attachments[0].description}}
 Attachment Item Uri: {{attachment_sets[0].attachments[0].uri}}
 
-
+{% endraw %}
 ```
 
 **Output**
 ```
+{% assign first_attachment_set =  run.attachment_sets | first %}
+Attachment Set URI: {{first_attachment_set.uri}}
+Attachment Set Display Name: {{first_attachment_set.display_name}}
 
-Attachment Set URI: 
-Attachment Set Display Name: 
-
-
-Attachment Item: 
-Attachment Item Uri: 
+{% assign first_attachment_item =  first_attachment_set.attachments | first %}
+Attachment Item: {{first_attachment_item.description}}
+Attachment Item Uri: {{first_attachment_item.uri}}
 ```
 
 ### elapsed_time_in_running_tests
@@ -127,14 +127,14 @@ Gets the time elapsed in just running the tests.
 **Input**
 
 ```
-
+{% raw %}
 Time Running: {{ run.elapsed_time_in_running_tests }}
-
+{% endraw %}
 ```
 
 **Output**
 ```
-Time Running: 00:00:01.1428066
+Time Running: {{ run.elapsed_time_in_running_tests }}
 ```
 
 ### messages
@@ -150,17 +150,17 @@ Gets output from the test run, entries contain a message and level.
 **Input**
 
 ```
-
+{% raw %}
 Message: {{ run.messages[0].message }}
 Level: {{ run.messages[0].message }}
-
+{% endraw %}
 ```
 
 **Output**
 
 ```
-Message: [xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.4.1 (64-bit .NET Core 3.1.3)
-Level: [xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.4.1 (64-bit .NET Core 3.1.3)
+Message: {{ run.messages[0].message }}
+Level: {{ run.messages[0].message }}
 ```
 
 ### result_sets
@@ -209,7 +209,7 @@ Possibly the only property you want, this contains the test results, for convinc
 **Input**
 
 ```
-
+{% raw %}
 
 {% assign first_set =  run.result_sets | first %}
 Duration: {{first_set.duration}}
@@ -244,45 +244,44 @@ Code File Path: {{test_case.code_file_path}}
 Line Number: {{test_case.line_number}}
 Traits: {{test_case.traits | first}}
 
-
+{% endraw %}
 ```
 
 **Output**
 
 ```
+{% assign first_set =  run.result_sets | first %}
+Duration: {{first_set.duration}}
+Source: {{first_set.source}}
+Executed Tests Count: {{ first_set.executed_tests_count }}
+None Count: {{ first_set.none_count }}
+Passed Count: {{ first_set.passed_count }}
+Failed Count: {{ first_set.failed_count }}
+Skipped Count: {{ first_set.skipped_count }}
+Not Found Count: {{ first_set.not_found_count }}
 
-Duration: 00:00:00.0103816
-Source: C:\github\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\bin\Debug\netcoreapp3.1\SampleProject.xUnit.dll
-Executed Tests Count: 6
-None Count: 0
-Passed Count: 2
-Failed Count: 3
-Skipped Count: 1
-Not Found Count: 0
+{% assign first_result =  first_set.results | first %}
+Display: {{first_result.display_name}}
+Outcome: {{first_result.outcome}}
+Error Message: {{first_result.error_message}}
+Error Stack: {{first_result.error_stack_trace}}
+ComputerName: {{first_result.computer_name}}
+Duration: {{first_set.duration}}
+StartTime: {{first_result.start_time}}
+EndTime: {{first_result.end_time}}
+Traits : {{first_result.traits | first}}
+Result Message Text: {{first_result.messages[0].text}}
+Result Message Category: {{first_result.messages[0].category}}
 
-
-Display: SampleProject.xUnit.TestServiceTests.TestTheory(expected: True)
-Outcome: Passed
-Error Message: 
-Error Stack: 
-ComputerName: DESKTOP-PNKUUD7
-Duration: 00:00:00.0103816
-StartTime: 18/08/2020 9:12:23 PM +10:00
-EndTime: 18/08/2020 9:12:23 PM +10:00
-Traits : 
-Result Message Text: Running SampleProject.Tests.xUnit tests
-
-Result Message Category: StdOutMsgs
-
-
-Id: 8a3de9d4-fda6-4f04-f546-244cf03ac6c2
-FQN: SampleProject.xUnit.TestServiceTests.TestTheory
-Display Name: SampleProject.xUnit.TestServiceTests.TestTheory(expected: True)
-Executor URI: executor://xunit/VsTestRunner2/netcoreapp
-Source: C:\github\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\bin\Debug\netcoreapp3.1\SampleProject.xUnit.dll
-Code File Path: 
-Line Number: 0
-Traits: 
+{% assign test_case =  first_result.test_case %}
+Id: {{test_case.id}}
+FQN: {{test_case.fully_qualified_name}}
+Display Name: {{test_case.display_name}}
+Executor URI: {{test_case.executor_uri}}
+Source: {{test_case.source}}
+Code File Path: {{test_case.code_file_path}}
+Line Number: {{test_case.line_number}}
+Traits: {{test_case.traits | first}}
 ```
 
 
@@ -297,22 +296,22 @@ For example this input:
 
 Would be accessible to use in a template with
 
-`{{ parameters[‘Environment’] }} `or`{{ parameters.Environment}}`
+`{% raw %}{{ parameters[‘Environment’] }}{% endraw %} `or`{% raw %}{{ parameters.Environment}}{% endraw %}`
 
 **Input**
 
 ```
-
+{% raw %}
 {{ parameters['TestRunDirectory'] }}
 {{ parameters['TargetFramework'] }}
-
+{% endraw %}
 ```
 
 **Output**
 
 ```
-C:\github\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\TestResults
-.NETCoreApp,Version=v3.1
+{{ parameters['TestRunDirectory'] }}
+{{ parameters['TargetFramework'] }}
 ```
 
 ## Library
@@ -323,15 +322,15 @@ The library properties provide project links and an extension point
 - **parameters** - this dictionary is an extension point  for implementations of `LiquidTestReports.Core` to add their own items via `LibraryParameters`. This can be used in templates for purposes such as transformations on test attachments
 
 ```
-
+{% raw %}
 {{ library.text }}
 {{ library.link }}
-
+{% endraw %}
 ```
 
 **Output**
 
 ```
-Created using Liquid Test Reports
-https://github.com/kurtmkurtm/LiquidTestReports
+{{ library.text }}
+{{ library.link }}
 ```
