@@ -24,7 +24,7 @@ The Markdown logger package is a ready to use  implementation of the test logger
 **How to use**:
 
 1. Install the markdown logger to your test project by running the following command
-	`dotnet add package LiquidTestReports.Core`
+	`dotnet add package LiquidTestReports.Markdown`
 	
 2. Run the tests using the supplied logger
 	`dotnet test --logger "liquid.md"`
