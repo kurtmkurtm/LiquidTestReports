@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <AssemblyName>LiquidTestReports.Markdown.TestLogger</AssemblyName>
-    <TargetFrameworks>netstandard2.1;net451</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net451</TargetFrameworks>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/kurtmkurtm/LiquidTestReports</PackageProjectUrl>
     <RepositoryUrl>https://github.com/kurtmkurtm/LiquidTestReports</RepositoryUrl>

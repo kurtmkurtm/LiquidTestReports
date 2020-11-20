@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <AssemblyName>LiquidTestReports.Core</AssemblyName>
-    <TargetFrameworks>netstandard2.1;net451</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net451</TargetFrameworks>
     <RepositoryUrl>https://github.com/kurtmkurtm/LiquidTestReports</RepositoryUrl>
     <PackageProjectUrl>https://github.com/kurtmkurtm/LiquidTestReports</PackageProjectUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
