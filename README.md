@@ -6,10 +6,12 @@ Liquid Test Reports are logger extensions for the [Visual Studio Test Platform](
 
 ### Latest:
 
-#### 1.0.1
+#### 1.0.9
 
-- Remove pre-release tags 🎉
-- Fix: Create drop for test result messages, and replace URIs with strings
+**Changed**
+
+- [All] Revert target framework from .NET standard 2.1 back to .NET standard 2.0 for broader compatibility
+  - For use with .NET Core 2.x, see [Compatibility](#Compatibility)
 
 [Previous changes](./docs/Changelog.md)
 
@@ -74,7 +76,7 @@ For a more detailed example, take a look at included [Markdown template](.\src\L
 
 *More liquid template and syntax documentation is available on the [Shopify Github](https://shopify.github.io/liquid/basics/introduction/).*
 
-### LiquidTestReports.Core
+## LiquidTestReports.Core
 [![NuGet Badge](https://buildstats.info/nuget/LiquidTestReports.Core?includePreReleases=true)](https://www.nuget.org/packages/LiquidTestReports.Core)
 
 The core project is utilised by the above two loggers and can be used to implement your own, however, this is yet to be documented. The custom and markdown implementations provide an guide of how to implement this.
@@ -85,6 +87,29 @@ The core project is utilised by the above two loggers and can be used to impleme
 
 	`dotnet add package LiquidTestReports.Core`
 
+
+## Compatibility 
+
+**.NET 4.5.1+ and .NET Core 3.0+**
+
+No additional configuration is required.
+
+**.NET Core 2.1 - 2.2**
+
+By default, the logger will not be copied to the output folder, and will not be discovered. 
+To use with these versions, include `CopyLocalLockFileAssemblies` in your test project. This will copy the logger to your output folder.  
+
+``` xml
+<PropertyGroup>
+  <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+</PropertyGroup>
+```
+
+*Note: this will also copy other NuGet dependencies into your output folder*
+
+**.NET Core 2.0**
+
+Issues appear to be present in testing with .NET Core 2.0, as this target is no longer supported, it is recommended to update to supported version of .NET Core. 
 
 
 ## License

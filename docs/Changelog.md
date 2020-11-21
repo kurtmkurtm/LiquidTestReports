@@ -1,5 +1,15 @@
 ## Changelog
 
+#### 1.0.1
+
+**Changed**
+
+- Remove pre-release tags 🎉
+
+**Fixed**
+
+- Create drop for test result messages, and replace URIs with strings
+
 #### 0.2.4 
 
 **Added**
