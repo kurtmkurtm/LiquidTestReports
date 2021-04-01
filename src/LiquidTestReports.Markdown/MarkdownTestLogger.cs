@@ -18,7 +18,7 @@ namespace LiquidTestReports.Markdown
         protected override string FileExtension => Constants.MdFileExtension;
 
         /// <inheritdoc/>
-        protected override string GetTemplateContent() => Encoding.UTF8.GetString(Templates.MdReport);
+        protected override string GetTemplateContent() => Templates.MdReport;
 
         /// <inheritdoc/>
         protected override void OnInitialize(IReadOnlyDictionary<string, string> parameters)

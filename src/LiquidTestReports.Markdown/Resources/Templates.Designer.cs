@@ -61,12 +61,32 @@ namespace LiquidTestReports.Markdown.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized string similar to {%- assign passed = run.test_run_statistics.passed_count -%}
+        ///{%- assign failed = run.test_run_statistics.failed_count -%}
+        ///{%- assign skipped = run.test_run_statistics.skipped_count -%}
+        ///{%- assign total = run.test_run_statistics.executed_tests_count -%}
+        ///{%- assign pass_percentage = passed | divided_by: total | times: 100.0 | round: 2  *-%}
+        ///{%- assign failed_percentage = failed | divided_by: total | times: 100.0 | round: 2  *-%}
+        ///{%- assign skipped_percentage = skipped | divided_by: total | times: 100.0  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static byte[] MdReport {
+        internal static string MdMultiReport {
             get {
-                object obj = ResourceManager.GetObject("MdReport", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("MdMultiReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {%- assign passed = run.test_run_statistics.passed_count -%}
+        ///{%- assign failed = run.test_run_statistics.failed_count -%}
+        ///{%- assign skipped = run.test_run_statistics.skipped_count -%}
+        ///{%- assign total = run.test_run_statistics.executed_tests_count -%}
+        ///{%- assign pass_percentage = passed | divided_by: total | times: 100.0 | round: 2  *-%}
+        ///{%- assign failed_percentage = failed | divided_by: total | times: 100.0 | round: 2  *-%}
+        ///{%- assign skipped_percentage = skipped | divided_by: total | times: 100.0  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string MdReport {
+            get {
+                return ResourceManager.GetString("MdReport", resourceCulture);
             }
         }
     }

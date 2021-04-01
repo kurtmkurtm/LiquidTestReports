@@ -21,7 +21,7 @@ namespace LiquidTestReports.Core.Filters
         // Format using convention from VSTest console logger.
         private static string ToFormattedDurationString(TimeSpan duration)
         {
-            if (duration == default)
+            if (duration.Ticks < 0)
             {
                 return null;
             }
