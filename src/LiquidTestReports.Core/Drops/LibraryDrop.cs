@@ -5,12 +5,7 @@ namespace LiquidTestReports.Core.Drops
 {
     public class LibraryDrop : Drop
     {
-        public LibraryDrop(IDictionary<string, object> libraryParameters)
-        {
-                Parameters = libraryParameters;
-        }
-
-        public IDictionary<string, object> Parameters { get; }
+        public IDictionary<string, object> Parameters { get; set;  }
 
         public string Text => Constants.LibraryText;
 

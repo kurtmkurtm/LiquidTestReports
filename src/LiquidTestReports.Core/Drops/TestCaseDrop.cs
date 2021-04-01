@@ -8,27 +8,20 @@ namespace LiquidTestReports.Core.Drops
 {
     public class TestCaseDrop : Drop
     {
-        private readonly TestCase _testCase;
+        public Guid Id { get; set; }
 
-        public TestCaseDrop(TestCase testCase)
-        {
-            _testCase = testCase;
-        }
+        public string FullyQualifiedName { get; set; }
 
-        public Guid Id => _testCase.Id;
+        public string DisplayName { get; set; }
 
-        public string FullyQualifiedName => _testCase.FullyQualifiedName;
+        public string ExecutorUri { get; set; }
 
-        public string DisplayName => _testCase.DisplayName;
+        public string Source { get; set; }
 
-        public string ExecutorUri => _testCase.ExecutorUri.ToString();
+        public string CodeFilePath { get; set; }
 
-        public string Source => _testCase.Source;
+        public int LineNumber { get; set; }
 
-        public string CodeFilePath => _testCase.CodeFilePath;
-
-        public int LineNumber => _testCase.LineNumber;
-
-        public IList<TraitDrop> Traits => _testCase.Traits.Select(trait => new TraitDrop(trait)).ToArray();
+        public IList<TraitDrop> Traits { get; set; }
     }
 }

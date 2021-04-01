@@ -6,23 +6,16 @@ namespace LiquidTestReports.Core.Drops
 {
     public class TestRunStatisticsDrop : Drop
     {
-        private ITestRunStatistics _testRunStatistics;
+        public decimal NoneCount { get; set; }
 
-        public TestRunStatisticsDrop(ITestRunStatistics testRunStatistics)
-        {
-            _testRunStatistics = testRunStatistics;
-        }
+        public decimal PassedCount { get; set; }
 
-        public decimal NoneCount => _testRunStatistics[TestOutcome.None];
+        public decimal FailedCount { get; set; }
 
-        public decimal PassedCount => _testRunStatistics[TestOutcome.Passed];
+        public decimal SkippedCount { get; set; }
 
-        public decimal FailedCount => _testRunStatistics[TestOutcome.Failed];
+        public decimal NotFoundCount { get; set; }
 
-        public decimal SkippedCount => _testRunStatistics[TestOutcome.Skipped];
-
-        public decimal NotFoundCount => _testRunStatistics[TestOutcome.NotFound];
-
-        public decimal ExecutedTestsCount => _testRunStatistics.ExecutedTests;
+        public decimal ExecutedTestsCount { get; set; }
     }
 }

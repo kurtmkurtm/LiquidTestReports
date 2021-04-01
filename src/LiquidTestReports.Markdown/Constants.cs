@@ -26,8 +26,13 @@
         public const string IncludeRunMessagesKey = "IncludeMessages";
 
         /// <summary>
-        /// Key for run messages toggle.
+        /// Key for custom titles.
         /// </summary>
         public const string TitleKey = "Title";
+
+        /// <summary>
+        /// Default titles when parameter not provided.
+        /// </summary>
+        public const string DefaultTitle = "Test Run";
     }
 }

@@ -7,11 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CliWrap" Version="3.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\SampleProject\SampleProject.Tests.xUnit\SampleProject.xUnit.csproj" />
+    <PackageReference Include="CliWrap" Version="3.1.1" />
   </ItemGroup>
 
   <ItemGroup>

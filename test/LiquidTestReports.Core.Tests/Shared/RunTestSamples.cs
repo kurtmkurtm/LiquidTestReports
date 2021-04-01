@@ -1,11 +1,11 @@
 ﻿using CliWrap;
-using CliWrap.Buffered;
 using System;
-using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using CliWrap.Buffered;
 using Xunit.Abstractions;
+using System.Collections.Generic;
 
 namespace LiquidTestReports.Tests.Shared
 {
@@ -15,6 +15,7 @@ namespace LiquidTestReports.Tests.Shared
         private const string vstestFormat = "test --logger:\"{0};";
         private const string lognameFormat = "LogFilePrefix={0};";
         private const string templateFormat = "Template={0};";
+        private const string parameterFormat = "{0}={1};";
         private const string endQuote = "\"";
 
         public static async Task RunTest(ITestOutputHelper testOutputHelper,
@@ -22,12 +23,14 @@ namespace LiquidTestReports.Tests.Shared
             string logger,
             int maxSecondsToRun = 60,
             string logFilePrefix = null,
-            string templateName = null
+            string templateName = null,
+            IEnumerable<KeyValuePair<string, string>> additionalParameters = null
             )
         {
+
             var cts = new CancellationTokenSource(TimeSpan.FromSeconds(maxSecondsToRun));
-            var args = VsTestArgs(logger, logFilePrefix, templateName);
-            var command = Cli.Wrap(TargetFilePath)
+            var args = VsTestArgs(logger, logFilePrefix, templateName, additionalParameters);
+            var command = CliWrap.Cli.Wrap(TargetFilePath)
                 .WithWorkingDirectory(testProjectPath)
                 .WithArguments(args)
                 .WithValidation(CommandResultValidation.None);
@@ -39,7 +42,8 @@ namespace LiquidTestReports.Tests.Shared
         private static string VsTestArgs(
             string logger,
             string logFileName = null,
-            string templateName = null)
+            string templateName = null,
+            IEnumerable<KeyValuePair<string, string>> additionalParameters = null)
         {
             var argsBuilder = new StringBuilder();
             argsBuilder.AppendFormat(vstestFormat, logger);
@@ -52,6 +56,15 @@ namespace LiquidTestReports.Tests.Shared
             {
                 argsBuilder.AppendFormat(templateFormat, templateName);
             }
+
+            if (additionalParameters != null)
+            {
+                foreach (var parameter in additionalParameters)
+                {
+                    argsBuilder.AppendFormat(parameterFormat, parameter.Key, parameter.Value);
+                }
+            }
+
             argsBuilder.Append(endQuote);
             return argsBuilder.ToString();
         }

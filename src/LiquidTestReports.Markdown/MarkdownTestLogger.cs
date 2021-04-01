@@ -24,7 +24,7 @@ namespace LiquidTestReports.Markdown
         protected override void OnInitialize(IReadOnlyDictionary<string, string> parameters)
         {
             var includeMessages = true;
-            var reportTitle = "Test Run";
+            var reportTitle = Constants.DefaultTitle;
            
             if (parameters.TryGetValue(Constants.IncludeRunMessagesKey, out var includeRunMessages))
             {

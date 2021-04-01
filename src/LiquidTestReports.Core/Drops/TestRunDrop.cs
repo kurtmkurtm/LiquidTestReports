@@ -1,37 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using DotLiquid;
+using LiquidTestReports.Core.Adapters;
 
 namespace LiquidTestReports.Core.Drops
 {
+    public class TestRunCollection : Drop
+    {
+        public IList<TestRunCollection> TestRuns { get; set; }
+    }
+
     public class TestRunDrop : Drop
     {
-        private readonly TestRun _testRunResults;
+        public TestRunStatisticsDrop TestRunStatistics { get; set; }
 
-        public TestRunDrop(TestRun testRunResults)
-        {
-            _testRunResults = testRunResults;
-        }
+        public bool IsCanceled { get; set; }
 
-        public TestRunStatisticsDrop TestRunStatistics => new TestRunStatisticsDrop(_testRunResults.TestRunStatistics);
+        public bool IsAborted { get; set; }
 
-        public bool IsCanceled => _testRunResults.IsCanceled;
+        public Exception Error { get; set; }
 
-        public bool IsAborted => _testRunResults.IsAborted;
+        public IList<AttachmentSetDrop> AttachmentSets { get; set; }
 
-        public Exception Error => _testRunResults.Error;
+        public TimeSpan ElapsedTimeInRunningTests { get; set; }
 
-        public IList<AttachmentSetDrop> AttachmentSets => _testRunResults.AttachmentSets.Select(a => new AttachmentSetDrop(a)).ToList();
+        public IList<MessageDrop> Messages { get; set; }
 
-        public TimeSpan ElapsedTimeInRunningTests => _testRunResults.ElapsedTimeInRunningTests;
+        public TestResultSetDropCollection ResultSets { get; set; }
 
-        public IList<MessageDrop> Messages => _testRunResults.Messages.Select(m => new MessageDrop(m)).ToList();
+        public DateTimeOffset? Finished { get; set; }
 
-        public IList<TestResultSetDrop> ResultSets => _testRunResults.Results.Select(s => new TestResultSetDrop(s)).ToList();
+        public DateTimeOffset? Started { get; set; }
 
-        public DateTimeOffset Finished => _testRunResults.Finished;
-
-        public DateTimeOffset Started => _testRunResults.Started;
     }
+
 }

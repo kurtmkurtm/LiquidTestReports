@@ -15,7 +15,7 @@ namespace SampleProject.MSTest
         [TestInitialize]
         public void Setup()
         {
-            TestContext.WriteLine("Running SampleProject.Tests.NUnit tests");
+            TestContext.WriteLine("Running SampleProject.Tests.MSTest tests");
         }
 
 
@@ -71,7 +71,7 @@ namespace SampleProject.MSTest
             Assert.IsTrue(false);
         }
 
-
+        [TestMethod]
         [Ignore("Skipped")]
         [TestCategory("Skip")]
         public void SkipTest()

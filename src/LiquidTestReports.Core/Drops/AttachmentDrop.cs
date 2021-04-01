@@ -6,15 +6,8 @@ namespace LiquidTestReports.Core.Drops
 {
     public class AttachmentDrop : Drop
     {
-        private readonly UriDataAttachment _uriDataAttachment;
+        public string Description { get; set; }
 
-        public AttachmentDrop(UriDataAttachment uriDataAttachment)
-        {
-            _uriDataAttachment = uriDataAttachment;
-        }
-
-        public string Description => _uriDataAttachment.Description;
-
-        public string Uri => _uriDataAttachment.Uri.ToString();
+        public string Uri { get; set; }
     }
 }
