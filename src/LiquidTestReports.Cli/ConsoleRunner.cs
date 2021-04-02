@@ -35,9 +35,7 @@ namespace LiquidTestReports.Cli
             WriteHeader(title);
             WriteInputTable();
 
-            var libraryParameters = GenerateLibraryParameters(title);
-            var report = GenerateReport(template, libraryParameters);
-
+            var report = GenerateReport(template, GenerateLibraryParameters(title));
             if (string.IsNullOrEmpty(report))
             {
                 _errorConsole.WriteLine("Error, report generated no content");
@@ -65,7 +63,7 @@ namespace LiquidTestReports.Cli
 
                 if (_outputFile.Exists)
                 {
-                    _standardConsole.MarkupLine($"[green]Generate report to {_outputFile}[/]");
+                    _standardConsole.MarkupLine($"[green]Saved report to {_outputFile}[/]");
                     return true;
                 }
             }
@@ -84,19 +82,30 @@ namespace LiquidTestReports.Cli
         private string GenerateReport(string template, LibraryDrop libraryDrop)
         {
             var reportProcessor = new InputProcessingService(_inputs);
-            var runCollection = reportProcessor.Process();
+            TestRunDrop run;
+            try
+            {
+                run = reportProcessor.Process();
+            }
+            catch (InvalidDataException e)
+            {
+                _errorConsole.WriteLine(e.Message);
+                return null;
+            }
+
             string report = null;
 
             _standardConsole.WriteLine();
-            _standardConsole.MarkupLine("Generating Report");
-            _standardConsole.WriteLine();
+            _standardConsole.MarkupLine("Generating report");
 
             try
             {
-                var reportGenerator = new ReportGenerator(new LibraryTestRun { Run = runCollection, Library = libraryDrop });
+                var reportGenerator = new ReportGenerator(new LibraryTestRun { Run = run, Library = libraryDrop });
                 report = reportGenerator.GenerateReport(template ?? Templates.MdMultiReport, out var errors);
                 foreach (var error in errors)
                     _standardConsole.MarkupLine($"[orange1]{error.Message}[/]");
+                _standardConsole.WriteLine();
+                _standardConsole.MarkupLine("Finished generating report");
             }
             catch (SyntaxException e)
             {
@@ -114,19 +123,24 @@ namespace LiquidTestReports.Cli
         {
             var table = new Table()
                             .AddColumn(new TableColumn("File").Centered())
-                            .AddColumn(new TableColumn("GroupTitle").Centered())
+                            .AddColumn(new TableColumn("Group Title").Centered())
+                            .AddColumn(new TableColumn("Test Suffix").Centered())
                             .AddColumn(new TableColumn("Exists").Centered())
                             .AddColumn(new TableColumn("Format").Centered())
                             .AddColumn(new TableColumn("Skipping").Centered());
 
             foreach (var input in _inputs)
             {
-                table.AddRow(input.File.Name, string.IsNullOrEmpty(input.GroupTitle) ? "default" : input.GroupTitle, input.File.Exists.ToString(), input.Format.ToString(), (!input.File.Exists || input.Format == InputFormatType.Unknown).ToString());
+                table.AddRow(input.File.Name,
+                    string.IsNullOrEmpty(input.GroupTitle) ? "default" : input.GroupTitle,
+                    string.IsNullOrEmpty(input.TestSuffix) ? "n/a" : input.TestSuffix,
+                    input.File.Exists.ToString(),
+                    input.Format.ToString(),
+                    (!input.File.Exists || input.Format == InputFormatType.Unknown).ToString());
             }
 
             _standardConsole.WriteLine();
             _standardConsole.Render(table);
-            _standardConsole.WriteLine();
         }
 
         private void WriteHeader(string title)

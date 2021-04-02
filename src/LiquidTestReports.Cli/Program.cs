@@ -40,8 +40,11 @@ namespace LiquidTestReports.Cli
                 exitFlag = true;
             }
 
-            if (exitFlag) 
+            if (exitFlag)
+            {
+                Console.WriteLine("Run liquid -? for help");
                 Environment.Exit((int)ExitCodes.InvalidCommandLine);
+            }
 
             var runner = new ConsoleRunner(inputs, outputFile);
             runner.Run(title, template);
