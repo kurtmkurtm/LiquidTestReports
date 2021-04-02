@@ -50,7 +50,7 @@ stages:
 
       - task: DotNetCoreCLI@2
         displayName: 'dotnet pack'
-        condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+        condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
         inputs:
           command: custom
           projects: |
@@ -63,7 +63,7 @@ stages:
 
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Artifact'
-        condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+        condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
         inputs:
           PathtoPublish: $(Build.ArtifactStagingDirectory)
           ArtifactName: 'drop'
