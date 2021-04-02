@@ -29,10 +29,6 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-    <None Include="..\..\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
   </ItemGroup>
   <PropertyGroup Label="Configuration">
     <RootNamespace>LiquidTestReports.Core</RootNamespace>

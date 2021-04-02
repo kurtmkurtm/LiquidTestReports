@@ -2,21 +2,32 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp3.1;net5.0</TargetFrameworks>
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>liquid</ToolCommandName>
     <PackageOutputPath>./nupkg</PackageOutputPath>
+    <RepositoryUrl>https://github.com/kurtmkurtm/LiquidTestReports</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/kurtmkurtm/LiquidTestReports</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>nuget_cli.png</PackageIcon>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Spectre.Console" Version="0.38.0" />
     <PackageReference Include="System.CommandLine.DragonFruit" Version="0.3.0-alpha.20574.7" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\LiquidTestReports.Core\LiquidTestReports.Core.csproj" />
   </ItemGroup>
-
+  <ItemGroup>
+    <None Include="..\..\assets\nuget_cli.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
   <ItemGroup>
     <Compile Update="Resources\Templates.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -24,12 +35,18 @@
       <DependentUpon>Templates.resx</DependentUpon>
     </Compile>
   </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Update="Resources\Templates.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Templates.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-
+  <PropertyGroup Label="Configuration">
+    <RootNamespace>LiquidTestReports.Cli</RootNamespace>
+    <Authors>Kurt Murrell</Authors>
+    <PackageId>LiquidTestReports.Cli</PackageId>
+    <Product>LiquidTestReports.Cli</Product>
+    <Copyright>2021</Copyright>
+    <Description>.NET tool to combine and convert TRX tests reports into Markdown with Liquid template support</Description>
+  </PropertyGroup>
 </Project>
