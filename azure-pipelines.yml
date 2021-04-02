@@ -7,8 +7,8 @@ pool:
 variables:
   buildConfiguration: 'Release'
   majorVersion: 1
-  minorVersion: 0
-
+  minorVersion: 1
+  suffix: 'beta'
 
 stages:
   - stage: Version
@@ -45,7 +45,9 @@ stages:
         displayName: 'dotnet test'
         inputs:
           command: test
-          projects: '**/LiquidTestReports.Core.Tests.csproj'
+          projects: |
+           **/LiquidTestReports.Core.Tests.csproj
+           **/LiquidTestReports.Cli.Tests.csproj
           arguments: '--no-build -c $(buildConfiguration)'
 
       - task: DotNetCoreCLI@2
@@ -57,8 +59,9 @@ stages:
            **/LiquidTestReports.Core.csproj
            **/LiquidTestReports.Markdown.csproj
            **/LiquidTestReports.Custom.csproj
+           **/LiquidTestReports.Cli.csproj
           custom: pack
-          arguments: '--no-build -o $(Build.ArtifactStagingDirectory) -c $(buildConfiguration) -p:PackageVersion=$(Build.BuildNumber)'
+          arguments: '--no-build -o $(Build.ArtifactStagingDirectory) -c $(buildConfiguration) -p:PackageVersion=$(Build.BuildNumber)-$(suffix)'
           versioningScheme: byBuildNumber
 
       - task: PublishBuildArtifacts@1
