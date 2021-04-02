@@ -73,5 +73,24 @@ namespace LiquidTestReports.Cli.Tests
             // Assert
             Assert.True(destinationReport.Exists);
         }
+
+        [Fact]
+        public void Main_WithTitle_GeneratesReport()
+        {
+            //Arrange
+            var title = "My Test Title";
+            var titleTest = "titleTest.md";
+            var destinationReport = new FileInfo(Path.Combine(_outputFolder, titleTest));
+            var files = new List<ReportInput>();
+
+            // Group by test framework, add target framework as suffix
+            foreach (var file in new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, _inputTrxDirectory)).GetFiles("*sample.trx"))
+                files.Add(new ReportInput($"File={file}"));
+
+            // Act
+            Program.Main(files.ToArray(), destinationReport, title);
+            // Assert
+            Assert.True(destinationReport.Exists);
+        }
     }
 }
