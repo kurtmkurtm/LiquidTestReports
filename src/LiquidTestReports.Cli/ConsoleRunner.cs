@@ -1,9 +1,9 @@
 ﻿using DotLiquid;
 using DotLiquid.Exceptions;
+using LiquidTestReports.Cli.Resources;
 using LiquidTestReports.Core;
 using LiquidTestReports.Core.Drops;
 using LiquidTestReports.Core.Models;
-using LiquidTestReports.Markdown.Resources;
 using Spectre.Console;
 using System;
 using System.Collections.Generic;
@@ -39,6 +39,7 @@ namespace LiquidTestReports.Cli
 
             if (string.IsNullOrEmpty(report))
             {
+                _errorConsole.WriteLine("Error, report generated no content");
                 Environment.Exit(1);
             }
 
@@ -47,6 +48,7 @@ namespace LiquidTestReports.Cli
             var saved = SaveReport(report);
             if (!saved)
             {
+                _errorConsole.WriteLine("Error, report unable to be saved");
                 Environment.Exit(1);
             }
         }
@@ -159,7 +161,7 @@ namespace LiquidTestReports.Cli
             {
                 Parameters = new Dictionary<string, object>(Template.NamingConvention.StringComparer)
                 {
-                    { Markdown.Constants.TitleKey, title }
+                    { Constants.TitleKey, title }
                 }
             };
         }

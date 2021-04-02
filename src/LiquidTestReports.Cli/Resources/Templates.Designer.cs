@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LiquidTestReports.Markdown.Resources {
+namespace LiquidTestReports.Cli.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace LiquidTestReports.Markdown.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LiquidTestReports.Markdown.Resources.Templates", typeof(Templates).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LiquidTestReports.Cli.Resources.Templates", typeof(Templates).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -69,9 +69,9 @@ namespace LiquidTestReports.Markdown.Resources {
         ///{%- assign failed_percentage = failed | divided_by: total | times: 100.0 | round: 2  *-%}
         ///{%- assign skipped_percentage = skipped | divided_by: total | times: 100.0  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string MdReport {
+        internal static string MdMultiReport {
             get {
-                return ResourceManager.GetString("MdReport", resourceCulture);
+                return ResourceManager.GetString("MdMultiReport", resourceCulture);
             }
         }
     }

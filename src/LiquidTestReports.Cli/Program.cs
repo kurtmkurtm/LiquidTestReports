@@ -25,7 +25,7 @@ namespace LiquidTestReports.Cli
         /// <param name="outputFile">Path to save test report to.</param>
         /// <param name="title">Optional overall report title displayed in default report template.</param>
         /// <param name="template">Optional user defined liquid template. Defaults to multi report markdown template is used.</param>
-        public static void Main(ReportInput[] inputs, FileInfo outputFile, string title = Markdown.Constants.DefaultTitle, string template = null)
+        public static void Main(ReportInput[] inputs, FileInfo outputFile, string title = Constants.DefaultTitle, string template = null)
         {
             if (inputs is null || inputs.Length == 0)
                 throw new ArgumentNullException(nameof(inputs));

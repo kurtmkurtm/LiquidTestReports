@@ -16,7 +16,7 @@
 {%- assign overall = '❌ Fail' *-%}
 {%- endif -%}
 # {{ library.parameters.Title }}
-## Run Summary
+### Run Summary
 
 <p>
 <strong>Overall Result:</strong> {{overall}} <br />
@@ -53,23 +53,25 @@
 {%- for set in run.result_sets -%} {%- assign groups = set.results | group: 'outcome' *-%}
 {%- assign group_total = set.results | size *-%}
 {%- assign passed_total = groups.Passed | size *-%}
+{%- assign failed_total = groups.Failed | size *-%}
+{%- assign skipped_total = groups.Skipped | size *-%}
 {%- if group_total == passed_total -%}
 {%- assign set_outcome = '✔️ Pass' *-%}
-{%- elsif 0 == groups.Failed | size -%}
+{%- elsif failed_total == 0 -%}
 {%- assign set_outcome = '⚠️ Indeterminate' *-%}
 {%- else -%}
 {%- assign set_outcome = '❌ Fail' *-%}
 {%- endif -%}
-### {{ set.source }}
+#### {{ set.source }}
 <strong>Group Result:</strong> {{set_outcome}} <br />
 <strong>Pass Rate:</strong> {{ passed_total | divide_by_decimal: group_total | times: 100.0 | round: 2 }}% <br />
 <strong>Tests:</strong> {{ set.results | size }} <br />
 <strong>Duration:</strong> {{ set.duration | format_duration }} <br />
-<details>
+<details open>
 <summary><strong>Results:</strong></summary>
+{%- if passed_total > 0 -%}
 <details>
 <summary>✔️ Passed ({{ passed_total }})</summary>
-<br />
 <table>
 <thead>
 <tr>
@@ -95,9 +97,10 @@ Source:
 </tbody>
 </table>
 </details>
+{%- endif -%}
+{%- if failed_total > 0 -%}
 <details>
-<summary>❌ Failed ({{groups.Failed | size}})</summary>
-<br />
+<summary>❌ Failed ({{ failed_total }})</summary>
 <table>
 <thead>
 <tr>
@@ -127,9 +130,10 @@ Stack Trace:
 </tbody>
 </table>
 </details>
+{%- endif -%}
+{%- if skipped_total > 0 -%}
 <details>
-<summary>⚠️ Skipped ({{groups.Skipped | size}})</summary>
-<br />
+<summary>⚠️ Skipped ({{ skipped_total }})</summary>
 <table>
 <thead>
 <tr>
@@ -155,6 +159,7 @@ Source:
 </tbody>
 </table>
 </details>
+{%- endif -%}
 </details>
 
 ---

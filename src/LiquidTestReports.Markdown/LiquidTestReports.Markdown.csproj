@@ -28,11 +28,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
-      <_Parameter1>LiquidTestReports.Cli</_Parameter1>
-    </AssemblyAttribute>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\..\assets\nuget_md.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>

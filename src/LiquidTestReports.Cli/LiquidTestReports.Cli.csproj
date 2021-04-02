@@ -15,7 +15,21 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LiquidTestReports.Core\LiquidTestReports.Core.csproj" />
-    <ProjectReference Include="..\LiquidTestReports.Markdown\LiquidTestReports.Markdown.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\Templates.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Templates.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Templates.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Templates.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
