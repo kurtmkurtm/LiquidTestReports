@@ -1,6 +1,7 @@
 ﻿using DotLiquid;
 using DotLiquid.Exceptions;
 using LiquidTestReports.Cli.Resources;
+using LiquidTestReports.Cli.Services;
 using LiquidTestReports.Core;
 using LiquidTestReports.Core.Drops;
 using LiquidTestReports.Core.Models;
@@ -40,16 +41,14 @@ namespace LiquidTestReports.Cli
             if (string.IsNullOrEmpty(report))
             {
                 _errorConsole.WriteLine("Error, report generated no content");
-                Environment.Exit(1);
+                Environment.Exit((int)ExitCodes.ReportGenerationError);
             }
-
-            PreviewReport(report);
 
             var saved = SaveReport(report);
             if (!saved)
             {
                 _errorConsole.WriteLine("Error, report unable to be saved");
-                Environment.Exit(1);
+                Environment.Exit((int)ExitCodes.ReportSaveError);
             }
         }
 
@@ -84,7 +83,7 @@ namespace LiquidTestReports.Cli
 
         private string GenerateReport(string template, LibraryDrop libraryDrop)
         {
-            var reportProcessor = new InputProcessor(_inputs);
+            var reportProcessor = new InputProcessingService(_inputs);
             var runCollection = reportProcessor.Process();
             string report = null;
 
@@ -135,23 +134,10 @@ namespace LiquidTestReports.Cli
             _standardConsole.WriteLine();
             _standardConsole.Render(new FigletText("Liquid Test Reports").Centered().Color(Color.Blue));
             _standardConsole.WriteLine();
-            _standardConsole.Render(new FigletText("Cli Tool").Centered().Color(Color.Green));
+            _standardConsole.Render(new FigletText("Cli Tool").Centered().Color(Color.White));
             _standardConsole.WriteLine();
             _standardConsole.WriteLine();
             _standardConsole.Render(new Rule(title).RuleStyle("grey").LeftAligned());
-            _standardConsole.WriteLine();
-        }
-
-        private void PreviewReport(string report)
-        {
-            if (report is null) return;
-
-            _standardConsole.WriteLine();
-            _standardConsole.Render(
-            new Panel(new Text(report).LeftAligned())
-                .Expand()
-                .SquareBorder()
-                .Header("[yellow]Preview output[/]"));
             _standardConsole.WriteLine();
         }
 

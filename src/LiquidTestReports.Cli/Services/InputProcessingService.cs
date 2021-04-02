@@ -5,16 +5,16 @@ using LiquidTestReports.Core.Models;
 using System;
 using System.Collections.Generic;
 
-namespace LiquidTestReports.Cli
+namespace LiquidTestReports.Cli.Services
 {
     /// <summary>
     /// Manage loading and mapping for each test report input
     /// </summary>
-    internal class InputProcessor
+    internal class InputProcessingService
     {
         private readonly IEnumerable<ReportInput> _inputs;
 
-        internal InputProcessor(IEnumerable<ReportInput> inputs)
+        internal InputProcessingService(IEnumerable<ReportInput> inputs)
         {
             _inputs = inputs;
         }

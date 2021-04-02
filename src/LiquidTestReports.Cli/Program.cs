@@ -27,11 +27,21 @@ namespace LiquidTestReports.Cli
         /// <param name="template">Optional user defined liquid template. Defaults to multi report markdown template is used.</param>
         public static void Main(ReportInput[] inputs, FileInfo outputFile, string title = Constants.DefaultTitle, string template = null)
         {
+            var exitFlag = false;
             if (inputs is null || inputs.Length == 0)
-                throw new ArgumentNullException(nameof(inputs));
+            {
+                Console.Error.WriteLine(new ArgumentNullException(nameof(inputs)));
+                exitFlag = true;
+            }
 
             if (outputFile is null)
-                throw new ArgumentNullException(nameof(outputFile));
+            {
+                Console.Error.WriteLine(new ArgumentNullException(nameof(outputFile)));
+                exitFlag = true;
+            }
+
+            if (exitFlag) 
+                Environment.Exit((int)ExitCodes.InvalidCommandLine);
 
             var runner = new ConsoleRunner(inputs, outputFile);
             runner.Run(title, template);

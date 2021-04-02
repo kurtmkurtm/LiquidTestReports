@@ -24,4 +24,15 @@ namespace LiquidTestReports.Cli
         /// </summary>
         public const string DefaultTitle = "Test Run";
     }
+
+    /// <summary>
+    /// Application exit codes
+    /// </summary>
+    internal enum ExitCodes : int
+    {
+        Success = 0,
+        InvalidCommandLine = 1,
+        ReportGenerationError = 2,
+        ReportSaveError = 3
+    }
 }
