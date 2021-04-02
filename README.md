@@ -16,6 +16,82 @@ Liquid Test Reports are logger extensions for the [Visual Studio Test Platform](
 [Previous changes](./docs/Changelog.md)
 
 
+## LiquidTestReports.Cli (Beta):
+[![NuGet Badge](https://buildstats.info/nuget/LiquidTestReports.Cli?includePreReleases=true)](https://www.nuget.org/packages/LiquidTestReports.Cli) 
+
+ Generate Markdown or Custom Test Reports from existing TRX files
+
+#### Installation
+
+```bash
+dotnet tool install --global LiquidTestReports.Cli --version 1.1.1-beta
+```
+
+#### Usage
+
+```bash
+liquid [options]
+```
+
+ **Options:**
+
+ **--inputs <inputs>** Array of formatted configuration strings for test report inputs, with configurations separated by a semicolon
+ - **File=file-name;** The path of the input file.
+ - **GroupTitle=group-title;** Optional title to group reports under, test runs with the same group title will be merged.
+ - **TestPrefix=test-prefix;** Optional test suffix, if provided test origination for the provided report will have the suffix appended to its name.
+
+**--output-file <output-file>** Path to save test report to.
+**--title <title>** Optional overall report title displayed in default report template. Defaults to "Test Run"
+**--template <template>** Optional user defined liquid template. Defaults to the multi report markdown template is used. 
+**--version** Show version information
+**-?, -h, --help** Show help and usage information
+
+
+
+#### Examples
+
+ **Report from single input** - [Sample Output](docs/samples/cli/SingleInput.md)
+
+``` bash
+liquid --inputs "File=xUnit-net461-sample.trx" --output-file SingleInput.md 
+```
+
+**Report from single input, with a custom title** - [Sample Output](docs/samples/cli/CustomTitle.md)
+
+``` bash
+liquid --inputs "File=xUnit-net461-sample.trx" --output-file CustomTitle.md --title "Test Run 2021"
+```
+
+**Report from two inputs** - [Sample Output](docs/samples/cli/TwoInputs.md)
+
+``` bash
+liquid --inputs "File=xUnit-net461-sample.trx" "File=xUnit-netcoreapp3.1-sample.trx" --output-file TwoInputs.md 
+```
+
+ **Grouped results **- [Sample Output](docs/samples/cli/GroupUnitTests.md)
+ Report with two inputs, and results grouped under the same section "Unit Tests": 
+
+``` bash
+liquid --inputs "File=xUnit-net461-sample.trx;GroupTitle=Unit Tests" "File=xUnit-netcoreapp3.1-sample.trx;GroupTitle=Unit Tests" --output-file GroupUnitTests.md 
+```
+
+**Grouped results with test name suffix** - [Sample Output](docs/samples/cli/GroupAndSuffix.md)
+
+Report from two inputs, grouped under the same section "Unit Tests", with the tests from `xUnit-netcoreapp3.1-sample.trx` having (3.1) appended to the test names
+ eg `SampleProject.xUnit.TestServiceTests` becomes `SampleProject.xUnit.TestServiceTests.PassingTest(3.1)`
+
+``` bash
+liquid --inputs "File=xUnit-net461-sample.trx;GroupTitle=Unit Tests" "File=xUnit-netcoreapp3.1-sample.trx;GroupTitle=Unit Tests;TestSuffix=(3.1)" --output-file GroupAndSuffix.md 
+```
+
+#### Removal
+
+**Global tool removal:** 
+
+```bash
+dotnet tool uninstall LiquidTestReports.Cli -g
+```
+
 ## LiquidTestReports.Markdown
 [![NuGet Badge](https://buildstats.info/nuget/LiquidTestReports.Markdown?includePreReleases=false)](https://www.nuget.org/packages/LiquidTestReports.Markdown) 
 
