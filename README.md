@@ -68,7 +68,7 @@ liquid --inputs "File=xUnit-net461-sample.trx" --output-file CustomTitle.md --ti
 liquid --inputs "File=xUnit-net461-sample.trx" "File=xUnit-netcoreapp3.1-sample.trx" --output-file TwoInputs.md 
 ```
 
- **Grouped results **- [Sample Output](docs/samples/cli/GroupUnitTests.md)
+ **Grouped results** - [Sample Output](docs/samples/cli/GroupUnitTests.md)
  Report with two inputs, and results grouped under the same section "Unit Tests": 
 
 ``` bash
