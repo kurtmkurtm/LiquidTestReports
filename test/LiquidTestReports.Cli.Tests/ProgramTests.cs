@@ -8,17 +8,17 @@ namespace LiquidTestReports.Cli.Tests
 {
     public class ProgramTests
     {
-        private const string _trxReportFileName = @"TrxSample.md";
         private const string _testReportFolderName = @"TestReports";
         private const string _inputTrxDirectory = @"TrxTestInput";
         private static readonly string _outputFolder = Path.Combine(Environment.CurrentDirectory, _testReportFolderName);
         public ProgramTests() => Directory.CreateDirectory(_outputFolder);
 
         [Fact]
-        public void Main_WithValidTrxInput_GeneratesReport()
+        public void Main_WithGroupTitle_GeneratesReport()
         {
             //Arrange
-            var destinationReport = new FileInfo(Path.Combine(_outputFolder, _trxReportFileName));
+            var groupTitleTest = "groupTitleTest.md";
+            var destinationReport = new FileInfo(Path.Combine(_outputFolder, groupTitleTest));
             var files = new List<ReportInput>();
 
             // Group by title, add test framework as suffix
@@ -27,11 +27,45 @@ namespace LiquidTestReports.Cli.Tests
             foreach (var file in new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, _inputTrxDirectory)).GetFiles("*net461-sample.trx"))
                 files.Add(new ReportInput($"File={file};GroupTitle=.NET Framework 4.6.1;TestSuffix= ({file.Name.Split('-')[0]})"));
 
+            // Act
+            Program.Main(files.ToArray(), destinationReport);
+
+            // Assert
+            Assert.True(destinationReport.Exists);
+        }
+
+        [Fact]
+        public void Main_WithTestSuffix_GeneratesReport()
+        {
+            //Arrange
+            var testSuffixTest = "testSuffixTest.md";
+            var destinationReport = new FileInfo(Path.Combine(_outputFolder, testSuffixTest));
+            var files = new List<ReportInput>();
+
             // Group by test framework, add target framework as suffix
             foreach (var file in new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, _inputTrxDirectory)).GetFiles("*netcoreapp3.1-sample.trx"))
                 files.Add(new ReportInput($"File={file};TestSuffix= (.NET Core 3.1)"));
             foreach (var file in new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, _inputTrxDirectory)).GetFiles("*net461-sample.trx"))
                 files.Add(new ReportInput($"File={file};TestSuffix= (.NET Framework 4.6.1)"));
+
+            // Act
+            Program.Main(files.ToArray(), destinationReport);
+
+            // Assert
+            Assert.True(destinationReport.Exists);
+        }
+
+        [Fact]
+        public void Main_WithFileOnly_GeneratesReport()
+        {
+            //Arrange
+            var fileOnlyTest = "fileOnlyTest.md";
+            var destinationReport = new FileInfo(Path.Combine(_outputFolder, fileOnlyTest));
+            var files = new List<ReportInput>();
+
+            // Group by test framework, add target framework as suffix
+            foreach (var file in new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, _inputTrxDirectory)).GetFiles("*sample.trx"))
+                files.Add(new ReportInput($"File={file}"));
 
             // Act
             Program.Main(files.ToArray(), destinationReport);
