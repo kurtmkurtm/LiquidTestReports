@@ -93,7 +93,7 @@ dotnet tool uninstall LiquidTestReports.Cli -g
 ```
 
 ## LiquidTestReports.Markdown
-[![NuGet Badge](https://buildstats.info/nuget/LiquidTestReports.Markdown?includePreReleases=true)](https://www.nuget.org/packages/LiquidTestReports.Markdown) 
+[![NuGet Badge](https://buildstats.info/nuget/LiquidTestReports.Markdown?includePreReleases=false)](https://www.nuget.org/packages/LiquidTestReports.Markdown) 
 
 The Markdown logger package is a ready to use  implementation of the test logger that generates Markdown format reports. 
 
@@ -114,7 +114,7 @@ See also: [Testing .NET Core Apps with GitHub Actions](https://dev.to/kurtmkurtm
 
 
 ## LiquidTestReports.Custom
-[![NuGet Badge](https://buildstats.info/nuget/LiquidTestReports.Custom?includePreReleases=true)](https://www.nuget.org/packages/LiquidTestReports.Custom)
+[![NuGet Badge](https://buildstats.info/nuget/LiquidTestReports.Custom?includePreReleases=false)](https://www.nuget.org/packages/LiquidTestReports.Custom)
 
 The custom logger package allows you to create your own reports simply by passing the file path of the template to the test logger. The list of template properties are available [here](docs/Properties.md). 
 
@@ -153,7 +153,7 @@ For a more detailed example, take a look at included [Markdown template](.\src\L
 *More liquid template and syntax documentation is available on the [Shopify Github](https://shopify.github.io/liquid/basics/introduction/).*
 
 ## LiquidTestReports.Core
-[![NuGet Badge](https://buildstats.info/nuget/LiquidTestReports.Core?includePreReleases=true)](https://www.nuget.org/packages/LiquidTestReports.Core)
+[![NuGet Badge](https://buildstats.info/nuget/LiquidTestReports.Core?includePreReleases=false)](https://www.nuget.org/packages/LiquidTestReports.Core)
 
 The core project is utilised by the above two loggers and can be used to implement your own, however, this is yet to be documented. The custom and markdown implementations provide an guide of how to implement this.
 
