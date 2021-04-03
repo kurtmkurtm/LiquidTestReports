@@ -41,9 +41,13 @@ liquid [options]
  - **TestPrefix=test-prefix;** Optional test suffix, if provided test origination for the provided report will have the suffix appended to its name.
 
 **--output-file <output-file>** Path to save test report to.
+
 **--title <title>** Optional overall report title displayed in default report template. Defaults to "Test Run"
+
 **--template <template>** Optional user defined liquid template. Defaults to the multi report markdown template is used. 
+
 **--version** Show version information
+
 **-?, -h, --help** Show help and usage information
 
 
@@ -148,7 +152,7 @@ The custom logger package allows you to create your own reports simply by passin
 
 
 
-For a more detailed example, take a look at included [Markdown template](.\src\LiquidTestReports.Markdown\Resources\MdReport.md).
+For a more detailed example, take a look at included [Markdown template](./src/LiquidTestReports.Markdown/Resources/MdReport.md).
 
 *More liquid template and syntax documentation is available on the [Shopify Github](https://shopify.github.io/liquid/basics/introduction/).*
 
