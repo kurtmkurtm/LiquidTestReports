@@ -6,6 +6,15 @@ Liquid Test Reports are logger extensions for the [Visual Studio Test Platform](
 
 ### Latest:
 
+##### 1.1.1 beta
+- [Cli] 
+  - Add new .NET Tool for report generation with TRX support
+  - Add new markdown report template
+- [Core] 
+  - Refactor drop model mapping
+  - Add TRX mapping
+  - Move template error logging from report generator into base test logger
+
 #### 1.0.9
 
 **Changed**
@@ -203,4 +212,5 @@ This library utilises the following libraries under the Apache 2.0 license
 This library utilises the following libraries under the MIT License
 
 - **Microsoft - VSTest** - https://github.com/microsoft/vstest/blob/master/LICENSE
+- **Spectre.Console** - https://github.com/spectreconsole/spectre.console
 
