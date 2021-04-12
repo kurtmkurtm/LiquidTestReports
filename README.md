@@ -44,16 +44,16 @@ liquid [options]
 
  **Options:**
 
- **--inputs <inputs>** Array of formatted configuration strings for test report inputs, with configurations separated by a semicolon
+ **--inputs [inputs]** Array of formatted configuration strings for test report inputs, with configurations separated by a semicolon
  - **File=file-name;** The path of the input file.
  - **GroupTitle=group-title;** Optional title to group reports under, test runs with the same group title will be merged.
  - **TestPrefix=test-prefix;** Optional test suffix, if provided test origination for the provided report will have the suffix appended to its name.
 
-**--output-file <output-file>** Path to save test report to.
+**--output-file [output-file]** Path to save test report to.
 
-**--title <title>** Optional overall report title displayed in default report template. Defaults to "Test Run"
+**--title [title]** Optional overall report title displayed in default report template. Defaults to "Test Run"
 
-**--template <template>** Optional user defined liquid template. Defaults to the multi report markdown template is used. 
+**--template [template]** Optional user defined liquid template. Defaults to the multi report markdown template is used. 
 
 **--version** Show version information
 
