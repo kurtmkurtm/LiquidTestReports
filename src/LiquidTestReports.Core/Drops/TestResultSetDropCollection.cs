@@ -7,8 +7,8 @@ namespace LiquidTestReports.Core.Drops
 {
     public class TestResultSetDropCollection : KeyedCollection<string, TestResultSetDrop>, IList<TestResultSetDrop>
     {
-        internal TestResultSetDropCollection() : base() { }
-        internal TestResultSetDropCollection(IEnumerable<TestResultSetDrop> testResultSetDrops) : base()
+        public TestResultSetDropCollection() : base() { }
+        public TestResultSetDropCollection(IEnumerable<TestResultSetDrop> testResultSetDrops) : base()
         {
             foreach (var testResultSetDrop in testResultSetDrops)
             {
@@ -16,7 +16,7 @@ namespace LiquidTestReports.Core.Drops
             }
         }
 
-        internal bool TryGetValue(string key, out TestResultSetDrop drop)
+        public bool TryGetValue(string key, out TestResultSetDrop drop)
         {
             var hasKey = Contains(key);
             drop = hasKey ? this[key] : null;

@@ -81,11 +81,11 @@ namespace LiquidTestReports.Cli
 
         private string GenerateReport(string template, LibraryDrop libraryDrop)
         {
-            var reportProcessor = new InputProcessingService(_inputs);
+            var inputProcessor = new InputProcessingService(_inputs);
             TestRunDrop run;
             try
             {
-                run = reportProcessor.Process();
+                run = inputProcessor.Process();
             }
             catch (InvalidDataException e)
             {
