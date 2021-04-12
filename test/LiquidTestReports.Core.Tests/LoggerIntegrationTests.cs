@@ -6,6 +6,7 @@ using LiquidTestReports.Tests.Shared;
 using System.Reflection;
 using System.Linq;
 using System;
+using System.Collections.Generic;
 
 namespace LiquidTestReports.Tests
 {
@@ -16,6 +17,7 @@ namespace LiquidTestReports.Tests
     {
         private const string coreLogger = "liquid.custom";
         private const string markdownLogger = "liquid.md";
+        private static readonly string[] frameworks = { "netcoreapp3.1", "net461" };
         private readonly ITestOutputHelper _testOutputHelper;
         public string NUnitTestReport { get; }
         public string MSTestTestReport { get; }
@@ -27,11 +29,12 @@ namespace LiquidTestReports.Tests
         }
 
         [Theory]
-        [InlineData(@"Resources\TemplateExample.txt", coreLogger, "xUnit_Text")]
-        [InlineData(null, markdownLogger, "xUnit_Md")]
-        public async Task Run_xUnit_GeneratesTestReport(string template, string logger, string file)
+        [InlineData(null, markdownLogger, "xUnit_Md", "../../../../SampleProject/SampleProject.Tests.xUnit")]
+        [InlineData(null, markdownLogger, "MSTest_Md", "../../../../SampleProject/SampleProject.Tests.MSTest")]
+        [InlineData(null, markdownLogger, "NUnit_Md", "../../../../SampleProject/SampleProject.Tests.NUnit")]
+        public async Task Run_Markdown_GeneratesTestReport(string template, string logger, string file, string project)
         {
-            var testPath = Path.GetFullPath("../../../../SampleProject/SampleProject.Tests.xUnit");
+            var testPath = Path.GetFullPath(project);
             var resultsPath = Path.Combine(testPath, "TestResults");
             var reportOutput = Path.Combine(resultsPath, file);
 
@@ -42,16 +45,17 @@ namespace LiquidTestReports.Tests
                 logFilePrefix: reportOutput);
 
             var files = Directory.GetFiles(resultsPath, $"*{file}*");
-            Assert.Contains(files, f => f.Contains("netcoreapp3.1"));
-            Assert.Contains(files, f => f.Contains("net461"));
+            Assert.Contains(files, f => frameworks.Any(fw => f.Contains(fw)));
         }
 
+
         [Theory]
-        [InlineData(@"Resources\TemplateExample.txt", coreLogger, "MSTest_Text")]
-        [InlineData(null, markdownLogger, "MSTest_Md")]
-        public async Task Run_MSTest_GeneratesTestReport(string template, string logger, string file)
+        [InlineData(@"Resources\TemplateExample.txt", coreLogger, "xUnit_Text", "../../../../SampleProject/SampleProject.Tests.xUnit")]
+        [InlineData(@"Resources\TemplateExample.txt", coreLogger, "MSTest_Text", "../../../../SampleProject/SampleProject.Tests.MSTest")]
+        [InlineData(@"Resources\TemplateExample.txt", coreLogger, "NUnit_Text", "../../../../SampleProject/SampleProject.Tests.NUnit")]
+        public async Task Run_Core_GeneratesTestReport(string template, string logger, string file, string project)
         {
-            var testPath = Path.GetFullPath("../../../../SampleProject/SampleProject.Tests.MSTest");
+            var testPath = Path.GetFullPath(project);
             var resultsPath = Path.Combine(testPath, "TestResults");
             var reportOutput = Path.Combine(resultsPath, file);
 
@@ -61,29 +65,8 @@ namespace LiquidTestReports.Tests
                 templateName: template,
                 logFilePrefix: reportOutput);
 
-            var files = Directory.GetFiles(resultsPath, $"{file}*");
-            Assert.Contains(files, f => f.Contains("netcoreapp3.1"));
-            Assert.Contains(files, f => f.Contains("net461"));
-        }
-
-        [Theory]
-        [InlineData(@"Resources\TemplateExample.txt", coreLogger, "NUnit_Text")]
-        [InlineData(null, markdownLogger, "NUnit_Md")]
-        public async Task Run_NUnit_GeneratesTestReport(string template, string logger, string file)
-        {
-            var testPath = Path.GetFullPath("../../../../SampleProject/SampleProject.Tests.NUnit");
-            var resultsPath = Path.Combine(testPath, "TestResults");
-            var reportOutput = Path.Combine(resultsPath, file);
-
-            await RunTestSamples.RunTest(testOutputHelper: _testOutputHelper,
-                testProjectPath: testPath,
-                logger: logger,
-                templateName: template,
-                logFilePrefix: reportOutput);
-
-            var files = Directory.GetFiles(resultsPath, $"{file}*");
-            Assert.Contains(files, f => f.Contains("netcoreapp3.1"));
-            Assert.Contains(files, f => f.Contains("net461"));
+            var files = Directory.GetFiles(resultsPath, $"*{file}*");
+            Assert.Contains(files, f => frameworks.Any(fw => f.Contains(fw)));
         }
     }
 }

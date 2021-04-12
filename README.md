@@ -6,6 +6,15 @@ Liquid Test Reports are logger extensions for the [Visual Studio Test Platform](
 
 ### Latest:
 
+##### 1.1.1 beta
+- [Cli] 
+  - Add new .NET Tool for report generation with TRX support
+  - Add new markdown report template
+- [Core] 
+  - Refactor drop model mapping
+  - Add TRX mapping
+  - Move template error logging from report generator into base test logger
+
 #### 1.0.9
 
 **Changed**
@@ -35,16 +44,16 @@ liquid [options]
 
  **Options:**
 
- **--inputs <inputs>** Array of formatted configuration strings for test report inputs, with configurations separated by a semicolon
+ **--inputs [inputs]** Array of formatted configuration strings for test report inputs, with configurations separated by a semicolon
  - **File=file-name;** The path of the input file.
  - **GroupTitle=group-title;** Optional title to group reports under, test runs with the same group title will be merged.
  - **TestPrefix=test-prefix;** Optional test suffix, if provided test origination for the provided report will have the suffix appended to its name.
 
-**--output-file <output-file>** Path to save test report to.
+**--output-file [output-file]** Path to save test report to.
 
-**--title <title>** Optional overall report title displayed in default report template. Defaults to "Test Run"
+**--title [title]** Optional overall report title displayed in default report template. Defaults to "Test Run"
 
-**--template <template>** Optional user defined liquid template. Defaults to the multi report markdown template is used. 
+**--template [template]** Optional user defined liquid template. Defaults to the multi report markdown template is used. 
 
 **--version** Show version information
 
@@ -203,4 +212,5 @@ This library utilises the following libraries under the Apache 2.0 license
 This library utilises the following libraries under the MIT License
 
 - **Microsoft - VSTest** - https://github.com/microsoft/vstest/blob/master/LICENSE
+- **Spectre.Console** - https://github.com/spectreconsole/spectre.console
 

@@ -1,6 +1,6 @@
 ﻿using CliWrap;
 using System;
-using System.Reflection;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,18 +14,16 @@ namespace LogDebugger
     class Program
     {
         private const string TargetFilePath = "dotnet";
-        private const string vstestFormat = "vstest {0} --logger:\"{1};";
+        private const string vstestFormat = "test {0} --logger:\"{1};";
         private const string lognameFormat = "LogFileName={0};";
         private const string templateFormat = "Template={0};";
         private const string debugKey = "VSTEST_RUNNER_DEBUG";
         private const string debug = "1";
         private const string endQuote = "\"";
 
-        static async Task Main(string[] args)
+        static async Task Main(string[] _)
         {
-            var assemblyPath = Assembly.GetAssembly(typeof(SampleProject.xUnit.TestServiceTests));
-            var testAssemblyPath = new Uri(assemblyPath.CodeBase).LocalPath;
-            await RunTestsWithLogger(testAssemblyPath, "liquid.custom", "TemplateExample.txt");
+            await RunTestsWithLogger("../../../../SampleProject/SampleProject.Tests.xUnit", "liquid.md");
             Console.WriteLine("Press any key to exit");
             Console.ReadKey();
         }
@@ -36,9 +34,10 @@ namespace LogDebugger
             string templateName = null,
             string logFileName = null)
         {
+            var testPath = Path.GetFullPath(path);
             var command = Cli.Wrap(TargetFilePath)
             .WithEnvironmentVariables(c => c.Set(debugKey, debug))
-            .WithArguments(VsTestArgs(path, logger, logFileName, templateName))
+            .WithArguments(VsTestArgs(testPath, logger, logFileName, templateName))
             .WithValidation(CommandResultValidation.None) |
             (Console.WriteLine, Console.Error.WriteLine);
 

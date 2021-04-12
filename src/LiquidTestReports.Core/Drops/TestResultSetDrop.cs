@@ -8,29 +8,22 @@ namespace LiquidTestReports.Core.Drops
 {
     public class TestResultSetDrop : Drop
     {
-        private readonly TestResultSet _resultSet;
+        public string Source { get; set; }
 
-        public TestResultSetDrop(TestResultSet resultSet)
-        {
-            _resultSet = resultSet;
-        }
+        public IList<TestResultDrop> Results { get; set; }
 
-        public string Source => _resultSet.Source;
+        public TimeSpan Duration { get; set; }
 
-        public IList<TestResultDrop> Results => _resultSet.Results.Select(t => new TestResultDrop(t)).ToList();
+        public decimal ExecutedTestsCount { get; set; }
 
-        public TimeSpan Duration => _resultSet.Duration;
+        public decimal NoneCount { get; set; }
 
-        public decimal ExecutedTestsCount => _resultSet.ExecutedTests;
+        public decimal PassedCount { get; set; }
 
-        public decimal NoneCount => _resultSet.None;
+        public decimal FailedCount { get; set; }
 
-        public decimal PassedCount => _resultSet.Passed;
+        public decimal SkippedCount { get; set; }
 
-        public decimal FailedCount => _resultSet.Failed;
-
-        public decimal SkippedCount => _resultSet.Skipped;
-
-        public decimal NotFoundCount => _resultSet.NotFound;
-    }
+        public decimal NotFoundCount { get; set; }
+}
 }

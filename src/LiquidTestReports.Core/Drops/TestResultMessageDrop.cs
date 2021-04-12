@@ -6,15 +6,8 @@ namespace LiquidTestReports.Core.Drops
 {
     public class TestResultMessageDrop : Drop
     {
-        private readonly TestResultMessage _testResultMessage;
+        public string Text { get; set; }
 
-        public TestResultMessageDrop(TestResultMessage testResultMessage)
-        {
-            _testResultMessage = testResultMessage;
-        }
-
-        public string Text => _testResultMessage.Text;
-
-        public string Category => _testResultMessage.Category;
+        public string Category { get; set; }
     }
 }

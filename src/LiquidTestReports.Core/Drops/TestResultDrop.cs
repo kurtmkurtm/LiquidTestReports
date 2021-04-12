@@ -2,41 +2,36 @@
 using System.Collections.Generic;
 using System.Linq;
 using DotLiquid;
+using LiquidTestReports.Core.Adapters;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 
 namespace LiquidTestReports.Core.Drops
 {
     public class TestResultDrop : Drop
     {
-        private TestResult _testResult;
+        public TestCaseDrop TestCase { get; set; }
 
-        public TestResultDrop(TestResult testResult)
-        {
-            _testResult = testResult;
-        }
+        public IList<AttachmentSetDrop> AttachmentSets { get; set; }
 
-        public TestCaseDrop TestCase => new TestCaseDrop(_testResult.TestCase);
+        public string Outcome { get; set; }
 
-        public IList<AttachmentSetDrop> AttachmentSets => _testResult.Attachments.Select(a => new AttachmentSetDrop(a)).ToList();
+        public string ErrorMessage { get; set; }
 
-        public string Outcome => _testResult.Outcome.ToString();
+        public string ErrorStackTrace { get; set; }
 
-        public string ErrorMessage => _testResult.ErrorMessage;
+        public string DisplayName { get; set; }
 
-        public string ErrorStackTrace => _testResult.ErrorStackTrace;
+        public IList<TestResultMessageDrop> Messages { get; set; }
 
-        public string DisplayName => _testResult.DisplayName;
+        public string ComputerName { get; set; }
 
-        public IList<TestResultMessageDrop> Messages => _testResult.Messages.Select(m => new TestResultMessageDrop(m)).ToList();
+        public TimeSpan Duration { get; set; }
 
-        public string ComputerName => _testResult.ComputerName;
+        public DateTimeOffset StartTime { get; set; }
 
-        public TimeSpan Duration => _testResult.Duration;
+        public DateTimeOffset EndTime { get; set; }
 
-        public DateTimeOffset StartTime => _testResult.StartTime;
+        public IDictionary<string, string> Traits { get; set; }
 
-        public DateTimeOffset EndTime => _testResult.EndTime;
-
-        public IDictionary<string, string> Traits => _testResult.Traits.ToDictionary(trait => trait.Name, trait => trait.Value);
     }
 }

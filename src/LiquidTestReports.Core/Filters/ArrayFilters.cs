@@ -14,6 +14,56 @@ namespace LiquidTestReports.Core.Filters
     public static class ArrayFilters
     {
         /// <summary>
+        /// Group array elements where the provided property is the same
+        /// </summary>
+        /// <param name="input">The enumerable.</param>
+        /// <param name="property">The property to group by.</param>
+        /// <returns>Filtered IEnumerable.</returns>
+        public static IDictionary Group(object input, string property)
+        {
+            if (input == null || string.IsNullOrEmpty(property.ToString()))
+            {
+                return null;
+            }
+
+            List<object> inputList;
+            if (input is IEnumerable<Hash> enumerableHash)
+            {
+                inputList = enumerableHash.Cast<object>().ToList();
+            }
+            else if (input is IEnumerable enumerableInput)
+            {
+                inputList = enumerableInput.Flatten().Cast<object>().ToList();
+            }
+            else
+            {
+                inputList = new List<object>(new[] { input });
+            }
+
+            if (!inputList.Any())
+            {
+                return null;
+            }
+
+            if (inputList.All(o => o is IDictionary) && inputList.Any(o => ((IDictionary)o).Contains(property)))
+            {
+                var grouped = inputList
+                    .GroupBy(a => (a as IDictionary)[property])
+                    .ToDictionary(g => g.Key, g => g.ToList());
+                return grouped;
+            }
+            else if (inputList.All(o => o.RespondTo(property.ToString())))
+            {
+                var grouped = inputList
+                    .GroupBy(a => a.Send(property.ToString()))
+                    .ToDictionary(g => g.Key, g => g.ToList());
+                return grouped;
+            }
+
+            return null;
+        }
+
+        /// <summary>
         /// Filter array on a given property where values match.
         /// </summary>
         /// <param name="input">The enumerable.</param>

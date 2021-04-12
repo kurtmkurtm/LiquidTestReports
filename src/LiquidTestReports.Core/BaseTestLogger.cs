@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using LiquidTestReports.Core.Adapters;
+using LiquidTestReports.Core.Drops;
 using LiquidTestReports.Core.Models;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel.Client;
@@ -170,10 +172,36 @@ namespace LiquidTestReports.Core
 
         private string GenerateReport()
         {
-            var reportGenerator = new ReportGenerator(_testRun, TestParameters, LibraryParameters);
-            var report = reportGenerator.GenerateReport(GetTemplateContent());
+            var adapter = new VsTestMapper();
+            var libraryDrop = adapter.MapToDrop(LibraryParameters);
+            var runDrop = adapter.MapToDrop(_testRun);
+            var TestRun = new LibraryTestRun
+            {
+                Run = runDrop,
+                Parameters = TestParameters,
+                Library = libraryDrop
+            };
+            return GetReportContent(TestRun);
+        }
+
+        /// <summary>
+        /// Generate report content as a string based on results
+        /// </summary>
+        /// <param name="runDrop">Test run results</param>
+        /// <param name="testParameters">test parameters</param>
+        /// <param name="libraryDrop">library attribution properties</param>
+        /// <returns>Report content</returns>
+        protected virtual string GetReportContent(LibraryTestRun run)
+        {
+            var reportGenerator = new ReportGenerator(run);
+            var report = reportGenerator.GenerateReport(GetTemplateContent(), out var templateErrors);
+            foreach (var error in templateErrors)
+            {
+                ConsoleOutput.Instance.Error(false, error.Message);
+            }
             return report;
         }
+
 
         private void RegisterEventHandlers()
         {

@@ -18,13 +18,13 @@ namespace LiquidTestReports.Markdown
         protected override string FileExtension => Constants.MdFileExtension;
 
         /// <inheritdoc/>
-        protected override string GetTemplateContent() => Encoding.UTF8.GetString(Templates.MdReport);
+        protected override string GetTemplateContent() => Templates.MdReport;
 
         /// <inheritdoc/>
         protected override void OnInitialize(IReadOnlyDictionary<string, string> parameters)
         {
             var includeMessages = true;
-            var reportTitle = "Test Run";
+            var reportTitle = Constants.DefaultTitle;
            
             if (parameters.TryGetValue(Constants.IncludeRunMessagesKey, out var includeRunMessages))
             {
