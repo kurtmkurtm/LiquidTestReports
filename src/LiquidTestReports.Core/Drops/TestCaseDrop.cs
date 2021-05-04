@@ -8,7 +8,7 @@ namespace LiquidTestReports.Core.Drops
 {
     public class TestCaseDrop : Drop
     {
-        public Guid Id { get; set; }
+        public Guid? Id { get; set; }
 
         public string FullyQualifiedName { get; set; }
 

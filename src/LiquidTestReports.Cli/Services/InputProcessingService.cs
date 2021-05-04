@@ -1,6 +1,7 @@
 ﻿using LiquidTestReports.Cli.adapters;
 using LiquidTestReports.Cli.Loaders;
 using LiquidTestReports.Core.Drops;
+using LiquidTestReports.Core.Mappers;
 using LiquidTestReports.Core.Models;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,12 @@ namespace LiquidTestReports.Cli.Services
                         {
                             var results = TrxLoader.FromFile(input.File.FullName);
                             TrxMapper.Map(results, testRunDrop, input);
+                            break;
+                        }
+                    case InputFormatType.JUnit:
+                        {
+                            var results = JUnitLoader.FromFile(input.File.FullName);
+                            JUnitMapper.Map(results, testRunDrop, input);
                             break;
                         }
                     default:
