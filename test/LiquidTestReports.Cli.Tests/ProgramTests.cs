@@ -98,7 +98,7 @@ namespace LiquidTestReports.Cli.Tests
         public void Main_JUnitWithTitle_GeneratesReport()
         {
             //Arrange
-            var title = "My JUnit Tests";
+            var title = "My JUnit + TRX Tests";
             var titleTest = "junitTest.md";
             var destinationReport = new FileInfo(Path.Combine(_outputFolder, titleTest));
             var files = new List<ReportInput>();

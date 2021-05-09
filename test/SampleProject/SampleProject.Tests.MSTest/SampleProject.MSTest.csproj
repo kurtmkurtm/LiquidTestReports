@@ -19,6 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Resources\attachmentSample.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\TemplateExample.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

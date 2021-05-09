@@ -3,10 +3,11 @@ using LiquidTestReports.Core.Junit;
 using LiquidTestReports.Core.Models;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace LiquidTestReports.Core.Mappers
 {
-    public class JUnitMapper
+    public static class JUnitMapper
     {
         public static void Map(Testsuites source, TestRunDrop destination, ReportInput inputConfiguration = null)
         {
@@ -73,22 +74,20 @@ namespace LiquidTestReports.Core.Mappers
                     drop.ExecutedTestsCount++;
                     drop.Results.Add(resultDrop);
                 }
-
-
             }
         }
         private static void MapOutputToResult(Testcase test, TestResultDrop drop)
         {
             var messages = new List<TestResultMessageDrop>();
-            var errorMessage = string.Empty;
-            var errorStackTrace = string.Empty;
+            var errorMessage = new StringBuilder();
+            var errorStackTrace = new StringBuilder();
 
             if (test.FailureSpecified)
                 foreach (var failure in test.Failure)                
                     if (!string.IsNullOrEmpty(failure.Message))
                     {
-                        errorMessage += failure.Message;
-                        errorStackTrace += string.Join(Environment.NewLine, failure.Text);
+                        errorMessage.Append(failure.Message);
+                        errorStackTrace.Append(string.Join(Environment.NewLine, failure.Text));
                     }                
 
             if (test.System_OutSpecified)
@@ -102,8 +101,8 @@ namespace LiquidTestReports.Core.Mappers
                         messages.Add(new TestResultMessageDrop { Text = stdErr, Category = "Error" });
 
             drop.Messages = messages;
-            drop.ErrorMessage = errorMessage;
-            drop.ErrorStackTrace = errorStackTrace;
+            drop.ErrorMessage = errorMessage.ToString();
+            drop.ErrorStackTrace = errorStackTrace.ToString();
         }
 
         private static string MapOutcome(Testcase test, TestResultSetDrop setDrop, TestRunStatisticsDrop testRunStatistics)
