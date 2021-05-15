@@ -46,6 +46,7 @@ liquid [options]
 
  **--inputs [inputs]** Array of formatted configuration strings for test report inputs, with configurations separated by a semicolon
  - **File=file-name;** The path of the input file.
+ - **Format=report-format;** Optional input report format, case insensitive, supported values are `Trx` of `JUnit`. Defaults to `Trx`.
  - **GroupTitle=group-title;** Optional title to group reports under, test runs with the same group title will be merged.
  - **TestPrefix=test-prefix;** Optional test suffix, if provided test origination for the provided report will have the suffix appended to its name.
 

@@ -54,7 +54,7 @@ namespace LiquidTestReports.Core.Models
 
             if (parameters.TryGetValue(nameof(Format), out var format))
             {
-                Format = Enum.TryParse<InputFormatType>(format, out var formatType)
+                Format = Enum.TryParse<InputFormatType>(format, true, out var formatType)
                     ? formatType
                     : InputFormatType.Unknown;
             }

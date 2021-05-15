@@ -98,16 +98,16 @@ namespace LiquidTestReports.Cli.Tests
         public void Main_JUnitWithTitle_GeneratesReport()
         {
             //Arrange
-            var title = "My JUnit + TRX Tests";
+            var title = "My Full Stack Test Report (JUnit + TRX)";
             var titleTest = "junitTest.md";
             var destinationReport = new FileInfo(Path.Combine(_outputFolder, titleTest));
             var files = new List<ReportInput>();
 
-            foreach (var file in new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, _inputJUnitDirectory)).GetFiles("*netcoreapp3.1-junit-sample.xml"))
-                files.Add(new ReportInput($"File={file};Format=JUnit;TestSuffix= (JUnit)"));
+            foreach (var file in new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, _inputJUnitDirectory)).GetFiles("xUnit-netcoreapp3.1-junit-sample.xml"))
+                files.Add(new ReportInput($"File={file};Format=JUnit;GroupTitle=JUnit Tests"));
 
-            foreach (var file in new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, _inputTrxDirectory)).GetFiles("*netcoreapp3.1-sample.xml"))
-                files.Add(new ReportInput($"File={file};Format=Trx;TestSuffix= (Trx)"));
+            foreach (var file in new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, _inputTrxDirectory)).GetFiles("xUnit-netcoreapp3.1-sample.trx"))
+                files.Add(new ReportInput($"File={file};Format=Trx;GroupTitle=Trx Tests"));
 
             // Act
             Program.Main(files.ToArray(), destinationReport, title);

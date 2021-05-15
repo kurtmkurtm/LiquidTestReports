@@ -7,8 +7,17 @@ using System.Text;
 
 namespace LiquidTestReports.Core.Mappers
 {
+    /// <summary>
+    /// Mapping for deserialised JUnit types to drop model types
+    /// </summary>
     public static class JUnitMapper
     {
+        /// <summary>
+        /// Maps result types from JUnit into instance of drop models with configuration
+        /// </summary>
+        /// <param name="source">Instance of test results from deserialised JUnit input</param>
+        /// <param name="destination">Instance to map and merge results into</param>
+        /// <param name="inputConfiguration">User configured input for current source</param>
         public static void Map(Testsuites source, TestRunDrop destination, ReportInput inputConfiguration = null)
         {
             foreach (var testsuite in source.Testsuite)
