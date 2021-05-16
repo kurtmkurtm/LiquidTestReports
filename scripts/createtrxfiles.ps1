@@ -7,4 +7,3 @@ dotnet test ../test/SampleProject/SampleProject.Tests.MSTest -l "trx;LogFileName
 Move-Item -Path ../test/SampleProject/SampleProject.Tests.xUnit/TestResults/*-sample.trx -Destination ../test/LiquidTestReports.Cli.Tests/TrxTestInput/  -force
 Move-Item -Path ../test/SampleProject/SampleProject.Tests.MSTest/TestResults/*-sample.trx -Destination ../test/LiquidTestReports.Cli.Tests/TrxTestInput/  -force
 Move-Item -Path ../test/SampleProject/SampleProject.Tests.NUnit/TestResults/*-sample.trx -Destination ../test/LiquidTestReports.Cli.Tests/TrxTestInput/  -force
-

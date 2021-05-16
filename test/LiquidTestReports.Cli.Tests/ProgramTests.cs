@@ -10,6 +10,7 @@ namespace LiquidTestReports.Cli.Tests
     {
         private const string _testReportFolderName = @"TestReports";
         private const string _inputTrxDirectory = @"TrxTestInput";
+        private const string _inputJUnitDirectory = @"JUnitTestInput";
         private static readonly string _outputFolder = Path.Combine(Environment.CurrentDirectory, _testReportFolderName);
         public ProgramTests() => Directory.CreateDirectory(_outputFolder);
 
@@ -63,7 +64,7 @@ namespace LiquidTestReports.Cli.Tests
             var destinationReport = new FileInfo(Path.Combine(_outputFolder, fileOnlyTest));
             var files = new List<ReportInput>();
 
-            // Group by test framework, add target framework as suffix
+            // No grouping or suffix
             foreach (var file in new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, _inputTrxDirectory)).GetFiles("*sample.trx"))
                 files.Add(new ReportInput($"File={file}"));
 
@@ -83,12 +84,34 @@ namespace LiquidTestReports.Cli.Tests
             var destinationReport = new FileInfo(Path.Combine(_outputFolder, titleTest));
             var files = new List<ReportInput>();
 
-            // Group by test framework, add target framework as suffix
+            // No grouping or suffix
             foreach (var file in new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, _inputTrxDirectory)).GetFiles("*sample.trx"))
                 files.Add(new ReportInput($"File={file}"));
 
             // Act
             Program.Main(files.ToArray(), destinationReport, title);
+            // Assert
+            Assert.True(destinationReport.Exists);
+        }
+
+        [Fact]
+        public void Main_JUnitWithTitle_GeneratesReport()
+        {
+            //Arrange
+            var title = "My Full Stack Test Report (JUnit + TRX)";
+            var titleTest = "junitTest.md";
+            var destinationReport = new FileInfo(Path.Combine(_outputFolder, titleTest));
+            var files = new List<ReportInput>();
+
+            foreach (var file in new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, _inputJUnitDirectory)).GetFiles("xUnit-netcoreapp3.1-junit-sample.xml"))
+                files.Add(new ReportInput($"File={file};Format=JUnit;GroupTitle=JUnit Tests"));
+
+            foreach (var file in new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, _inputTrxDirectory)).GetFiles("xUnit-netcoreapp3.1-sample.trx"))
+                files.Add(new ReportInput($"File={file};Format=Trx;GroupTitle=Trx Tests"));
+
+            // Act
+            Program.Main(files.ToArray(), destinationReport, title);
+
             // Assert
             Assert.True(destinationReport.Exists);
         }

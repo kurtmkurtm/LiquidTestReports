@@ -5,3 +5,7 @@ Runs sample project unit tests with NUnit, xUnit, and MSTest to regenerate trx f
 
 ### updateproperties
 Runs sample project unit tests with xUnit to populate sample output for documentation
+
+### regenerateschema
+
+Regenerates models from xml schema for JUnit and VSTS
