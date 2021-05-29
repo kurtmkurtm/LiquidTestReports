@@ -12,6 +12,11 @@
         /// <summary>
         /// TRX - VSTest format
         /// </summary>
-        Trx
+        Trx,
+        /// <summary>
+        /// JUnit - JUnit format
+        /// Based on Jenkins JUnit schema - https://github.com/junit-team/junit5/blob/main/platform-tests/src/test/resources/jenkins-junit.xsd
+        /// </summary>
+        JUnit
     }
 }

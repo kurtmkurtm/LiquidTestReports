@@ -27,9 +27,9 @@ namespace LiquidTestReports.Core.Drops
 
         public TimeSpan Duration { get; set; }
 
-        public DateTimeOffset StartTime { get; set; }
+        public DateTimeOffset? StartTime { get; set; }
 
-        public DateTimeOffset EndTime { get; set; }
+        public DateTimeOffset? EndTime { get; set; }
 
         public IDictionary<string, string> Traits { get; set; }
 
