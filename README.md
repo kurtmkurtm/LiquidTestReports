@@ -2,11 +2,27 @@
 
 Liquid Test Reports are logger extensions for the [Visual Studio Test Platform](https://gtihub.com/microsoft/vstest) that provide flexible test report generation using liquid templates. This project contains an extensible core for code based extension, a custom logger for providing your own templates without code, and a Markdown implementation.
 
+## Packages
+
+| Package                      | Version                                                      | Description                                                  |
+| ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `LiquidTestReports.Cli`      | [![NuGet Badge](https://buildstats.info/nuget/LiquidTestReports.Cli?includePreReleases=true)](https://www.nuget.org/packages/LiquidTestReports.Cli) | Command line tool to combine and convert TRX and JUnit tests reports into Markdown with Liquid template support |
+| `LiquidTestReports.Markdown` | [![NuGet Badge](https://buildstats.info/nuget/LiquidTestReports.Markdown?includePreReleases=false)](https://www.nuget.org/packages/LiquidTestReports.Markdown) | VS Test logger for generating test reports in Markdown format |
+| `LiquidTestReports.Custom`   | [![NuGet Badge](https://buildstats.info/nuget/LiquidTestReports.Custom?includePreReleases=false)](https://www.nuget.org/packages/LiquidTestReports.Custom) | VS Test logger for generating reports from user provided liquid templates |
+| `LiquidTestReports.Core`     | [![NuGet Badge](https://buildstats.info/nuget/LiquidTestReports.Core?includePreReleases=false)](https://www.nuget.org/packages/LiquidTestReports.Core) | Core library for creating custom VS Test loggers with liquid template support |
+
 ## Changelog
 
 ### Latest:
 
+##### 1.2.1 beta
+
+- [Cli] 
+  - Add JUnit XML support
+  - Change template input to use file instead of content string
+
 ##### 1.1.1 beta
+
 - [Cli] 
   - Add new .NET Tool for report generation with TRX support
   - Add new markdown report template
@@ -33,7 +49,7 @@ Liquid Test Reports are logger extensions for the [Visual Studio Test Platform](
 #### Installation
 
 ```bash
-dotnet tool install --global LiquidTestReports.Cli --version 1.1.1-beta
+dotnet tool install --global LiquidTestReports.Cli --version 1.2.1-beta
 ```
 
 #### Usage
@@ -60,15 +76,21 @@ liquid [options]
 
 **-?, -h, --help** Show help and usage information
 
-
-
 #### Examples
 
- **Report from single input** - [Sample Output](docs/samples/cli/SingleInput.md)
+**JUnit to Markdown**
 
-``` bash
-liquid --inputs "File=xUnit-net461-sample.trx" --output-file SingleInput.md 
+```bash
+liquid --inputs "File=xUnit-net461-junit-sample.xml;Format=JUnit" --output-file report.md 
 ```
+
+**TRX to Markdown**- [Sample Output](docs/samples/cli/SingleInput.md)
+
+```bash
+liquid --inputs "File=xUnit-net461-sample.trx;Format=Trx" --output-file SingleInput.md 
+```
+
+#### More Examples
 
 **Report from single input, with a custom title** - [Sample Output](docs/samples/cli/CustomTitle.md)
 
