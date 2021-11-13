@@ -22,7 +22,7 @@ namespace LiquidTestReports.Cli.adapters
         /// <param name="source">Instance of test results from deserialised TRX input</param>
         /// <param name="destination">Instance to map and merge results into</param>
         /// <param name="inputConfiguration">User configured input for current source</param>
-        public static void Map(TestRunType source, TestRunDrop destination, ReportInput inputConfiguration = null)
+        public static void Map(TestRunType source, TestRunDrop destination, IReportInput inputConfiguration = null)
         {
             var times = source.Times.FirstOrDefault();
             var started = DateTimeOffset.Parse(times.Start);

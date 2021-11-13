@@ -1,4 +1,5 @@
-﻿using LiquidTestReports.Core.Models;
+﻿using LiquidTestReports.Cli.Models;
+using LiquidTestReports.Core.Models;
 using System;
 using System.IO;
 using System.Threading.Tasks;
