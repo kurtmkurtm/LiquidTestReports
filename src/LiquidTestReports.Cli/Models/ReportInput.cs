@@ -34,7 +34,7 @@ namespace LiquidTestReports.Cli.Models
             foreach (var input in splitInputs)
             {
                 var parameter = input.Split('=');
-                if (parameter.Length == 2)
+                if (parameter.Length == 2 && !string.IsNullOrEmpty(parameter[0]) && !string.IsNullOrEmpty(parameter[1]))
                 {
                     parameters.Add(parameter[0], parameter[1]);
                 }

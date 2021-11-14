@@ -8,9 +8,9 @@ namespace LiquidTestReports.Cli.Tests.Models
     public class ReportInputTests
     {
         [Theory]
-        [InlineData("", typeof(ArgumentNullException), "Value cannot be null. (Parameter 'inputString')")]
-        [InlineData(null, typeof(ArgumentNullException), "Value cannot be null. (Parameter 'inputString')")]
-        [InlineData("File=", typeof(ArgumentException), "The path is empty. (Parameter 'path')")]
+        [InlineData("", typeof(ArgumentNullException), "Value cannot be null.")]
+        [InlineData(null, typeof(ArgumentNullException), "Value cannot be null.")]
+        [InlineData("File=", typeof(ArgumentException), "Incorrect number of arguments provided, Confirm parameter 'File=' uses the convention of 'key=value;'")]
         public void ConstructFromString_WithInvalidInput_ThrowsException(string input, Type exeptionType, string errorMessage)
         {
             // Arrange
