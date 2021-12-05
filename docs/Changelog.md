@@ -1,5 +1,12 @@
 ## Changelog
 
+#### 1.0.9
+
+**Changed**
+
+- [All] Revert target framework from .NET standard 2.1 back to .NET standard 2.0 for broader compatibility
+  - For use with .NET Core 2.x, see [Compatibility](#Compatibility)
+
 #### 1.0.1
 
 **Changed**

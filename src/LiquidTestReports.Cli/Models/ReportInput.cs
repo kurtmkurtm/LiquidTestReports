@@ -20,7 +20,9 @@ namespace LiquidTestReports.Cli.Models
         /// <example></example>
         /// <param name="inputString">
         /// Formatted configuration string for test report input - example: "File=TestRun1.trx;GroupTitle=.NETCORE 3.1 Tests;TestSuffix=Windows 10"
-        /// (Required) File=file-name - The path of the input file, 
+        /// (Required) File=file-name - The path or glob pattern for input files
+        /// (Optional) Folder=folder-name - Base directory for finding test files
+        /// (Optional) Format=report-format -  Optional input report format, case insensitive, supported values are `Trx` of `JUnit`
         /// (Optional) GroupTitle=group-title - Optional title to group reports under, test runs with the same group title will be merged
         /// (Optional) TestPrefix=optional:test-prefix - Optional test suffix, if provided test origination for the provided report will have the suffix appended to its name
         /// </param>
