@@ -1,5 +1,6 @@
 ﻿using DotLiquid;
 using DotLiquid.Exceptions;
+using LiquidTestReports.Cli.Models;
 using LiquidTestReports.Cli.Resources;
 using LiquidTestReports.Cli.Services;
 using LiquidTestReports.Core;
@@ -24,8 +25,8 @@ namespace LiquidTestReports.Cli
 
         internal ConsoleRunner(ReportInput[] inputs, FileInfo outputFile)
         {
-            _errorConsole = AnsiConsole.Create(new AnsiConsoleSettings { Out = Console.Error });
-            _standardConsole = AnsiConsole.Create(new AnsiConsoleSettings { Out = Console.Out });
+            _errorConsole = AnsiConsole.Create(new AnsiConsoleSettings { Out = new AnsiConsoleOutput(Console.Error) });
+            _standardConsole = AnsiConsole.Create(new AnsiConsoleSettings { Out = new AnsiConsoleOutput(Console.Out) });
             _inputs = inputs;
             _outputFile = outputFile;
         }
@@ -131,27 +132,30 @@ namespace LiquidTestReports.Cli
 
             foreach (var input in _inputs)
             {
-                table.AddRow(input.File.Name,
-                    string.IsNullOrEmpty(input.GroupTitle) ? "default" : input.GroupTitle,
-                    string.IsNullOrEmpty(input.TestSuffix) ? "n/a" : input.TestSuffix,
-                    input.File.Exists.ToString(),
-                    input.Format.ToString(),
-                    (!input.File.Exists || input.Format == InputFormatType.Unknown).ToString());
+                foreach (var file in input.Files)
+                {
+                    table.AddRow(file.Name,
+                        string.IsNullOrEmpty(input.GroupTitle) ? "default" : input.GroupTitle,
+                        string.IsNullOrEmpty(input.TestSuffix) ? "n/a" : input.TestSuffix,
+                        file.Exists.ToString(),
+                        input.Format.ToString(),
+                        (!file.Exists || input.Format == InputFormatType.Unknown).ToString());
+                }
             }
 
             _standardConsole.WriteLine();
-            _standardConsole.Render(table);
+            _standardConsole.Write(table);
         }
 
         private void WriteHeader(string title)
         {
             _standardConsole.WriteLine();
-            _standardConsole.Render(new FigletText("Liquid Test Reports").Centered().Color(Color.Blue));
+            _standardConsole.Write(new FigletText("Liquid Test Reports").Centered().Color(Color.Blue));
             _standardConsole.WriteLine();
-            _standardConsole.Render(new FigletText("Cli Tool").Centered().Color(Color.White));
+            _standardConsole.Write(new FigletText("Cli Tool").Centered().Color(Color.White));
             _standardConsole.WriteLine();
             _standardConsole.WriteLine();
-            _standardConsole.Render(new Rule(title).RuleStyle("grey").LeftAligned());
+            _standardConsole.Write(new Rule(title).RuleStyle("grey").LeftAligned());
             _standardConsole.WriteLine();
         }
 

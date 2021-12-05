@@ -1,5 +1,6 @@
 ﻿using LiquidTestReports.Cli.adapters;
 using LiquidTestReports.Cli.Loaders;
+using LiquidTestReports.Cli.Models;
 using LiquidTestReports.Core.Drops;
 using LiquidTestReports.Core.Mappers;
 using LiquidTestReports.Core.Models;
@@ -30,22 +31,25 @@ namespace LiquidTestReports.Cli.Services
 
             foreach (var input in _inputs)
             {
-                switch (input.Format)
+                foreach (var file in input.Files)
                 {
-                    case InputFormatType.Trx:
-                        {
-                            var results = TrxLoader.FromFile(input.File.FullName);
-                            TrxMapper.Map(results, testRunDrop, input);
-                            break;
-                        }
-                    case InputFormatType.JUnit:
-                        {
-                            var results = JUnitLoader.FromFile(input.File.FullName);
-                            JUnitMapper.Map(results, testRunDrop, input);
-                            break;
-                        }
-                    default:
-                        throw new NotImplementedException();
+                    switch (input.Format)
+                    {
+                        case InputFormatType.Trx:
+                            {
+                                var results = TrxLoader.FromFile(file.FullName);
+                                TrxMapper.Map(results, testRunDrop, input);
+                                break;
+                            }
+                        case InputFormatType.JUnit:
+                            {
+                                var results = JUnitLoader.FromFile(file.FullName);
+                                JUnitMapper.Map(results, testRunDrop, input);
+                                break;
+                            }
+                        default:
+                            throw new NotImplementedException();
+                    }
                 }
             }
 

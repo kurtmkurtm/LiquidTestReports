@@ -7,7 +7,7 @@ pool:
 variables:
   buildConfiguration: 'Release'
   majorVersion: 1
-  minorVersion: 2
+  minorVersion: 3
   suffix: 'beta'
 
 stages:
@@ -52,7 +52,6 @@ stages:
 
       - task: DotNetCoreCLI@2
         displayName: 'dotnet pack'
-        condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
         inputs:
           command: custom
           projects: |
@@ -66,7 +65,6 @@ stages:
 
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Artifact'
-        condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
         inputs:
           PathtoPublish: $(Build.ArtifactStagingDirectory)
           ArtifactName: 'drop'

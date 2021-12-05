@@ -1,4 +1,5 @@
-﻿using LiquidTestReports.Core.Models;
+﻿using LiquidTestReports.Cli.Models;
+using LiquidTestReports.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -115,5 +116,45 @@ namespace LiquidTestReports.Cli.Tests
             // Assert
             Assert.True(destinationReport.Exists);
         }
+
+        [Fact]
+        public void Main_JUnitAndTrxGlob_GeneratesReport()
+        {
+            //Arrange
+            var title = "My Full Stack Test Report (JUnit + TRX)";
+            var titleTest = "junitTest.md";
+            var destinationReport = new FileInfo(Path.Combine(_outputFolder, titleTest));
+            var files = new List<ReportInput>
+            {
+                new ReportInput($"File=**/*junit-sample.xml;Folder={Environment.CurrentDirectory};Format=JUnit;GroupTitle=JUnit Tests"),
+                new ReportInput($"File=**/*sample.trx;Folder={Environment.CurrentDirectory};Format=Trx;GroupTitle=Trx Tests")
+            };
+
+            // Act
+            Program.Main(files.ToArray(), destinationReport, title);
+
+            // Assert
+            Assert.True(destinationReport.Exists);
+        }
+
+        [Fact]
+        public void Main_JUnitAndTrxGlosb_GeneratesReport()
+        {
+            //Arrange
+            var title = "My Full Stack Test Report (JUnit + TRX)";
+            var titleTest = "junitTest.md";
+            var destinationReport = new FileInfo(Path.Combine(_outputFolder, titleTest));
+            var files = new List<ReportInput>
+            {
+                new ReportInput($"File=*/*xunit*.trx;Format=Trx;GroupTitle=Trx Tests")
+            };
+
+            // Act
+            Program.Main(files.ToArray(), destinationReport, title);
+
+            // Assert
+            Assert.True(destinationReport.Exists);
+        }
+
     }
 }

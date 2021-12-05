@@ -15,6 +15,11 @@ Liquid Test Reports are logger extensions for the [Visual Studio Test Platform](
 
 ### Latest:
 
+##### 1.3.2 beta
+
+- [Cli] 
+  - Add filename pattern matching support for CLI
+
 ##### 1.2.1 beta
 
 - [Cli] 
@@ -30,13 +35,6 @@ Liquid Test Reports are logger extensions for the [Visual Studio Test Platform](
   - Refactor drop model mapping
   - Add TRX mapping
   - Move template error logging from report generator into base test logger
-
-#### 1.0.9
-
-**Changed**
-
-- [All] Revert target framework from .NET standard 2.1 back to .NET standard 2.0 for broader compatibility
-  - For use with .NET Core 2.x, see [Compatibility](#Compatibility)
 
 [Previous changes](./docs/Changelog.md)
 
@@ -61,7 +59,8 @@ liquid [options]
  **Options:**
 
  **--inputs [inputs]** Array of formatted configuration strings for test report inputs, with configurations separated by a semicolon
- - **File=file-name;** The path of the input file.
+ - **File=file-name;** The path or glob pattern for input file/s
+ - **Folder=folder-name;** - Base directory for finding test files
  - **Format=report-format;** Optional input report format, case insensitive, supported values are `Trx` of `JUnit`. Defaults to `Trx`.
  - **GroupTitle=group-title;** Optional title to group reports under, test runs with the same group title will be merged.
  - **TestPrefix=test-prefix;** Optional test suffix, if provided test origination for the provided report will have the suffix appended to its name.
@@ -91,6 +90,16 @@ liquid --inputs "File=xUnit-net461-sample.trx;Format=Trx" --output-file SingleIn
 ```
 
 #### More Examples
+
+**File glob pattern relative to current directory**
+
+```bash
+liquid --inputs "File=**/*sample.trx" --output-file report.md  
+```
+**File glob pattern using specific directory**
+```bash
+liquid --inputs "File=**/*sample.trx;Folder=C:\MyTestFolder" --output-file report.md 
+```
 
 **Report from single input, with a custom title** - [Sample Output](docs/samples/cli/CustomTitle.md)
 
