@@ -25,5 +25,7 @@ namespace LiquidTestReports.Core.Drops
         public decimal SkippedCount { get; set; }
 
         public decimal NotFoundCount { get; set; }
-}
+
+        public IReadOnlyDictionary<string, string> Parameters { get; internal set; }
+    }
 }

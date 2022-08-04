@@ -1,5 +1,15 @@
 ## Changelog
 
+#### 1.1.1 beta
+
+- [Cli] 
+  - Add new .NET Tool for report generation with TRX support
+  - Add new markdown report template
+- [Core] 
+  - Refactor drop model mapping
+  - Add TRX mapping
+  - Move template error logging from report generator into base test logger
+
 #### 1.0.9
 
 **Changed**

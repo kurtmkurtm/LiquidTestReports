@@ -11,6 +11,7 @@ namespace LiquidTestReports.Cli.Tests
     {
         private const string _testReportFolderName = @"TestReports";
         private const string _inputTrxDirectory = @"TrxTestInput";
+        private const string _inputTemplateDirectory = @"TemplateTestInput";
         private const string _inputJUnitDirectory = @"JUnitTestInput";
         private static readonly string _outputFolder = Path.Combine(Environment.CurrentDirectory, _testReportFolderName);
         public ProgramTests() => Directory.CreateDirectory(_outputFolder);
@@ -137,12 +138,13 @@ namespace LiquidTestReports.Cli.Tests
             Assert.True(destinationReport.Exists);
         }
 
+
         [Fact]
-        public void Main_JUnitAndTrxGlosb_GeneratesReport()
+        public void Main_TrxGlob_GeneratesReport()
         {
             //Arrange
-            var title = "My Full Stack Test Report (JUnit + TRX)";
-            var titleTest = "junitTest.md";
+            var title = "My Full Stack Test Report (TRX)";
+            var titleTest = "globTrxJunit.md";
             var destinationReport = new FileInfo(Path.Combine(_outputFolder, titleTest));
             var files = new List<ReportInput>
             {
@@ -154,6 +156,34 @@ namespace LiquidTestReports.Cli.Tests
 
             // Assert
             Assert.True(destinationReport.Exists);
+
+            var content = File.ReadAllText(destinationReport.FullName);
+            Assert.Contains("Trx Tests", content);
+        }
+
+        [Fact]
+        public void Main_WithCustomTemplate_GeneratesReport()
+        {
+            //Arrange
+            var reportName = "CustomParameters.md";
+            var destinationReport = new FileInfo(Path.Combine(_outputFolder, reportName));
+            var input = new[]
+            {
+                new ReportInput($"File=**/*sample.trx;Folder={Environment.CurrentDirectory};Format=Trx;RunId=123")
+            };
+
+            var templatePath = Path.Combine(Environment.CurrentDirectory, _inputTemplateDirectory, "example.md");
+            var templateFileInfo = new FileInfo(templatePath);
+            var parameters = new ParametersInput("Environment=UAT;TicketId=abc123");
+
+            // Act
+            Program.Main(input, destinationReport, template: templateFileInfo, parameters: parameters);
+
+            // Assert
+            var content = File.ReadAllText(destinationReport.FullName);
+            Assert.Contains("Test Environment: UAT", content);
+            Assert.Contains("Ticket Reference: abc123", content);
+            Assert.Contains("Run Id: 123", content);
         }
 
     }

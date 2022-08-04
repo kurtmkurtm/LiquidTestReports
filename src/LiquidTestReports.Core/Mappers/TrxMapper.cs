@@ -58,6 +58,7 @@ namespace LiquidTestReports.Cli.adapters
                     {
                         Source = resultGroup.Key,
                         Results = new List<TestResultDrop>(),
+                        Parameters = inputConfiguration.Parameters
                     };
                     destination.ResultSets.Add(drop);
                 }

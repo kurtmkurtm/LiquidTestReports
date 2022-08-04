@@ -50,6 +50,7 @@ namespace LiquidTestReports.Core.Mappers
                         {
                             Source = key,
                             Results = new List<TestResultDrop>(),
+                            Parameters = inputConfiguration?.Parameters
                         };
                         destination.ResultSets.Add(drop);
                     }

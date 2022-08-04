@@ -22,13 +22,15 @@ namespace LiquidTestReports.Cli
         private readonly IAnsiConsole _standardConsole;
         private readonly ReportInput[] _inputs;
         private readonly FileInfo _outputFile;
+        private readonly ParametersInput _parameters;
 
-        internal ConsoleRunner(ReportInput[] inputs, FileInfo outputFile)
+        internal ConsoleRunner(ReportInput[] inputs, FileInfo outputFile, ParametersInput parameters)
         {
             _errorConsole = AnsiConsole.Create(new AnsiConsoleSettings { Out = new AnsiConsoleOutput(Console.Error) });
             _standardConsole = AnsiConsole.Create(new AnsiConsoleSettings { Out = new AnsiConsoleOutput(Console.Out) });
             _inputs = inputs;
             _outputFile = outputFile;
+            _parameters = parameters;
         }
 
         internal void Run(string title, string template)
@@ -101,7 +103,7 @@ namespace LiquidTestReports.Cli
 
             try
             {
-                var reportGenerator = new ReportGenerator(new LibraryTestRun { Run = run, Library = libraryDrop });
+                var reportGenerator = new ReportGenerator(new LibraryTestRun { Run = run, Library = libraryDrop, Parameters = _parameters?.Parameters });
                 report = reportGenerator.GenerateReport(template ?? Templates.MdMultiReport, out var errors);
                 foreach (var error in errors)
                     _standardConsole.MarkupLine($"[orange1]{error.Message}[/]");
