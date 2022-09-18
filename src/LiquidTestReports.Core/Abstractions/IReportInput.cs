@@ -9,5 +9,6 @@ namespace LiquidTestReports.Core.Models
         InputFormatType Format { get; }
         string GroupTitle { get; }
         string TestSuffix { get; }
+        IReadOnlyDictionary<string, string> Parameters { get; }
     }
 }

@@ -1,4 +1,4 @@
-![](assets/fish_logo.png)
+![Fish logo](assets/fish_logo.png)
 
 Liquid Test Reports are logger extensions for the [Visual Studio Test Platform](https://gtihub.com/microsoft/vstest) that provide flexible test report generation using liquid templates. This project contains an extensible core for code based extension, a custom logger for providing your own templates without code, and a Markdown implementation.
 
@@ -15,26 +15,20 @@ Liquid Test Reports are logger extensions for the [Visual Studio Test Platform](
 
 ### Latest:
 
-##### 1.3.2 beta
+- [Cli]
+  - Add parameter support for the CLI based on the logger implementation
+  - Fix issue where folder wasn't being used at file load time
+
+#### 1.3.2 beta
 
 - [Cli] 
   - Add filename pattern matching support for CLI
 
-##### 1.2.1 beta
+#### 1.2.1 beta
 
 - [Cli] 
   - Add JUnit XML support
   - Change template input to use file instead of content string
-
-##### 1.1.1 beta
-
-- [Cli] 
-  - Add new .NET Tool for report generation with TRX support
-  - Add new markdown report template
-- [Core] 
-  - Refactor drop model mapping
-  - Add TRX mapping
-  - Move template error logging from report generator into base test logger
 
 [Previous changes](./docs/Changelog.md)
 
@@ -64,16 +58,19 @@ liquid [options]
  - **Format=report-format;** Optional input report format, case insensitive, supported values are `Trx` of `JUnit`. Defaults to `Trx`.
  - **GroupTitle=group-title;** Optional title to group reports under, test runs with the same group title will be merged.
  - **TestPrefix=test-prefix;** Optional test suffix, if provided test origination for the provided report will have the suffix appended to its name.
+ - **key=value;** Optional key value pairs, only for custom template usage.
+
+**--parameters [parameters]** Array of formatted key value strings for custom template usage, with configurations separated by a semicolon
 
 **--output-file [output-file]** Path to save test report to.
 
-**--title [title]** Optional overall report title displayed in default report template. Defaults to "Test Run"
+**--title [title]** Optional overall report title displayed in default report template. Defaults to "Test Run".
 
 **--template [template]** Optional user defined liquid template. Defaults to the multi report markdown template is used. 
 
-**--version** Show version information
+**--version** Show version information.
 
-**-?, -h, --help** Show help and usage information
+**-?, -h, --help** Show help and usage information.
 
 #### Examples
 
@@ -83,51 +80,16 @@ liquid [options]
 liquid --inputs "File=xUnit-net461-junit-sample.xml;Format=JUnit" --output-file report.md 
 ```
 
-**TRX to Markdown**- [Sample Output](docs/samples/cli/SingleInput.md)
+**TRX to Markdown** - [Sample Output](docs/samples/cli/SingleInput.md)
 
 ```bash
 liquid --inputs "File=xUnit-net461-sample.trx;Format=Trx" --output-file SingleInput.md 
 ```
 
-#### More Examples
+**Multiple Report inputs, grouping, and custom template usage** 
 
-**File glob pattern relative to current directory**
+- [More Examples](./docs/CliExamples.md)
 
-```bash
-liquid --inputs "File=**/*sample.trx" --output-file report.md  
-```
-**File glob pattern using specific directory**
-```bash
-liquid --inputs "File=**/*sample.trx;Folder=C:\MyTestFolder" --output-file report.md 
-```
-
-**Report from single input, with a custom title** - [Sample Output](docs/samples/cli/CustomTitle.md)
-
-``` bash
-liquid --inputs "File=xUnit-net461-sample.trx" --output-file CustomTitle.md --title "Test Run 2021"
-```
-
-**Report from two inputs** - [Sample Output](docs/samples/cli/TwoInputs.md)
-
-``` bash
-liquid --inputs "File=xUnit-net461-sample.trx" "File=xUnit-netcoreapp3.1-sample.trx" --output-file TwoInputs.md 
-```
-
- **Grouped results** - [Sample Output](docs/samples/cli/GroupUnitTests.md)
- Report with two inputs, and results grouped under the same section "Unit Tests": 
-
-``` bash
-liquid --inputs "File=xUnit-net461-sample.trx;GroupTitle=Unit Tests" "File=xUnit-netcoreapp3.1-sample.trx;GroupTitle=Unit Tests" --output-file GroupUnitTests.md 
-```
-
-**Grouped results with test name suffix** - [Sample Output](docs/samples/cli/GroupAndSuffix.md)
-
-Report from two inputs, grouped under the same section "Unit Tests", with the tests from `xUnit-netcoreapp3.1-sample.trx` having (3.1) appended to the test names
- eg `SampleProject.xUnit.TestServiceTests` becomes `SampleProject.xUnit.TestServiceTests.PassingTest(3.1)`
-
-``` bash
-liquid --inputs "File=xUnit-net461-sample.trx;GroupTitle=Unit Tests" "File=xUnit-netcoreapp3.1-sample.trx;GroupTitle=Unit Tests;TestSuffix=(3.1)" --output-file GroupAndSuffix.md 
-```
 
 #### Removal
 

@@ -44,6 +44,9 @@
     <Company>Kurt Murrell</Company>
     <Product>LiquidTestReports.Markdown</Product>
     <Copyright>2020</Copyright>
-    <Description>VS Test logger for generating test reports in Markdown format</Description>
+    <Description>
+      LiquidTestReports.Markdown is a ready to use VSTest Markdown logger that generates GitHub friendly markdown reports from your test results.
+      The output will look like this https://github.com/kurtmkurtm/LiquidTestReports/blob/master/docs/samples/xUnit.md
+    </Description>
   </PropertyGroup>
 </Project>

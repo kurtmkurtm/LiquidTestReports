@@ -28,30 +28,15 @@ namespace LiquidTestReports.Cli.Models
         /// </param>
         public ReportInput(string inputString)
         {
-            if(string.IsNullOrWhiteSpace(inputString))
-                throw new ArgumentNullException(nameof(inputString));
+            var parameterInput = new ParametersInput(inputString);
+            Parameters = parameterInput.Parameters;
 
-            var splitInputs = inputString.Split(';');
-            var parameters = new Dictionary<string, string>(Template.NamingConvention.StringComparer);
-            foreach (var input in splitInputs)
-            {
-                var parameter = input.Split('=');
-                if (parameter.Length == 2 && !string.IsNullOrEmpty(parameter[0]) && !string.IsNullOrEmpty(parameter[1]))
-                {
-                    parameters.Add(parameter[0], parameter[1]);
-                }
-                else
-                {
-                    throw new ArgumentException($"Incorrect number of arguments provided, Confirm parameter '{inputString}' uses the convention of 'key=value;'");
-                }
-            }
-
-            if (parameters.TryGetValue(nameof(Folder), out var folder))
+            if (Parameters.TryGetValue(nameof(Folder), out var folder))
             {
                 Folder = new DirectoryInfo(folder);
             }
 
-            if (parameters.TryGetValue(nameof(File), out var file))
+            if (Parameters.TryGetValue(nameof(File), out var file))
             {
                 FileInfo fileInfo = null;
 
@@ -69,10 +54,10 @@ namespace LiquidTestReports.Cli.Models
                     var workingFolder = Folder ?? new DirectoryInfo(Directory.GetCurrentDirectory());
                     var results = new Matcher()
                         .AddInclude(file)
-                        .Execute(new DirectoryInfoWrapper(workingFolder));
+                        .GetResultsInFullPath(new DirectoryInfoWrapper(workingFolder).FullName);
 
-                    Files = results.HasMatches ?
-                        results.Files.Select(match => new FileInfo(match.Path)) :
+                    Files = results.Any() ?
+                        results.Select(match => new FileInfo(match)) :
                         throw new ArgumentException("File did not match any files");
                 }
             }
@@ -81,17 +66,17 @@ namespace LiquidTestReports.Cli.Models
                 throw new ArgumentNullException("No parameter file name has been provided");
             }
 
-            if (parameters.TryGetValue(nameof(GroupTitle), out var title))
+            if (Parameters.TryGetValue(nameof(GroupTitle), out var title))
             {
                 GroupTitle = title;
             }
 
-            if (parameters.TryGetValue(nameof(TestSuffix), out var testPrefix))
+            if (Parameters.TryGetValue(nameof(TestSuffix), out var testPrefix))
             {
                 TestSuffix = testPrefix;
             }
 
-            if (parameters.TryGetValue(nameof(Format), out var format))
+            if (Parameters.TryGetValue(nameof(Format), out var format))
             {
                 Format = Enum.TryParse<InputFormatType>(format, true, out var formatType)
                     ? formatType
@@ -125,5 +110,9 @@ namespace LiquidTestReports.Cli.Models
         /// </summary>
         public string TestSuffix { get; }
 
+        /// <summary>
+        /// All provided input parameters.
+        /// </summary>
+        public IReadOnlyDictionary<string, string> Parameters { get; }
     }
 }

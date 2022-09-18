@@ -2,14 +2,18 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>netcoreapp2.1;netcoreapp3.1;net5.0</TargetFrameworks>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>liquid</ToolCommandName>
     <PackageOutputPath>./nupkg</PackageOutputPath>
     <RepositoryUrl>https://github.com/kurtmkurtm/LiquidTestReports</RepositoryUrl>
     <PackageProjectUrl>https://github.com/kurtmkurtm/LiquidTestReports</PackageProjectUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageIcon>nuget_cli.png</PackageIcon>
+    <PackageIcon>nuget_cli.png</PackageIcon>    
+    <Description>
+      LiquidTestReports.Cli Generates Markdown and Custom Test Reports from TRX and or JUnit test files.
+      The output will look like this https://github.com/kurtmkurtm/LiquidTestReports/blob/master/docs/samples/cli/SingleInput.md
+    </Description>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="5.0.0" />

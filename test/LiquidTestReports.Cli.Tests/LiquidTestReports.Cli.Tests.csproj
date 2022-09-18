@@ -39,6 +39,9 @@
     <None Update="JUnitTestInput\xUnit-netcoreapp3.1-junit-sample.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="TemplateTestInput\example.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="TrxTestInput\MSTest-net461-sample.trx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

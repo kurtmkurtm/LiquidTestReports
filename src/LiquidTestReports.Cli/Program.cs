@@ -26,7 +26,12 @@ namespace LiquidTestReports.Cli
         /// <param name="outputFile">Path to save test report to.</param>
         /// <param name="title">Optional overall report title displayed in default report template.</param>
         /// <param name="template">Optional user defined liquid template. Defaults to multi report markdown template is used.</param>
-        public static void Main(ReportInput[] inputs, FileInfo outputFile, string title = Constants.DefaultTitle, FileInfo template = null)
+        /// <param name="parameters">Optional user defined parameters.</param>
+        public static void Main(ReportInput[] inputs,
+            FileInfo outputFile,
+            string title = Constants.DefaultTitle,
+            FileInfo template = null,
+            ParametersInput parameters = null)
         {
             var exitFlag = false;
             if (inputs is null || inputs.Length == 0)
@@ -47,13 +52,19 @@ namespace LiquidTestReports.Cli
                 exitFlag = true;
             }
 
+            if(parameters != null && parameters.Parameters.Count < 1)
+            {
+                Console.Error.WriteLine(new ArgumentNullException(nameof(parameters)));
+                exitFlag = true;
+            }
+
             if (exitFlag)
             {
                 Console.WriteLine("Run liquid -? for help");
                 Environment.Exit((int)ExitCodes.InvalidCommandLine);
             }
 
-            var runner = new ConsoleRunner(inputs, outputFile);
+            var runner = new ConsoleRunner(inputs, outputFile, parameters);
             var templateContent = template is null ? null : File.ReadAllText(template.FullName);
             runner.Run(title, templateContent);
         }

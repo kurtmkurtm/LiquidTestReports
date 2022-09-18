@@ -30,6 +30,9 @@
     <PackageId>LiquidTestReports.Custom</PackageId>
     <Product>LiquidTestReports.Custom</Product>
     <Copyright>2020</Copyright>
-    <Description>VS Test logger for generating reports from user provided liquid templates</Description>
+    <Description>
+      LiquidTestReports.Custom The custom logger package allows you to create your own reports simply by passing the file path of the template to the test logger.
+      The output will look like this https://github.com/kurtmkurtm/LiquidTestReports/blob/master/docs/samples/xUnit.txt
+    </Description>
   </PropertyGroup>
 </Project>

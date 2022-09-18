@@ -7,7 +7,7 @@ pool:
 variables:
   buildConfiguration: 'Release'
   majorVersion: 1
-  minorVersion: 3
+  minorVersion: 4
   suffix: 'beta'
 
 stages:
