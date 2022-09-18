@@ -18,5 +18,5 @@ Not Found: {{ run.test_run_statistics.not_found_count }}
 Total: {{ run.test_run_statistics.executed_tests_count }}
 ```
 3. Run the tests using the supplied logger
-- `dotnet test --logger "liquid.custom;TemplateExample.txt"`
+- `dotnet test --logger "liquid.custom;Template=TemplateExample.txt"`
 4. Report will be generated in the test results folder

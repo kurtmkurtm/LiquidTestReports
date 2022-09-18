@@ -242,8 +242,9 @@ Executor URI: {{test_case.executor_uri}}
 Source: {{test_case.source}}
 Code File Path: {{test_case.code_file_path}}
 Line Number: {{test_case.line_number}}
-Traits: {{test_case.traits | first}}
-
+Traits: 
+{% for trait in test_case.traits %}[{{ trait.Name }} : {{ trait.Value }}]</br>
+{% endfor %}
 
 ```
 
@@ -283,6 +284,7 @@ Source: C:\github\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit
 Code File Path: 
 Line Number: 0
 Traits: 
+[ReportName : My Test Theory]</br>
 ```
 
 

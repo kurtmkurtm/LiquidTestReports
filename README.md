@@ -133,7 +133,7 @@ The custom logger package allows you to create your own reports simply by passin
 	
 	`dotnet add package LiquidTestReports.Custom`
 
-2. Add a new text file to your test project, and set `Copy to Output Directory` as`Copy always`, below is a starting sample template
+2. Add a new text file to your test project, and set `Copy to Output Directory` as `Copy always`, below is a starting sample template
 
   ```TemplateExample.txt
   Test Statistics:
@@ -149,7 +149,7 @@ The custom logger package allows you to create your own reports simply by passin
 
 3. Run the tests using the supplied logger
 
-	`dotnet test --logger "liquid.custom;TemplateExample.txt"`
+	`dotnet test --logger "liquid.custom;Template=TemplateExample.txt"`
 
 4. Report will be generated in the test results folder
 
