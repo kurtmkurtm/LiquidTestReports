@@ -54,10 +54,10 @@ namespace LiquidTestReports.Cli.Models
                     var workingFolder = Folder ?? new DirectoryInfo(Directory.GetCurrentDirectory());
                     var results = new Matcher()
                         .AddInclude(file)
-                        .Execute(new DirectoryInfoWrapper(workingFolder));
+                        .GetResultsInFullPath(new DirectoryInfoWrapper(workingFolder).FullName);
 
-                    Files = results.HasMatches ?
-                        results.Files.Select(match => new FileInfo(match.Path)) :
+                    Files = results.Any() ?
+                        results.Select(match => new FileInfo(match)) :
                         throw new ArgumentException("File did not match any files");
                 }
             }
