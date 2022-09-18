@@ -16,7 +16,8 @@ Liquid Test Reports are logger extensions for the [Visual Studio Test Platform](
 ### Latest:
 
 - [Cli]
-  - Add parameter support for the CLI similar on the logger implementation
+  - Add parameter support for the CLI based on the logger implementation
+  - Fix issue where folder wasn't being used at file load time
 
 #### 1.3.2 beta
 
@@ -28,8 +29,6 @@ Liquid Test Reports are logger extensions for the [Visual Studio Test Platform](
 - [Cli] 
   - Add JUnit XML support
   - Change template input to use file instead of content string
-
-- - 
 
 [Previous changes](./docs/Changelog.md)
 
