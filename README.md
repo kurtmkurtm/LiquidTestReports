@@ -15,6 +15,8 @@ Liquid Test Reports are logger extensions for the [Visual Studio Test Platform](
 
 ### Latest:
 
+#### 1.4.3 beta
+
 - [Cli]
   - Add parameter support for the CLI based on the logger implementation
   - Fix issue where folder wasn't being used at file load time
@@ -41,7 +43,7 @@ Liquid Test Reports are logger extensions for the [Visual Studio Test Platform](
 #### Installation
 
 ```bash
-dotnet tool install --global LiquidTestReports.Cli --version 1.2.1-beta
+dotnet tool install --global LiquidTestReports.Cli --version 1.4.3-beta
 ```
 
 #### Usage
