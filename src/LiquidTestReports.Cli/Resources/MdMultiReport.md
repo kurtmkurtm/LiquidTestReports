@@ -20,7 +20,7 @@
 
 <p>
 <strong>Overall Result:</strong> {{overall}} <br />
-<strong>Pass Rate:</strong> {{pass_percentage}}% <br />
+<strong>Pass Rate:</strong> {{pass_percentage | as_percentage }} <br />
 <strong>Run Duration:</strong> {{ run.elapsed_time_in_running_tests | format_duration }} <br />
 <strong>Date:</strong> {{ run.started | local_time | date: '%Y-%m-%d %H:%M:%S' }} - {{ run.finished | local_time | date: '%Y-%m-%d %H:%M:%S' }} <br />
 <strong>Total Tests:</strong> {{total}} <br />
@@ -41,9 +41,9 @@
 <td>{{skipped}}</td>
 </tr>
 <tr>
-<td>{{pass_percentage}}%</td>
-<td>{{failed_percentage}}%</td>
-<td>{{skipped_percentage}}%</td>
+<td>{{pass_percentage | as_percentage}}</td>
+<td>{{failed_percentage | as_percentage}}</td>
+<td>{{skipped_percentage | as_percentage}}</td>
 </tr>
 </tbody>
 </table>
@@ -64,7 +64,7 @@
 {%- endif -%}
 #### {{ set.source }}
 <strong>Group Result:</strong> {{set_outcome}} <br />
-<strong>Pass Rate:</strong> {{ passed_total | divide_by_decimal: group_total | times: 100.0 | round: 2 }}% <br />
+<strong>Pass Rate:</strong> {{ passed_total | divide_by_decimal: group_total | times: 100.0 | round: 2 | as_percentage }} <br />
 <strong>Tests:</strong> {{ set.results | size }} <br />
 <strong>Duration:</strong> {{ set.duration | format_duration }} <br />
 <details open>

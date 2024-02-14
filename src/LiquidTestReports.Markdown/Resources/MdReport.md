@@ -21,7 +21,7 @@
 
 <p>
 <strong>Overall Result:</strong> {{overall}} <br />
-<strong>Pass Rate:</strong> {{pass_percentage}}% <br />
+<strong>Pass Rate:</strong> {{pass_percentage | as_percentage}} <br />
 <strong>Run Duration:</strong> {{ run.elapsed_time_in_running_tests | format_duration }} <br />
 <strong>Date:</strong> {{ run.started | local_time | date: '%Y-%m-%d %H:%M:%S' }} - {{ run.finished | local_time | date: '%Y-%m-%d %H:%M:%S' }} <br />
 <strong>Framework:</strong> {{ parameters.TargetFramework }} <br />
@@ -43,16 +43,16 @@
 <td>{{skipped}}</td>
 </tr>
 <tr>
-<td>{{pass_percentage}}%</td>
-<td>{{failed_percentage}}%</td>
-<td>{{skipped_percentage}}%</td>
+<td>{{pass_percentage | as_percentage}}</td>
+<td>{{failed_percentage | as_percentage}}</td>
+<td>{{skipped_percentage | as_percentage}}</td>
 </tr>
 </tbody>
 </table>
 
 ### Result Sets
 {%- for set in run.result_sets -%}
-#### {{ set.source | path_split | last }} - {{set.passed_count | divided_by: set.executed_tests_count | times: 100.0 | round: 2 }}%
+#### {{ set.source | path_split | last }} - {{set.passed_count | divided_by: set.executed_tests_count | times: 100.0 | round: 2 | as_percentage }}
 <details>
 <summary>Full Results</summary>
 <table>
