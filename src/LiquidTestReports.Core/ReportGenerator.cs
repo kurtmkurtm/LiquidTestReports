@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Net;
 using DotLiquid;
 using DotLiquid.NamingConventions;
 using LiquidTestReports.Core.Drops;

@@ -157,7 +157,7 @@ namespace LiquidTestReports.Cli
             _standardConsole.Write(new FigletText("Cli Tool").Centered().Color(Color.White));
             _standardConsole.WriteLine();
             _standardConsole.WriteLine();
-            _standardConsole.Write(new Rule(title).RuleStyle("grey").LeftAligned());
+            _standardConsole.Write(new Rule(title).RuleStyle("grey").LeftJustified());
             _standardConsole.WriteLine();
         }
 
