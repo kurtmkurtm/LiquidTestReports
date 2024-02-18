@@ -22,7 +22,7 @@ namespace SampleProject.NUnit
             var result = service.GetTrue();
 
             // Assert
-            Assert.AreEqual(expected, result);
+            Assert.That(expected, Is.EqualTo(result));
         }
 
         [Test]
@@ -36,7 +36,7 @@ namespace SampleProject.NUnit
             var result = service.GetFalse();
 
             // Assert
-            Assert.False(result);
+            Assert.That(result, Is.False);
         }
 
         [Test]
@@ -50,7 +50,7 @@ namespace SampleProject.NUnit
             var result = service.GetException();
 
             // Assert
-            Assert.True(true);
+            Assert.That(result, Is.True);
         }
 
         [Test]
@@ -58,7 +58,7 @@ namespace SampleProject.NUnit
         public void FailTest()
         {
             TestContext.WriteLine("This test will fail");
-            Assert.True(false);
+            Assert.That(true, Is.False);
         }
 
 
@@ -67,7 +67,7 @@ namespace SampleProject.NUnit
         [Category("Skip")]
         public void SkipTest()
         {
-            Assert.True(false);
+            Assert.That(true, Is.False);
         }
     }
 }
