@@ -48,7 +48,7 @@
     <Authors>Kurt Murrell</Authors>
     <Company>Kurt Murrell</Company>
     <Product>LiquidTestReports.Markdown</Product>
-    <Copyright>2020</Copyright>
+    <Copyright>2024</Copyright>
     <Description>
       LiquidTestReports.Markdown is a ready to use VSTest Markdown logger that generates GitHub
       friendly markdown reports from your test results.

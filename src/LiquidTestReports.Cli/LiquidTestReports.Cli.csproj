@@ -11,7 +11,8 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>nuget_cli.png</PackageIcon>
     <Description>
-      LiquidTestReports.Cli Generates Markdown and Custom Test Reports from TRX and or JUnit test files.
+      LiquidTestReports.Cli Generates Markdown and Custom Test Reports from TRX and or JUnit test
+      files.
     </Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
@@ -32,7 +33,10 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-    <None Include="README.md" Pack="true" PackagePath="\"/>
+    <None Include="README.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Resources\Templates.Designer.cs">
@@ -47,17 +51,13 @@
       <LastGenOutput>Templates.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
-      <_Parameter1>LiquidTestReports.Cli.Tests</_Parameter1>
-    </AssemblyAttribute>
-  </ItemGroup>
   <PropertyGroup Label="Configuration">
     <RootNamespace>LiquidTestReports.Cli</RootNamespace>
     <Authors>Kurt Murrell</Authors>
     <PackageId>LiquidTestReports.Cli</PackageId>
     <Product>LiquidTestReports.Cli</Product>
-    <Copyright>2021</Copyright>
-    <Description>.NET tool to combine and convert TRX and JUnit tests reports into Markdown with Liquid template support</Description>
+    <Copyright>2024</Copyright>
+    <Description>.NET tool to combine and convert TRX and JUnit tests reports into Markdown with
+      Liquid template support</Description>
   </PropertyGroup>
 </Project>

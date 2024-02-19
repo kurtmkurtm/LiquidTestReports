@@ -41,7 +41,7 @@
     <Authors>Kurt Murrell</Authors>
     <PackageId>LiquidTestReports.Core</PackageId>
     <Product>LiquidTestReports.Core</Product>
-    <Copyright>2020</Copyright>
+    <Copyright>2024</Copyright>
     <Description>Core library for creating custom VS Test loggers with liquid template support</Description>
   </PropertyGroup>
 </Project>

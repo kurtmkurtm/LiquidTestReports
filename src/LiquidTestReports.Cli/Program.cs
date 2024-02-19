@@ -51,11 +51,16 @@ namespace LiquidTestReports.Cli
                 Console.Error.WriteLine(new ArgumentNullException(nameof(template)));
                 exitFlag = true;
             }
-            var parameterInputs = new ParametersInput(parameters);
-            if (parameterInputs != null && parameterInputs.Parameters.Count < 1)
+
+            ParametersInput parameterInputs = null;
+            if (parameters is not null)
             {
-                Console.Error.WriteLine(new ArgumentNullException(nameof(parameters)));
-                exitFlag = true;
+                parameterInputs = new ParametersInput(parameters);
+                if (parameterInputs is null)
+                {
+                    Console.Error.WriteLine(new ArgumentNullException(nameof(parameters)));
+                    exitFlag = true;
+                }
             }
 
             if (exitFlag)
