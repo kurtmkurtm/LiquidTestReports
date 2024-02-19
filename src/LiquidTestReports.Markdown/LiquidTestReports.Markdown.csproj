@@ -7,6 +7,7 @@
     <PackageProjectUrl>https://github.com/kurtmkurtm/LiquidTestReports</PackageProjectUrl>
     <RepositoryUrl>https://github.com/kurtmkurtm/LiquidTestReports</RepositoryUrl>
     <PackageIcon>nuget_md.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="17.9.0" />
@@ -36,6 +37,10 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+    <None Include="README.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
   <PropertyGroup Label="Configuration">
     <RootNamespace>LiquidTestReports.Markdown</RootNamespace>
@@ -45,8 +50,8 @@
     <Product>LiquidTestReports.Markdown</Product>
     <Copyright>2020</Copyright>
     <Description>
-      LiquidTestReports.Markdown is a ready to use VSTest Markdown logger that generates GitHub friendly markdown reports from your test results.
-      The output will look like this https://github.com/kurtmkurtm/LiquidTestReports/blob/master/docs/samples/xUnit.md
+      LiquidTestReports.Markdown is a ready to use VSTest Markdown logger that generates GitHub
+      friendly markdown reports from your test results.
     </Description>
   </PropertyGroup>
 </Project>

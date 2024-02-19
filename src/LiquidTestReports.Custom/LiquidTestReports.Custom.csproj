@@ -7,6 +7,7 @@
     <PackageProjectUrl>https://github.com/kurtmkurtm/LiquidTestReports</PackageProjectUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>nuget_custom.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>
     <None Include="..\..\assets\nuget_custom.png">
@@ -14,6 +15,10 @@
       <PackagePath></PackagePath>
     </None>
     <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="README.md">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
@@ -29,10 +34,10 @@
     <Authors>Kurt Murrell</Authors>
     <PackageId>LiquidTestReports.Custom</PackageId>
     <Product>LiquidTestReports.Custom</Product>
-    <Copyright>2020</Copyright>
+    <Copyright>2024</Copyright>
     <Description>
-      LiquidTestReports.Custom The custom logger package allows you to create your own reports simply by passing the file path of the template to the test logger.
-      The output will look like this https://github.com/kurtmkurtm/LiquidTestReports/blob/master/docs/samples/xUnit.txt
+      LiquidTestReports.Custom The custom logger package allows you to create your own reports
+      simply by passing the file path of the template to the test logger.
     </Description>
   </PropertyGroup>
 </Project>
