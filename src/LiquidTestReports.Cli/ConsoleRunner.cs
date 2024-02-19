@@ -20,11 +20,11 @@ namespace LiquidTestReports.Cli
     {
         private readonly IAnsiConsole _errorConsole;
         private readonly IAnsiConsole _standardConsole;
-        private readonly ReportInput[] _inputs;
+        private readonly IEnumerable<ReportInput> _inputs;
         private readonly FileInfo _outputFile;
         private readonly ParametersInput _parameters;
 
-        internal ConsoleRunner(ReportInput[] inputs, FileInfo outputFile, ParametersInput parameters)
+        internal ConsoleRunner(IEnumerable<ReportInput> inputs, FileInfo outputFile, ParametersInput parameters)
         {
             _errorConsole = AnsiConsole.Create(new AnsiConsoleSettings { Out = new AnsiConsoleOutput(Console.Error) });
             _standardConsole = AnsiConsole.Create(new AnsiConsoleSettings { Out = new AnsiConsoleOutput(Console.Out) });
