@@ -50,8 +50,7 @@
     <Product>LiquidTestReports.Markdown</Product>
     <Copyright>2024</Copyright>
     <Description>
-      LiquidTestReports.Markdown is a ready to use VSTest Markdown logger that generates GitHub
-      friendly markdown reports from your test results.
+      LiquidTestReports.Markdown is a ready to use VSTest Markdown logger that generates GitHub friendly markdown reports from your test results.
     </Description>
   </PropertyGroup>
 </Project>

@@ -11,8 +11,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>nuget_cli.png</PackageIcon>
     <Description>
-      LiquidTestReports.Cli Generates Markdown and Custom Test Reports from TRX and or JUnit test
-      files.
+      LiquidTestReports.Cli Generates Markdown and Custom Test Reports from TRX and or JUnit test files.
     </Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>

@@ -36,8 +36,7 @@
     <Product>LiquidTestReports.Custom</Product>
     <Copyright>2024</Copyright>
     <Description>
-      LiquidTestReports.Custom The custom logger package allows you to create your own reports
-      simply by passing the file path of the template to the test logger.
+      LiquidTestReports.Custom The custom logger package allows you to create your own reports simply by passing the file path of the template to the test logger.
     </Description>
   </PropertyGroup>
 </Project>
