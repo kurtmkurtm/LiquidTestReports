@@ -1,0 +1,117 @@
+<testsuites>
+  <testsuite name="SampleProject.xUnit.dll" tests="7" skipped="1" failures="3" errors="0"
+    time="0.0116718" timestamp="2024-02-21T22:35:43" hostname="DESKTOP" id="0"
+    package="SampleProject.xUnit.dll">
+    <properties />
+    <testcase classname="SampleProject.xUnit.TestServiceTests" name="SkipTest" time="0.0010000">
+      <skipped />
+    </testcase>
+    <testcase classname="SampleProject.NUnit.Attachment" name="AttachImage" time="0.0022629" />
+    <testcase classname="SampleProject.xUnit.TestServiceTests" name="TestThrowingException"
+      time="0.0027208">
+      <failure type="failure" message="System.Exception : Pretty good exception">at
+        SampleProject.TestService.GetException() in
+        C:\Dev\LiquidTestReports\test\SampleProject\SampleProject\TestService.cs:line 19
+        at SampleProject.xUnit.TestServiceTests.TestThrowingException() in
+        C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\TestServiceTests.cs:line
+        54
+        at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig,
+        Boolean isConstructor)
+        at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</failure>
+    </testcase>
+    <testcase classname="SampleProject.xUnit.TestServiceTests" name="TestTheory(expected: True)"
+      time="0.0035598" />
+    <testcase classname="SampleProject.xUnit.TestServiceTests" name="TestTheory(expected: False)"
+      time="0.0015566">
+      <failure type="failure"
+        message="Assert.Equal() Failure: Values differ&#xD;&#xA;Expected: False&#xD;&#xA;Actual:   True">at
+        SampleProject.xUnit.TestServiceTests.TestTheory(Boolean expected) in
+        C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\TestServiceTests.cs:line
+        29
+        at InvokeStub_TestServiceTests.TestTheory(Object, Span`1)
+        at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr,
+        Binder binder, Object[] parameters, CultureInfo culture)</failure>
+    </testcase>
+    <testcase classname="SampleProject.xUnit.TestServiceTests" name="PassingTest" time="0.0001990" />
+    <testcase classname="SampleProject.xUnit.TestServiceTests" name="FailTest" time="0.0003727">
+      <failure type="failure"
+        message="Assert.True() Failure&#xD;&#xA;Expected: True&#xD;&#xA;Actual:   False">at
+        SampleProject.xUnit.TestServiceTests.FailTest() in
+        C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\TestServiceTests.cs:line
+        65
+        at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig,
+        Boolean isConstructor)
+        at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</failure>
+    </testcase>
+    <system-out>Not actually an attachment, just a placeholder to make the results the same.
+
+      Running SampleProject.Tests.xUnit tests
+
+      Running SampleProject.Tests.xUnit tests
+
+      Running SampleProject.Tests.xUnit tests
+
+      Running SampleProject.Tests.xUnit tests
+
+      Running SampleProject.Tests.xUnit tests
+      This test will fail
+
+
+      Test Framework Informational Messages:
+      [xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.5.7+8f2703126a (64-bit .NET 8.0.0)
+      [xUnit.net 00:00:00.08] Discovering: SampleProject.xUnit
+      [xUnit.net 00:00:00.13] Discovered: SampleProject.xUnit
+      [xUnit.net 00:00:00.13] Starting: SampleProject.xUnit
+      [xUnit.net 00:00:00.16] Skipped
+      [xUnit.net 00:00:00.18] System.Exception : Pretty good exception
+      [xUnit.net 00:00:00.18] Stack Trace:
+      [xUnit.net 00:00:00.18]
+      C:\Dev\LiquidTestReports\test\SampleProject\SampleProject\TestService.cs(19,0): at
+      SampleProject.TestService.GetException()
+      [xUnit.net 00:00:00.18]
+      C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\TestServiceTests.cs(54,0):
+      at SampleProject.xUnit.TestServiceTests.TestThrowingException()
+      [xUnit.net 00:00:00.18] at System.RuntimeMethodHandle.InvokeMethod(Object target, Void**
+      arguments, Signature sig, Boolean isConstructor)
+      [xUnit.net 00:00:00.18] at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj,
+      BindingFlags invokeAttr)
+      [xUnit.net 00:00:00.18] Output:
+      [xUnit.net 00:00:00.18] Running SampleProject.Tests.xUnit tests
+      [xUnit.net 00:00:00.18] Assert.Equal() Failure: Values differ
+      [xUnit.net 00:00:00.18] Expected: False
+      [xUnit.net 00:00:00.18] Actual: True
+      [xUnit.net 00:00:00.18] Stack Trace:
+      [xUnit.net 00:00:00.18]
+      C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\TestServiceTests.cs(29,0):
+      at SampleProject.xUnit.TestServiceTests.TestTheory(Boolean expected)
+      [xUnit.net 00:00:00.18] at InvokeStub_TestServiceTests.TestTheory(Object, Span`1)
+      [xUnit.net 00:00:00.18] at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj,
+      BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+      [xUnit.net 00:00:00.18] Output:
+      [xUnit.net 00:00:00.18] Running SampleProject.Tests.xUnit tests
+      [xUnit.net 00:00:00.18] Assert.True() Failure
+      [xUnit.net 00:00:00.18] Expected: True
+      [xUnit.net 00:00:00.18] Actual: False
+      [xUnit.net 00:00:00.18] Stack Trace:
+      [xUnit.net 00:00:00.18]
+      C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\TestServiceTests.cs(65,0):
+      at SampleProject.xUnit.TestServiceTests.FailTest()
+      [xUnit.net 00:00:00.18] at System.RuntimeMethodHandle.InvokeMethod(Object target, Void**
+      arguments, Signature sig, Boolean isConstructor)
+      [xUnit.net 00:00:00.18] at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj,
+      BindingFlags invokeAttr)
+      [xUnit.net 00:00:00.18] Output:
+      [xUnit.net 00:00:00.18] Running SampleProject.Tests.xUnit tests
+      [xUnit.net 00:00:00.18] This test will fail
+      [xUnit.net 00:00:00.19] Finished: SampleProject.xUnit
+    </system-out>
+    <system-err>Warning - [xUnit.net 00:00:00.16] SampleProject.xUnit.TestServiceTests.SkipTest
+      [SKIP]
+      Error - [xUnit.net 00:00:00.18] SampleProject.xUnit.TestServiceTests.TestThrowingException
+      [FAIL]
+      Error - [xUnit.net 00:00:00.18] SampleProject.xUnit.TestServiceTests.TestTheory(expected:
+      False) [FAIL]
+      Error - [xUnit.net 00:00:00.18] SampleProject.xUnit.TestServiceTests.FailTest [FAIL]
+    </system-err>
+  </testsuite>
+</testsuites>

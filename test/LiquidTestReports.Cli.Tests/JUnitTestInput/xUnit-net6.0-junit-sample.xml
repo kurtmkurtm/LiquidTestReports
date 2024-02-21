@@ -1,0 +1,97 @@
+<testsuites>
+  <testsuite name="SampleProject.xUnit.dll" tests="7" skipped="1" failures="3" errors="0"
+    time="0.018195299999999998" timestamp="2024-02-21T22:36:04" hostname="DESKTOP" id="0"
+    package="SampleProject.xUnit.dll">
+    <properties />
+    <testcase classname="SampleProject.xUnit.TestServiceTests" name="SkipTest" time="0.0010000">
+      <skipped />
+    </testcase>
+    <testcase classname="SampleProject.NUnit.Attachment" name="AttachImage" time="0.0031616" />
+    <testcase classname="SampleProject.xUnit.TestServiceTests" name="TestThrowingException"
+      time="0.0056812">
+      <failure type="failure" message="System.Exception : Pretty good exception">at
+        SampleProject.TestService.GetException() in
+        C:\Dev\LiquidTestReports\test\SampleProject\SampleProject\TestService.cs:line 19
+        at SampleProject.xUnit.TestServiceTests.TestThrowingException() in
+        C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\TestServiceTests.cs:line
+        54</failure>
+    </testcase>
+    <testcase classname="SampleProject.xUnit.TestServiceTests" name="TestTheory(expected: True)"
+      time="0.0040211" />
+    <testcase classname="SampleProject.xUnit.TestServiceTests" name="TestTheory(expected: False)"
+      time="0.0023930">
+      <failure type="failure"
+        message="Assert.Equal() Failure: Values differ&#xD;&#xA;Expected: False&#xD;&#xA;Actual:   True">at
+        SampleProject.xUnit.TestServiceTests.TestTheory(Boolean expected) in
+        C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\TestServiceTests.cs:line
+        29</failure>
+    </testcase>
+    <testcase classname="SampleProject.xUnit.TestServiceTests" name="PassingTest" time="0.0005672" />
+    <testcase classname="SampleProject.xUnit.TestServiceTests" name="FailTest" time="0.0013712">
+      <failure type="failure"
+        message="Assert.True() Failure&#xD;&#xA;Expected: True&#xD;&#xA;Actual:   False">at
+        SampleProject.xUnit.TestServiceTests.FailTest() in
+        C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\TestServiceTests.cs:line
+        65</failure>
+    </testcase>
+    <system-out>Not actually an attachment, just a placeholder to make the results the same.
+
+      Running SampleProject.Tests.xUnit tests
+
+      Running SampleProject.Tests.xUnit tests
+
+      Running SampleProject.Tests.xUnit tests
+
+      Running SampleProject.Tests.xUnit tests
+
+      Running SampleProject.Tests.xUnit tests
+      This test will fail
+
+
+      Test Framework Informational Messages:
+      [xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.5.7+8f2703126a (64-bit .NET 6.0.27)
+      [xUnit.net 00:00:00.11] Discovering: SampleProject.xUnit
+      [xUnit.net 00:00:00.18] Discovered: SampleProject.xUnit
+      [xUnit.net 00:00:00.18] Starting: SampleProject.xUnit
+      [xUnit.net 00:00:00.23] Skipped
+      [xUnit.net 00:00:00.26] System.Exception : Pretty good exception
+      [xUnit.net 00:00:00.26] Stack Trace:
+      [xUnit.net 00:00:00.27]
+      C:\Dev\LiquidTestReports\test\SampleProject\SampleProject\TestService.cs(19,0): at
+      SampleProject.TestService.GetException()
+      [xUnit.net 00:00:00.27]
+      C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\TestServiceTests.cs(54,0):
+      at SampleProject.xUnit.TestServiceTests.TestThrowingException()
+      [xUnit.net 00:00:00.27] Output:
+      [xUnit.net 00:00:00.27] Running SampleProject.Tests.xUnit tests
+      [xUnit.net 00:00:00.27] Assert.Equal() Failure: Values differ
+      [xUnit.net 00:00:00.27] Expected: False
+      [xUnit.net 00:00:00.27] Actual: True
+      [xUnit.net 00:00:00.27] Stack Trace:
+      [xUnit.net 00:00:00.27]
+      C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\TestServiceTests.cs(29,0):
+      at SampleProject.xUnit.TestServiceTests.TestTheory(Boolean expected)
+      [xUnit.net 00:00:00.27] Output:
+      [xUnit.net 00:00:00.27] Running SampleProject.Tests.xUnit tests
+      [xUnit.net 00:00:00.27] Assert.True() Failure
+      [xUnit.net 00:00:00.27] Expected: True
+      [xUnit.net 00:00:00.27] Actual: False
+      [xUnit.net 00:00:00.27] Stack Trace:
+      [xUnit.net 00:00:00.27]
+      C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.xUnit\TestServiceTests.cs(65,0):
+      at SampleProject.xUnit.TestServiceTests.FailTest()
+      [xUnit.net 00:00:00.27] Output:
+      [xUnit.net 00:00:00.27] Running SampleProject.Tests.xUnit tests
+      [xUnit.net 00:00:00.27] This test will fail
+      [xUnit.net 00:00:00.28] Finished: SampleProject.xUnit
+    </system-out>
+    <system-err>Warning - [xUnit.net 00:00:00.23] SampleProject.xUnit.TestServiceTests.SkipTest
+      [SKIP]
+      Error - [xUnit.net 00:00:00.26] SampleProject.xUnit.TestServiceTests.TestThrowingException
+      [FAIL]
+      Error - [xUnit.net 00:00:00.27] SampleProject.xUnit.TestServiceTests.TestTheory(expected:
+      False) [FAIL]
+      Error - [xUnit.net 00:00:00.27] SampleProject.xUnit.TestServiceTests.FailTest [FAIL]
+    </system-err>
+  </testsuite>
+</testsuites>

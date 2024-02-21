@@ -1,2 +1,2 @@
-dotnet test ../test/SampleProject/SampleProject.Tests.xUnit -l "liquid.custom;Template=../../../docs/PropertiesRaw.md;LogFileName=PropertiesOut.md" -f netcoreapp3.1
+dotnet test ../test/SampleProject/SampleProject.Tests.xUnit -l "liquid.custom;Template=../../../docs/PropertiesRaw.md;LogFileName=PropertiesOut.md" -f net8.0
 Move-Item -Path ../test/SampleProject/SampleProject.Tests.xUnit/TestResults/PropertiesOut.md -Destination ../docs/Properties.md -force

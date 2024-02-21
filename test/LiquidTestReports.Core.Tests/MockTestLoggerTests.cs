@@ -24,7 +24,7 @@ namespace LiquidTestReports.Tests
         }
 
         [Theory]
-        [InlineData("MyTestPrefix", null, ".NETCoreApp,Version=3.1", "MyTestPrefix_netcoreapp3.1_")]
+        [InlineData("MyTestPrefix", null, "net8.0", "MyTestPrefix_net8.0_")]
         [InlineData("MyTestPrefix", null, null, "MyTestPrefix_")]
         [InlineData(null, "MyTestReport.txt", null, "MyTestReport.txt")]
         public void GetFileName_WithParameters_GeneratesExpectedFileNames(string logFilePrefixKey,

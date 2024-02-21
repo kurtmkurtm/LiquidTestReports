@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="d3ec3137-7d82-4c45-9957-2b66494f70c0" name="kurt@DESKTOP 2024-02-22 08:34:45"
+  runUser="DESKTOP\kurt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2024-02-22T08:34:45.8536460+10:00" queuing="2024-02-22T08:34:45.8536462+10:00"
+    start="2024-02-22T08:34:45.0960654+10:00" finish="2024-02-22T08:34:45.8801139+10:00" />
+  <TestSettings name="default" id="0a0e672e-994e-4979-8be1-70dea8073e9a">
+    <Deployment runDeploymentRoot="DESKTOP_2024-02-22_08_34_45" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="0d57f03e-a630-488a-87be-f94b5873834e"
+      testId="5ff6dcb6-59d9-e03d-13f5-8cd4028dd6a8" testName="TestThrowingException"
+      computerName="DESKTOP" duration="00:00:00.0086924"
+      startTime="2024-02-22T08:34:45.6997785+10:00" endTime="2024-02-22T08:34:45.7085490+10:00"
+      testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed"
+      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d"
+      relativeResultsDirectory="0d57f03e-a630-488a-87be-f94b5873834e">
+      <Output>
+        <StdOut>TestContext Messages:&#xD;
+          Running SampleProject.Tests.MSTest tests</StdOut>
+        <ErrorInfo>
+          <Message>Test method SampleProject.MSTest.TestServiceTests.TestThrowingException threw
+            exception: &#xD;
+            System.Exception: Pretty good exception</Message>
+          <StackTrace> at SampleProject.TestService.GetException() in
+            C:\Dev\LiquidTestReports\test\SampleProject\SampleProject\TestService.cs:line 19&#xD;
+            at SampleProject.MSTest.TestServiceTests.TestThrowingException() in
+            C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.MSTest\TestServiceTests.cs:line
+            59&#xD;
+          </StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="cce817c1-b525-4a8f-afe0-98413c61e188"
+      testId="dcecfeee-3998-3d8c-a5d6-9411bf1f1b06" testName="FailTest"
+      computerName="DESKTOP" duration="00:00:00.0005573"
+      startTime="2024-02-22T08:34:45.7085940+10:00" endTime="2024-02-22T08:34:45.7092431+10:00"
+      testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed"
+      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d"
+      relativeResultsDirectory="cce817c1-b525-4a8f-afe0-98413c61e188">
+      <Output>
+        <StdOut>TestContext Messages:&#xD;
+          Running SampleProject.Tests.MSTest tests&#xD;
+          This test will fail</StdOut>
+        <ErrorInfo>
+          <Message>Assert.IsTrue failed. </Message>
+          <StackTrace> at SampleProject.MSTest.TestServiceTests.FailTest() in
+            C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.MSTest\TestServiceTests.cs:line
+            70&#xD;
+          </StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="1c06e105-2b1b-4fd0-92e8-dac8135d1538"
+      testId="23c153f4-e7de-da9a-bdf4-965abee2b1c9" testName="TestTheory (True)"
+      computerName="DESKTOP" duration="00:00:00.0018093"
+      startTime="2024-02-22T08:34:45.6713883+10:00" endTime="2024-02-22T08:34:45.6768723+10:00"
+      testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed"
+      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d"
+      relativeResultsDirectory="1c06e105-2b1b-4fd0-92e8-dac8135d1538">
+      <Output>
+        <StdOut>TestContext Messages:&#xD;
+          Running SampleProject.Tests.MSTest tests</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="a0abaf54-1296-48f9-b527-a1f9f1eca021"
+      testId="4652d5d4-fc4b-ff90-6049-8df5395edd54" testName="AttachImage"
+      computerName="DESKTOP" duration="00:00:00.0030010"
+      startTime="2024-02-22T08:34:45.6456517+10:00" endTime="2024-02-22T08:34:45.6645960+10:00"
+      testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed"
+      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d"
+      relativeResultsDirectory="a0abaf54-1296-48f9-b527-a1f9f1eca021">
+      <Output>
+        <StdOut>TestContext Messages:&#xD;
+          Attach an image</StdOut>
+      </Output>
+      <ResultFiles>
+        <ResultFile path="DESKTOP\attachmentSample.png" />
+      </ResultFiles>
+    </UnitTestResult>
+    <UnitTestResult executionId="d294cd07-1e61-4d4f-a10e-052829fa8de1"
+      testId="6d870c01-332d-4774-bd82-26af6dcd01cf" testName="PassingTest"
+      computerName="DESKTOP" duration="00:00:00.0001580"
+      startTime="2024-02-22T08:34:45.6994998+10:00" endTime="2024-02-22T08:34:45.6997528+10:00"
+      testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed"
+      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d"
+      relativeResultsDirectory="d294cd07-1e61-4d4f-a10e-052829fa8de1">
+      <Output>
+        <StdOut>TestContext Messages:&#xD;
+          Running SampleProject.Tests.MSTest tests</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="0495fe9a-f9f3-4382-8e66-a10cdfb2f02e"
+      testId="6ae13d5a-17f3-52a9-8da6-ac658a7cbb16" testName="TestTheory (False)"
+      computerName="DESKTOP" duration="00:00:00.0221181"
+      startTime="2024-02-22T08:34:45.6769416+10:00" endTime="2024-02-22T08:34:45.6994472+10:00"
+      testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed"
+      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d"
+      relativeResultsDirectory="0495fe9a-f9f3-4382-8e66-a10cdfb2f02e">
+      <Output>
+        <StdOut>TestContext Messages:&#xD;
+          Running SampleProject.Tests.MSTest tests</StdOut>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;False&gt;. Actual:&lt;True&gt;. </Message>
+          <StackTrace> at SampleProject.MSTest.TestServiceTests.TestTheory(Boolean expected) in
+            C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.MSTest\TestServiceTests.cs:line
+            34&#xD;
+          </StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e697d5da-fddc-4af0-affa-71c1e91d44c7"
+      testId="80ffe5e7-390e-7a11-4b21-8969639ebf48" testName="SkipTest"
+      computerName="DESKTOP" startTime="2024-02-22T08:34:45.7092681+10:00"
+      endTime="2024-02-22T08:34:45.7102571+10:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b"
+      outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d"
+      relativeResultsDirectory="e697d5da-fddc-4af0-affa-71c1e91d44c7">
+      <Output>
+        <ErrorInfo>
+          <Message>Skipped</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="PassingTest"
+      storage="c:\dev\liquidtestreports\test\sampleproject\sampleproject.tests.mstest\bin\debug\net6.0\sampleproject.mstest.dll"
+      id="6d870c01-332d-4774-bd82-26af6dcd01cf">
+      <Execution id="d294cd07-1e61-4d4f-a10e-052829fa8de1" />
+      <TestMethod
+        codeBase="C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.MSTest\bin\Debug\net6.0\SampleProject.MSTest.dll"
+        adapterTypeName="executor://mstestadapter/v2"
+        className="SampleProject.MSTest.TestServiceTests" name="PassingTest" />
+    </UnitTest>
+    <UnitTest name="AttachImage"
+      storage="c:\dev\liquidtestreports\test\sampleproject\sampleproject.tests.mstest\bin\debug\net6.0\sampleproject.mstest.dll"
+      id="4652d5d4-fc4b-ff90-6049-8df5395edd54">
+      <Execution id="a0abaf54-1296-48f9-b527-a1f9f1eca021" />
+      <TestMethod
+        codeBase="C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.MSTest\bin\Debug\net6.0\SampleProject.MSTest.dll"
+        adapterTypeName="executor://mstestadapter/v2"
+        className="SampleProject.MSTest.AttachmentTest" name="AttachImage" />
+    </UnitTest>
+    <UnitTest name="FailTest"
+      storage="c:\dev\liquidtestreports\test\sampleproject\sampleproject.tests.mstest\bin\debug\net6.0\sampleproject.mstest.dll"
+      id="dcecfeee-3998-3d8c-a5d6-9411bf1f1b06">
+      <TestCategory>
+        <TestCategoryItem TestCategory="Fail" />
+      </TestCategory>
+      <Execution id="cce817c1-b525-4a8f-afe0-98413c61e188" />
+      <TestMethod
+        codeBase="C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.MSTest\bin\Debug\net6.0\SampleProject.MSTest.dll"
+        adapterTypeName="executor://mstestadapter/v2"
+        className="SampleProject.MSTest.TestServiceTests" name="FailTest" />
+    </UnitTest>
+    <UnitTest name="TestTheory (False)"
+      storage="c:\dev\liquidtestreports\test\sampleproject\sampleproject.tests.mstest\bin\debug\net6.0\sampleproject.mstest.dll"
+      id="6ae13d5a-17f3-52a9-8da6-ac658a7cbb16">
+      <Execution id="0495fe9a-f9f3-4382-8e66-a10cdfb2f02e" />
+      <TestMethod
+        codeBase="C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.MSTest\bin\Debug\net6.0\SampleProject.MSTest.dll"
+        adapterTypeName="executor://mstestadapter/v2"
+        className="SampleProject.MSTest.TestServiceTests" name="TestTheory" />
+    </UnitTest>
+    <UnitTest name="TestTheory (True)"
+      storage="c:\dev\liquidtestreports\test\sampleproject\sampleproject.tests.mstest\bin\debug\net6.0\sampleproject.mstest.dll"
+      id="23c153f4-e7de-da9a-bdf4-965abee2b1c9">
+      <Execution id="1c06e105-2b1b-4fd0-92e8-dac8135d1538" />
+      <TestMethod
+        codeBase="C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.MSTest\bin\Debug\net6.0\SampleProject.MSTest.dll"
+        adapterTypeName="executor://mstestadapter/v2"
+        className="SampleProject.MSTest.TestServiceTests" name="TestTheory" />
+    </UnitTest>
+    <UnitTest name="TestThrowingException"
+      storage="c:\dev\liquidtestreports\test\sampleproject\sampleproject.tests.mstest\bin\debug\net6.0\sampleproject.mstest.dll"
+      id="5ff6dcb6-59d9-e03d-13f5-8cd4028dd6a8">
+      <Execution id="0d57f03e-a630-488a-87be-f94b5873834e" />
+      <TestMethod
+        codeBase="C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.MSTest\bin\Debug\net6.0\SampleProject.MSTest.dll"
+        adapterTypeName="executor://mstestadapter/v2"
+        className="SampleProject.MSTest.TestServiceTests" name="TestThrowingException" />
+    </UnitTest>
+    <UnitTest name="SkipTest"
+      storage="c:\dev\liquidtestreports\test\sampleproject\sampleproject.tests.mstest\bin\debug\net6.0\sampleproject.mstest.dll"
+      id="80ffe5e7-390e-7a11-4b21-8969639ebf48">
+      <TestCategory>
+        <TestCategoryItem TestCategory="Skip" />
+      </TestCategory>
+      <Execution id="e697d5da-fddc-4af0-affa-71c1e91d44c7" />
+      <TestMethod
+        codeBase="C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.MSTest\bin\Debug\net6.0\SampleProject.MSTest.dll"
+        adapterTypeName="executor://mstestadapter/v2"
+        className="SampleProject.MSTest.TestServiceTests" name="SkipTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="5ff6dcb6-59d9-e03d-13f5-8cd4028dd6a8"
+      executionId="0d57f03e-a630-488a-87be-f94b5873834e"
+      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dcecfeee-3998-3d8c-a5d6-9411bf1f1b06"
+      executionId="cce817c1-b525-4a8f-afe0-98413c61e188"
+      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="23c153f4-e7de-da9a-bdf4-965abee2b1c9"
+      executionId="1c06e105-2b1b-4fd0-92e8-dac8135d1538"
+      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4652d5d4-fc4b-ff90-6049-8df5395edd54"
+      executionId="a0abaf54-1296-48f9-b527-a1f9f1eca021"
+      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6d870c01-332d-4774-bd82-26af6dcd01cf"
+      executionId="d294cd07-1e61-4d4f-a10e-052829fa8de1"
+      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6ae13d5a-17f3-52a9-8da6-ac658a7cbb16"
+      executionId="0495fe9a-f9f3-4382-8e66-a10cdfb2f02e"
+      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="80ffe5e7-390e-7a11-4b21-8969639ebf48"
+      executionId="e697d5da-fddc-4af0-affa-71c1e91d44c7"
+      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="7" executed="6" passed="3" failed="3" error="0" timeout="0" aborted="0"
+      inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0"
+      warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>Test 'SkipTest' was skipped in the test run.&#xD;
+      </StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

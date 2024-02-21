@@ -26,10 +26,10 @@ namespace LiquidTestReports.Cli.Tests
             var files = new List<string>();
 
             // Group by title, add test framework as suffix
-            foreach (var file in new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, _inputTrxDirectory)).GetFiles("*netcoreapp3.1-sample.trx"))
-                files.Add($"File={file};GroupTitle=.NET Core 3.1;TestSuffix= ({file.Name.Split('-')[0]})");
-            foreach (var file in new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, _inputTrxDirectory)).GetFiles("*net461-sample.trx"))
-                files.Add($"File={file};GroupTitle=.NET Framework 4.6.1;TestSuffix= ({file.Name.Split('-')[0]})");
+            foreach (var file in new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, _inputTrxDirectory)).GetFiles("*net8.0-sample.trx"))
+                files.Add($"File={file};GroupTitle=.NET 8.0;TestSuffix= ({file.Name.Split('-')[0]})");
+            foreach (var file in new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, _inputTrxDirectory)).GetFiles("*net6.0-sample.trx"))
+                files.Add($"File={file};GroupTitle=.NET 6.0;TestSuffix= ({file.Name.Split('-')[0]})");
 
             // Act
             Program.Main(files, destinationReport);
@@ -47,10 +47,10 @@ namespace LiquidTestReports.Cli.Tests
             var files = new List<string>();
 
             // Group by test framework, add target framework as suffix
-            foreach (var file in new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, _inputTrxDirectory)).GetFiles("*netcoreapp3.1-sample.trx"))
-                files.Add($"File={file};TestSuffix= (.NET Core 3.1)");
-            foreach (var file in new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, _inputTrxDirectory)).GetFiles("*net461-sample.trx"))
-                files.Add($"File={file};TestSuffix= (.NET Framework 4.6.1)");
+            foreach (var file in new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, _inputTrxDirectory)).GetFiles("*net8.0-sample.trx"))
+                files.Add($"File={file};TestSuffix= (.NET 8.0)");
+            foreach (var file in new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, _inputTrxDirectory)).GetFiles("*net6.0-sample.trx"))
+                files.Add($"File={file};TestSuffix= (.NET 6.0)");
 
             // Act
             Program.Main(files, destinationReport);
@@ -106,10 +106,10 @@ namespace LiquidTestReports.Cli.Tests
             var destinationReport = new FileInfo(Path.Combine(_outputFolder, titleTest));
             var files = new List<string>();
 
-            foreach (var file in new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, _inputJUnitDirectory)).GetFiles("xUnit-netcoreapp3.1-junit-sample.xml"))
+            foreach (var file in new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, _inputJUnitDirectory)).GetFiles("xUnit-net8.0-junit-sample.xml"))
                 files.Add($"File={file};Format=JUnit;GroupTitle=JUnit Tests");
 
-            foreach (var file in new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, _inputTrxDirectory)).GetFiles("xUnit-netcoreapp3.1-sample.trx"))
+            foreach (var file in new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, _inputTrxDirectory)).GetFiles("xUnit-net8.0-sample.trx"))
                 files.Add($"File={file};Format=Trx;GroupTitle=Trx Tests");
 
             // Act
@@ -117,6 +117,10 @@ namespace LiquidTestReports.Cli.Tests
 
             // Assert
             Assert.True(destinationReport.Exists);
+            var content = File.ReadAllText(destinationReport.FullName);
+            Assert.Contains("# My Full Stack Test Report (JUnit + TRX)", content);
+            Assert.Contains("#### JUnit Tests", content);
+            Assert.Contains("#### Trx Tests", content);
         }
 
         [Fact]
@@ -137,6 +141,9 @@ namespace LiquidTestReports.Cli.Tests
 
             // Assert
             Assert.True(destinationReport.Exists);
+            var content = File.ReadAllText(destinationReport.FullName);
+            Assert.Contains("#### JUnit Tests", content);
+            Assert.Contains("#### Trx Tests", content);
         }
 
 
