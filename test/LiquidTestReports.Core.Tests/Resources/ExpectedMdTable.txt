@@ -1,0 +1,21 @@
+﻿<table>
+<thead>
+<tr>
+<th>✔️ Passed</th>
+<th>❌ Failed</th>
+<th>⚠️ Skipped</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr>
+<td>42.86%</td>
+<td>42.86%</td>
+<td>14.29%</td>
+</tr>
+</tbody>
+</table>

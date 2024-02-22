@@ -20,11 +20,11 @@ namespace LiquidTestReports.Cli
     {
         private readonly IAnsiConsole _errorConsole;
         private readonly IAnsiConsole _standardConsole;
-        private readonly ReportInput[] _inputs;
+        private readonly IEnumerable<ReportInput> _inputs;
         private readonly FileInfo _outputFile;
-        private readonly ParametersInput _parameters;
+        private readonly ParametersInput? _parameters;
 
-        internal ConsoleRunner(ReportInput[] inputs, FileInfo outputFile, ParametersInput parameters)
+        internal ConsoleRunner(IEnumerable<ReportInput> inputs, FileInfo outputFile, ParametersInput parameters = null)
         {
             _errorConsole = AnsiConsole.Create(new AnsiConsoleSettings { Out = new AnsiConsoleOutput(Console.Error) });
             _standardConsole = AnsiConsole.Create(new AnsiConsoleSettings { Out = new AnsiConsoleOutput(Console.Out) });
@@ -157,7 +157,7 @@ namespace LiquidTestReports.Cli
             _standardConsole.Write(new FigletText("Cli Tool").Centered().Color(Color.White));
             _standardConsole.WriteLine();
             _standardConsole.WriteLine();
-            _standardConsole.Write(new Rule(title).RuleStyle("grey").LeftAligned());
+            _standardConsole.Write(new Rule(title).RuleStyle("grey").LeftJustified());
             _standardConsole.WriteLine();
         }
 

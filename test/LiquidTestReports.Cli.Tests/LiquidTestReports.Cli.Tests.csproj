@@ -1,19 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-
+    <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.1" />
-    <PackageReference Include="xunit" Version="2.4.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
+    <PackageReference Include="xunit" Version="2.7.0" />
+    <PackageReference Include="xunit.analyzers" Version="1.11.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.7">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="coverlet.collector" Version="1.2.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,43 +20,43 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="JUnitTestInput\MSTest-net461-junit-sample.xml">
+    <None Update="JUnitTestInput\MSTest-net6.0-junit-sample.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="JUnitTestInput\MSTest-netcoreapp3.1-junit-sample.xml">
+    <None Update="JUnitTestInput\MSTest-net8.0-junit-sample.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="JUnitTestInput\NUnit-net461-junit-sample.xml">
+    <None Update="JUnitTestInput\NUnit-net6.0-junit-sample.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="JUnitTestInput\NUnit-netcoreapp3.1-junit-sample.xml">
+    <None Update="JUnitTestInput\NUnit-net8.0-junit-sample.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="JUnitTestInput\xUnit-net461-junit-sample.xml">
+    <None Update="JUnitTestInput\xUnit-net6.0-junit-sample.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="JUnitTestInput\xUnit-netcoreapp3.1-junit-sample.xml">
+    <None Update="JUnitTestInput\xUnit-net8.0-junit-sample.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="TemplateTestInput\example.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="TrxTestInput\MSTest-net461-sample.trx">
+    <None Update="TrxTestInput\MSTest-net6.0-sample.trx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TrxTestInput\MSTest-netcoreapp3.1-sample.trx">
+    <None Update="TrxTestInput\MSTest-net8.0-sample.trx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TrxTestInput\NUnit-net461-sample.trx">
+    <None Update="TrxTestInput\NUnit-net6.0-sample.trx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TrxTestInput\NUnit-netcoreapp3.1-sample.trx">
+    <None Update="TrxTestInput\NUnit-net8.0-sample.trx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TrxTestInput\xUnit-net461-sample.trx">
+    <None Update="TrxTestInput\xUnit-net6.0-sample.trx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TrxTestInput\xUnit-netcoreapp3.1-sample.trx">
+    <None Update="TrxTestInput\xUnit-net8.0-sample.trx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

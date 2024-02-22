@@ -14,7 +14,7 @@ namespace SampleProject.NUnit
             var basePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             TestContext.WriteLine("Attach an image");
             TestContext.AddTestAttachment(Path.Combine(basePath, "resources", "attachmentSample.png"), "screenshot");
-            Assert.True(true);
+            Assert.That(true, Is.True);
         }
     }
 }

@@ -1,12 +1,11 @@
 ﻿using LiquidTestReports.Cli.Models;
-using LiquidTestReports.Core.Models;
 using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
+using System.Linq;
 
 namespace LiquidTestReports.Cli
 {
-
     /// <summary>
     /// LiquidTestReports.Cli - dotnet tool for test report generation
     /// </summary>
@@ -27,14 +26,15 @@ namespace LiquidTestReports.Cli
         /// <param name="title">Optional overall report title displayed in default report template.</param>
         /// <param name="template">Optional user defined liquid template. Defaults to multi report markdown template is used.</param>
         /// <param name="parameters">Optional user defined parameters.</param>
-        public static void Main(ReportInput[] inputs,
+        public static void Main(IEnumerable<string> inputs,
             FileInfo outputFile,
             string title = Constants.DefaultTitle,
             FileInfo template = null,
-            ParametersInput parameters = null)
+            string parameters = null)
         {
             var exitFlag = false;
-            if (inputs is null || inputs.Length == 0)
+            var reportInputs = inputs.Select(r => new ReportInput(r));
+            if (inputs is null || !inputs.Any())
             {
                 Console.Error.WriteLine(new ArgumentNullException(nameof(inputs)));
                 exitFlag = true;
@@ -46,16 +46,21 @@ namespace LiquidTestReports.Cli
                 exitFlag = true;
             }
 
-            if(template != null && !template.Exists)
+            if (template != null && !template.Exists)
             {
                 Console.Error.WriteLine(new ArgumentNullException(nameof(template)));
                 exitFlag = true;
             }
 
-            if(parameters != null && parameters.Parameters.Count < 1)
+            ParametersInput parameterInputs = null;
+            if (parameters is not null)
             {
-                Console.Error.WriteLine(new ArgumentNullException(nameof(parameters)));
-                exitFlag = true;
+                parameterInputs = new ParametersInput(parameters);
+                if (parameterInputs is null)
+                {
+                    Console.Error.WriteLine(new ArgumentNullException(nameof(parameters)));
+                    exitFlag = true;
+                }
             }
 
             if (exitFlag)
@@ -64,7 +69,7 @@ namespace LiquidTestReports.Cli
                 Environment.Exit((int)ExitCodes.InvalidCommandLine);
             }
 
-            var runner = new ConsoleRunner(inputs, outputFile, parameters);
+            var runner = new ConsoleRunner(reportInputs, outputFile, parameterInputs);
             var templateContent = template is null ? null : File.ReadAllText(template.FullName);
             runner.Run(title, templateContent);
         }

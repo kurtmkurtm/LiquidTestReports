@@ -1,0 +1,66 @@
+<testsuites>
+  <testsuite name="SampleProject.MSTest.dll" tests="7" skipped="1" failures="3" errors="0"
+    time="0.031942700000000004" timestamp="2024-02-21T22:36:17" hostname="DESKTOP" id="0"
+    package="SampleProject.MSTest.dll">
+    <properties />
+    <testcase classname="SampleProject.MSTest.AttachmentTest" name="AttachImage" time="0.0030628" />
+    <testcase classname="SampleProject.MSTest.TestServiceTests" name="TestTheory (True)"
+      time="0.0010146" />
+    <testcase classname="SampleProject.MSTest.TestServiceTests" name="TestTheory (False)"
+      time="0.0234071">
+      <failure type="failure"
+        message="Assert.AreEqual failed. Expected:&lt;False&gt;. Actual:&lt;True&gt;. ">at
+        SampleProject.MSTest.TestServiceTests.TestTheory(Boolean expected) in
+        C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.MSTest\TestServiceTests.cs:line
+        34</failure>
+    </testcase>
+    <testcase classname="SampleProject.MSTest.TestServiceTests" name="PassingTest" time="0.0001587" />
+    <testcase classname="SampleProject.MSTest.TestServiceTests" name="TestThrowingException"
+      time="0.0037445">
+      <failure type="failure"
+        message="Test method SampleProject.MSTest.TestServiceTests.TestThrowingException threw exception: &#xD;&#xA;System.Exception: Pretty good exception">at
+        SampleProject.TestService.GetException() in
+        C:\Dev\LiquidTestReports\test\SampleProject\SampleProject\TestService.cs:line 19
+        at SampleProject.MSTest.TestServiceTests.TestThrowingException() in
+        C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.MSTest\TestServiceTests.cs:line
+        59</failure>
+    </testcase>
+    <testcase classname="SampleProject.MSTest.TestServiceTests" name="FailTest" time="0.0005550">
+      <failure type="failure" message="Assert.IsTrue failed. ">at
+        SampleProject.MSTest.TestServiceTests.FailTest() in
+        C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.MSTest\TestServiceTests.cs:line
+        70</failure>
+    </testcase>
+    <testcase classname="SampleProject.MSTest.TestServiceTests" name="SkipTest" time="0.0000001">
+      <skipped />
+    </testcase>
+    <system-out>
+
+      TestContext Messages:
+      Attach an image
+
+
+      TestContext Messages:
+      Running SampleProject.Tests.MSTest tests
+
+
+      TestContext Messages:
+      Running SampleProject.Tests.MSTest tests
+
+
+      TestContext Messages:
+      Running SampleProject.Tests.MSTest tests
+
+
+      TestContext Messages:
+      Running SampleProject.Tests.MSTest tests
+
+
+      TestContext Messages:
+      Running SampleProject.Tests.MSTest tests
+      This test will fail
+
+    </system-out>
+    <system-err></system-err>
+  </testsuite>
+</testsuites>

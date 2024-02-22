@@ -15,6 +15,18 @@ Liquid Test Reports are logger extensions for the [Visual Studio Test Platform](
 
 ### Latest:
 
+#### 2.0.0-beta.2
+
+- [All]
+  - Add support for 
+    - .NET 7
+    - .NET 8
+  - Drop support for the following EOL frameworks
+    - .NET Framework 4.5.1
+    - .NET 5.0
+    - .NET Core 3.1 (LTS)
+    - .NET Core 2.1 (LTS)
+
 #### 1.4.3 beta
 
 - [Cli]
@@ -43,7 +55,7 @@ Liquid Test Reports are logger extensions for the [Visual Studio Test Platform](
 #### Installation
 
 ```bash
-dotnet tool install --global LiquidTestReports.Cli --version 1.4.3-beta
+dotnet tool install --global LiquidTestReports.Cli --version 2.0.0-beta.2
 ```
 
 #### Usage
