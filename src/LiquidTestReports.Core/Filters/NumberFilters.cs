@@ -19,5 +19,15 @@ namespace LiquidTestReports.Core.Filters
         {
             return d1 / d2;
         }
+
+        /// <summary>
+        /// Filter to convert decimals to percentage strings
+        /// </summary>
+        /// <param name="d1">The dividend.</param>
+        /// <returns>The result of dividing d1 by d2.</returns>
+        public static object AsPercentage(decimal d1)
+        {
+            return d1.ToString("P2");
+        }
     }
 }
