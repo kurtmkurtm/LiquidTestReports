@@ -17,7 +17,7 @@
 - Test Environment: {{ parameters.Environment }}
 - Ticket Reference: {{ parameters.TicketId }}
 - Overall Result: {{overall}}
-- Pass Rate: {{pass_percentage}}% 
+- Pass Rate: {{pass_percentage | as_percentage}}
 - Total Tests: {{total}}
 
 
@@ -32,7 +32,7 @@
 #### {{ set.source }}
 
 Run Id: {{ set.parameters.RunId }}
-Pass Rate: {{ passed_total | divide_by_decimal: group_total | times: 100.0 | round: 2 }}%
+Pass Rate: {{ passed_total | divide_by_decimal: group_total | as_percentage }}
 Tests: {{ set.results | size }}
 
 ---

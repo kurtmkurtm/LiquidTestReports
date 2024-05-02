@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
     <IsPackable>false</IsPackable>
-    <AssemblyName>LiquidTestReports.Core.TestLogger.Tests</AssemblyName>
+    <AssemblyName>LiquidTestReports.Core.Tests</AssemblyName>
     <RootNamespace>LiquidTestReports.Tests</RootNamespace>
   </PropertyGroup>
 
