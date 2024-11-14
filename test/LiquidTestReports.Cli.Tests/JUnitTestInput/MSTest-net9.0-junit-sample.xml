@@ -1,21 +1,21 @@
 <testsuites>
-  <testsuite name="SampleProject.MSTest.dll" tests="7" skipped="1" failures="3" errors="0" time="0.022603299999999996" timestamp="2024-11-14T07:12:55" hostname="DESKTOP" id="0" package="SampleProject.MSTest.dll">
+  <testsuite name="SampleProject.MSTest.dll" tests="7" skipped="1" failures="3" errors="0" time="0.018647999999999998" timestamp="2024-11-14T07:13:06" hostname="DESKTOP" id="0" package="SampleProject.MSTest.dll">
     <properties />
-    <testcase classname="SampleProject.MSTest.AttachmentTest" name="AttachImage" time="0.0045742" />
-    <testcase classname="SampleProject.MSTest.TestServiceTests" name="TestTheory (True)" time="0.0019058" />
-    <testcase classname="SampleProject.MSTest.TestServiceTests" name="TestTheory (False)" time="0.0143238">
+    <testcase classname="SampleProject.MSTest.AttachmentTest" name="AttachImage" time="0.0029872" />
+    <testcase classname="SampleProject.MSTest.TestServiceTests" name="TestTheory (True)" time="0.0020369" />
+    <testcase classname="SampleProject.MSTest.TestServiceTests" name="TestTheory (False)" time="0.0118147">
       <failure type="failure" message="Assert.AreEqual failed. Expected:&lt;False&gt;. Actual:&lt;True&gt;. ">at SampleProject.MSTest.TestServiceTests.TestTheory(Boolean expected) in C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.MSTest\TestServiceTests.cs:line 34
    at InvokeStub_TestServiceTests.TestTheory(Object, Span`1)
    at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</failure>
     </testcase>
-    <testcase classname="SampleProject.MSTest.TestServiceTests" name="PassingTest" time="0.0002326" />
-    <testcase classname="SampleProject.MSTest.TestServiceTests" name="TestThrowingException" time="0.0012770">
+    <testcase classname="SampleProject.MSTest.TestServiceTests" name="PassingTest" time="0.0002549" />
+    <testcase classname="SampleProject.MSTest.TestServiceTests" name="TestThrowingException" time="0.0012925">
       <failure type="failure" message="Test method SampleProject.MSTest.TestServiceTests.TestThrowingException threw exception: &#xD;&#xA;System.Exception: Pretty good exception">at SampleProject.TestService.GetException() in C:\Dev\LiquidTestReports\test\SampleProject\SampleProject\TestService.cs:line 19
    at SampleProject.MSTest.TestServiceTests.TestThrowingException() in C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.MSTest\TestServiceTests.cs:line 59
    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</failure>
     </testcase>
-    <testcase classname="SampleProject.MSTest.TestServiceTests" name="FailTest" time="0.0002899">
+    <testcase classname="SampleProject.MSTest.TestServiceTests" name="FailTest" time="0.0002618">
       <failure type="failure" message="Assert.IsTrue failed. ">at SampleProject.MSTest.TestServiceTests.FailTest() in C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.MSTest\TestServiceTests.cs:line 70
    at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
    at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</failure>

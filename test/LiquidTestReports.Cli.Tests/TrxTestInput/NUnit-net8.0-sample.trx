@@ -1,120 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TestRun id="225b9839-46fd-42e9-89ae-b59b65d30b58" name="kurt@DESKTOP 2024-02-22 08:34:30"
-  runUser="DESKTOP\kurt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
-  <Times creation="2024-02-22T08:34:30.3279329+10:00" queuing="2024-02-22T08:34:30.3279331+10:00"
-    start="2024-02-22T08:34:29.6215892+10:00" finish="2024-02-22T08:34:30.3523469+10:00" />
-  <TestSettings name="default" id="3f989646-a45f-44ae-ac74-069d56b5ddab">
-    <Deployment runDeploymentRoot="DESKTOP_2024-02-22_08_34_30" />
+<TestRun id="57c4c6a5-0d7e-46f9-b82c-eede555c0d98" name="kurt@DESKTOP 2024-11-14 17:13:27" runUser="DESKTOP\kurt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2024-11-14T17:13:27.3023966+10:00" queuing="2024-11-14T17:13:27.3023969+10:00" start="2024-11-14T17:13:26.4918328+10:00" finish="2024-11-14T17:13:27.3250744+10:00" />
+  <TestSettings name="default" id="3de2c6ab-236e-433d-a893-3e7666d9a67f">
+    <Deployment runDeploymentRoot="kurt_DESKTOP_2024-11-14_17_13_27" />
   </TestSettings>
   <Results>
-    <UnitTestResult executionId="2e71d5bd-d6c9-4052-8808-b6b3cfe6c3d6"
-      testId="c120beeb-67a5-aeb8-f6c3-ac7c5841e7e2" testName="TestTheory(False)"
-      computerName="DESKTOP" duration="00:00:00.0017010"
-      startTime="2024-02-22T08:34:30.1816282+10:00" endTime="2024-02-22T08:34:30.1833287+10:00"
-      testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed"
-      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d"
-      relativeResultsDirectory="2e71d5bd-d6c9-4052-8808-b6b3cfe6c3d6">
-      <Output>
-        <StdOut>Running SampleProject.Tests.NUnit tests</StdOut>
-        <ErrorInfo>
-          <Message> Assert.That(expected, Is.EqualTo(result))&#xD;
-            Expected: True&#xD;
-            But was: False&#xD;
-          </Message>
-          <StackTrace> at SampleProject.NUnit.TestServiceTests.TestTheory(Boolean expected) in
-            C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\TestServiceTests.cs:line
-            25&#xD;
-            at InvokeStub_TestServiceTests.TestTheory(Object, Span`1)&#xD;
-
-            1) at SampleProject.NUnit.TestServiceTests.TestTheory(Boolean expected) in
-            C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\TestServiceTests.cs:line
-            25&#xD;
-            at InvokeStub_TestServiceTests.TestTheory(Object, Span`1)&#xD;
-
-          </StackTrace>
-        </ErrorInfo>
-      </Output>
-    </UnitTestResult>
-    <UnitTestResult executionId="72012c0b-51d0-4004-9d9f-59543b97d435"
-      testId="b0a188dd-3bff-ab15-2c78-59fc7d7de33b" testName="FailTest"
-      computerName="DESKTOP" duration="00:00:00.0294860"
-      startTime="2024-02-22T08:34:30.1438711+10:00" endTime="2024-02-22T08:34:30.1733562+10:00"
-      testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed"
-      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d"
-      relativeResultsDirectory="72012c0b-51d0-4004-9d9f-59543b97d435">
-      <Output>
-        <StdOut>Running SampleProject.Tests.NUnit tests&#xD;
-          This test will fail</StdOut>
-        <ErrorInfo>
-          <Message> Assert.That(true, Is.False)&#xD;
-            Expected: False&#xD;
-            But was: True&#xD;
-          </Message>
-          <StackTrace> at SampleProject.NUnit.TestServiceTests.FailTest() in
-            C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\TestServiceTests.cs:line
-            61&#xD;
-
-            1) at SampleProject.NUnit.TestServiceTests.FailTest() in
-            C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\TestServiceTests.cs:line
-            61&#xD;
-
-          </StackTrace>
-        </ErrorInfo>
-      </Output>
-    </UnitTestResult>
-    <UnitTestResult executionId="f7b09915-1113-4826-a072-4954b929f288"
-      testId="911a211d-f3ce-1158-fca5-85dbb77e71b1" testName="TestThrowingException"
-      computerName="DESKTOP" duration="00:00:00.0056650"
-      startTime="2024-02-22T08:34:30.1834249+10:00" endTime="2024-02-22T08:34:30.1890900+10:00"
-      testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed"
-      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d"
-      relativeResultsDirectory="f7b09915-1113-4826-a072-4954b929f288">
-      <Output>
-        <StdOut>Running SampleProject.Tests.NUnit tests</StdOut>
-        <ErrorInfo>
-          <Message>System.Exception : Pretty good exception</Message>
-          <StackTrace> at SampleProject.TestService.GetException() in
-            C:\Dev\LiquidTestReports\test\SampleProject\SampleProject\TestService.cs:line 19&#xD;
-            at SampleProject.NUnit.TestServiceTests.TestThrowingException() in
-            C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\TestServiceTests.cs:line
-            50&#xD;
-            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature
-            sig, Boolean isConstructor)&#xD;
-            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags
-            invokeAttr)
-          </StackTrace>
-        </ErrorInfo>
-      </Output>
-    </UnitTestResult>
-    <UnitTestResult executionId="e80d5f51-31b8-477e-b61d-5adf04643fa9"
-      testId="a810ceed-12fa-d2cb-58ac-46722001948f" testName="PassingTest"
-      computerName="DESKTOP" duration="00:00:00.0009830"
-      startTime="2024-02-22T08:34:30.1734426+10:00" endTime="2024-02-22T08:34:30.1744252+10:00"
-      testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed"
-      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d"
-      relativeResultsDirectory="e80d5f51-31b8-477e-b61d-5adf04643fa9">
-      <Output>
-        <StdOut>Running SampleProject.Tests.NUnit tests</StdOut>
-      </Output>
-    </UnitTestResult>
-    <UnitTestResult executionId="7f633074-a082-46e2-9e4d-9d734787fb52"
-      testId="0e1ae64b-f2bf-7ff7-e7aa-eb6e7b50ba46" testName="TestTheory(True)"
-      computerName="DESKTOP" duration="00:00:00.0069360"
-      startTime="2024-02-22T08:34:30.1746471+10:00" endTime="2024-02-22T08:34:30.1815830+10:00"
-      testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed"
-      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d"
-      relativeResultsDirectory="7f633074-a082-46e2-9e4d-9d734787fb52">
-      <Output>
-        <StdOut>Running SampleProject.Tests.NUnit tests</StdOut>
-      </Output>
-    </UnitTestResult>
-    <UnitTestResult executionId="4879d6f6-dbf8-4bc2-92c9-866f944e3ccd"
-      testId="728830dd-059e-2376-1abd-55d3a563c887" testName="SkipTest"
-      computerName="DESKTOP" duration="00:00:00.0001650"
-      startTime="2024-02-22T08:34:30.1744444+10:00" endTime="2024-02-22T08:34:30.1746093+10:00"
-      testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted"
-      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d"
-      relativeResultsDirectory="4879d6f6-dbf8-4bc2-92c9-866f944e3ccd">
+    <UnitTestResult executionId="ccefcbde-1b35-44a5-8a3c-cd7724129eb9" testId="728830dd-059e-2376-1abd-55d3a563c887" testName="SkipTest" computerName="DESKTOP" duration="00:00:00.0004990" startTime="2024-11-14T17:13:27.1216434+10:00" endTime="2024-11-14T17:13:27.1221479+10:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ccefcbde-1b35-44a5-8a3c-cd7724129eb9">
       <Output>
         <StdOut>Ignore test</StdOut>
         <ErrorInfo>
@@ -122,13 +13,65 @@
         </ErrorInfo>
       </Output>
     </UnitTestResult>
-    <UnitTestResult executionId="585f72fe-873f-428b-a56d-aed5247a58a3"
-      testId="1fef8bc5-57be-7221-8d06-4e31bf989466" testName="AttachImage"
-      computerName="DESKTOP" duration="00:00:00.0027640"
-      startTime="2024-02-22T08:34:30.1385228+10:00" endTime="2024-02-22T08:34:30.1412470+10:00"
-      testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed"
-      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d"
-      relativeResultsDirectory="585f72fe-873f-428b-a56d-aed5247a58a3">
+    <UnitTestResult executionId="24f865a0-34ff-4d12-aa08-7ed63d992a99" testId="a810ceed-12fa-d2cb-58ac-46722001948f" testName="PassingTest" computerName="DESKTOP" duration="00:00:00.0011130" startTime="2024-11-14T17:13:27.1204903+10:00" endTime="2024-11-14T17:13:27.1216012+10:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="24f865a0-34ff-4d12-aa08-7ed63d992a99">
+      <Output>
+        <StdOut>Running SampleProject.Tests.NUnit tests</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="0589db3d-3ea3-4b34-852e-fc2905513a24" testId="b0a188dd-3bff-ab15-2c78-59fc7d7de33b" testName="FailTest" computerName="DESKTOP" duration="00:00:00.0316210" startTime="2024-11-14T17:13:27.0887431+10:00" endTime="2024-11-14T17:13:27.1203632+10:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0589db3d-3ea3-4b34-852e-fc2905513a24">
+      <Output>
+        <StdOut>Running SampleProject.Tests.NUnit tests&#xD;
+This test will fail</StdOut>
+        <ErrorInfo>
+          <Message>  Assert.That(true, Is.False)&#xD;
+  Expected: False&#xD;
+  But was:  True&#xD;
+</Message>
+          <StackTrace>   at SampleProject.NUnit.TestServiceTests.FailTest() in C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\TestServiceTests.cs:line 61&#xD;
+
+1)    at SampleProject.NUnit.TestServiceTests.FailTest() in C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\TestServiceTests.cs:line 61&#xD;
+
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2e712fc1-0ec0-44b4-9101-a59251e4723c" testId="911a211d-f3ce-1158-fca5-85dbb77e71b1" testName="TestThrowingException" computerName="DESKTOP" duration="00:00:00.0036370" startTime="2024-11-14T17:13:27.1328436+10:00" endTime="2024-11-14T17:13:27.1364799+10:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2e712fc1-0ec0-44b4-9101-a59251e4723c">
+      <Output>
+        <StdOut>Running SampleProject.Tests.NUnit tests</StdOut>
+        <ErrorInfo>
+          <Message>System.Exception : Pretty good exception</Message>
+          <StackTrace>   at SampleProject.TestService.GetException() in C:\Dev\LiquidTestReports\test\SampleProject\SampleProject\TestService.cs:line 19&#xD;
+   at SampleProject.NUnit.TestServiceTests.TestThrowingException() in C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\TestServiceTests.cs:line 50&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="8970656e-3d19-49d6-9bb4-93d3614d6c58" testId="0e1ae64b-f2bf-7ff7-e7aa-eb6e7b50ba46" testName="TestTheory(True)" computerName="DESKTOP" duration="00:00:00.0086230" startTime="2024-11-14T17:13:27.1222963+10:00" endTime="2024-11-14T17:13:27.1309190+10:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8970656e-3d19-49d6-9bb4-93d3614d6c58">
+      <Output>
+        <StdOut>Running SampleProject.Tests.NUnit tests</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="deaf361a-bf4f-4256-869a-8ec9e99b8f1f" testId="c120beeb-67a5-aeb8-f6c3-ac7c5841e7e2" testName="TestTheory(False)" computerName="DESKTOP" duration="00:00:00.0017210" startTime="2024-11-14T17:13:27.1309606+10:00" endTime="2024-11-14T17:13:27.1326814+10:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="deaf361a-bf4f-4256-869a-8ec9e99b8f1f">
+      <Output>
+        <StdOut>Running SampleProject.Tests.NUnit tests</StdOut>
+        <ErrorInfo>
+          <Message>  Assert.That(expected, Is.EqualTo(result))&#xD;
+  Expected: True&#xD;
+  But was:  False&#xD;
+</Message>
+          <StackTrace>   at SampleProject.NUnit.TestServiceTests.TestTheory(Boolean expected) in C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\TestServiceTests.cs:line 25&#xD;
+   at InvokeStub_TestServiceTests.TestTheory(Object, Span`1)&#xD;
+
+1)    at SampleProject.NUnit.TestServiceTests.TestTheory(Boolean expected) in C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\TestServiceTests.cs:line 25&#xD;
+   at InvokeStub_TestServiceTests.TestTheory(Object, Span`1)&#xD;
+
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="ddf2dcbb-d8b7-4d0c-874a-d0a0b76e8643" testId="1fef8bc5-57be-7221-8d06-4e31bf989466" testName="AttachImage" computerName="DESKTOP" duration="00:00:00.0039810" startTime="2024-11-14T17:13:27.0812202+10:00" endTime="2024-11-14T17:13:27.0851593+10:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ddf2dcbb-d8b7-4d0c-874a-d0a0b76e8643">
       <Output>
         <StdOut>Attach an image</StdOut>
       </Output>
@@ -138,144 +81,71 @@
     </UnitTestResult>
   </Results>
   <TestDefinitions>
-    <UnitTest name="TestTheory(False)"
-      storage="c:\dev\liquidtestreports\test\sampleproject\sampleproject.tests.nunit\bin\debug\net8.0\sampleproject.nunit.dll"
-      id="c120beeb-67a5-aeb8-f6c3-ac7c5841e7e2">
-      <Execution id="2e71d5bd-d6c9-4052-8808-b6b3cfe6c3d6" />
-      <TestMethod
-        codeBase="C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\bin\Debug\net8.0\SampleProject.NUnit.dll"
-        adapterTypeName="executor://nunit3testexecutor/"
-        className="SampleProject.NUnit.TestServiceTests" name="TestTheory(False)" />
+    <UnitTest name="TestTheory(False)" storage="c:\dev\liquidtestreports\test\sampleproject\sampleproject.tests.nunit\bin\debug\net8.0\sampleproject.nunit.dll" id="c120beeb-67a5-aeb8-f6c3-ac7c5841e7e2">
+      <Execution id="deaf361a-bf4f-4256-869a-8ec9e99b8f1f" />
+      <TestMethod codeBase="C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\bin\Debug\net8.0\SampleProject.NUnit.dll" adapterTypeName="executor://nunit3testexecutor/" className="SampleProject.NUnit.TestServiceTests" name="TestTheory(False)" />
     </UnitTest>
-    <UnitTest name="AttachImage"
-      storage="c:\dev\liquidtestreports\test\sampleproject\sampleproject.tests.nunit\bin\debug\net8.0\sampleproject.nunit.dll"
-      id="1fef8bc5-57be-7221-8d06-4e31bf989466">
-      <Execution id="585f72fe-873f-428b-a56d-aed5247a58a3" />
-      <TestMethod
-        codeBase="C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\bin\Debug\net8.0\SampleProject.NUnit.dll"
-        adapterTypeName="executor://nunit3testexecutor/" className="SampleProject.NUnit.Attachment"
-        name="AttachImage" />
+    <UnitTest name="AttachImage" storage="c:\dev\liquidtestreports\test\sampleproject\sampleproject.tests.nunit\bin\debug\net8.0\sampleproject.nunit.dll" id="1fef8bc5-57be-7221-8d06-4e31bf989466">
+      <Execution id="ddf2dcbb-d8b7-4d0c-874a-d0a0b76e8643" />
+      <TestMethod codeBase="C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\bin\Debug\net8.0\SampleProject.NUnit.dll" adapterTypeName="executor://nunit3testexecutor/" className="SampleProject.NUnit.Attachment" name="AttachImage" />
     </UnitTest>
-    <UnitTest name="SkipTest"
-      storage="c:\dev\liquidtestreports\test\sampleproject\sampleproject.tests.nunit\bin\debug\net8.0\sampleproject.nunit.dll"
-      id="728830dd-059e-2376-1abd-55d3a563c887">
-      <Execution id="4879d6f6-dbf8-4bc2-92c9-866f944e3ccd" />
-      <TestMethod
-        codeBase="C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\bin\Debug\net8.0\SampleProject.NUnit.dll"
-        adapterTypeName="executor://nunit3testexecutor/"
-        className="SampleProject.NUnit.TestServiceTests" name="SkipTest" />
+    <UnitTest name="SkipTest" storage="c:\dev\liquidtestreports\test\sampleproject\sampleproject.tests.nunit\bin\debug\net8.0\sampleproject.nunit.dll" id="728830dd-059e-2376-1abd-55d3a563c887">
+      <Execution id="ccefcbde-1b35-44a5-8a3c-cd7724129eb9" />
+      <TestMethod codeBase="C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\bin\Debug\net8.0\SampleProject.NUnit.dll" adapterTypeName="executor://nunit3testexecutor/" className="SampleProject.NUnit.TestServiceTests" name="SkipTest" />
     </UnitTest>
-    <UnitTest name="FailTest"
-      storage="c:\dev\liquidtestreports\test\sampleproject\sampleproject.tests.nunit\bin\debug\net8.0\sampleproject.nunit.dll"
-      id="b0a188dd-3bff-ab15-2c78-59fc7d7de33b">
-      <Execution id="72012c0b-51d0-4004-9d9f-59543b97d435" />
-      <TestMethod
-        codeBase="C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\bin\Debug\net8.0\SampleProject.NUnit.dll"
-        adapterTypeName="executor://nunit3testexecutor/"
-        className="SampleProject.NUnit.TestServiceTests" name="FailTest" />
+    <UnitTest name="FailTest" storage="c:\dev\liquidtestreports\test\sampleproject\sampleproject.tests.nunit\bin\debug\net8.0\sampleproject.nunit.dll" id="b0a188dd-3bff-ab15-2c78-59fc7d7de33b">
+      <Execution id="0589db3d-3ea3-4b34-852e-fc2905513a24" />
+      <TestMethod codeBase="C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\bin\Debug\net8.0\SampleProject.NUnit.dll" adapterTypeName="executor://nunit3testexecutor/" className="SampleProject.NUnit.TestServiceTests" name="FailTest" />
     </UnitTest>
-    <UnitTest name="TestTheory(True)"
-      storage="c:\dev\liquidtestreports\test\sampleproject\sampleproject.tests.nunit\bin\debug\net8.0\sampleproject.nunit.dll"
-      id="0e1ae64b-f2bf-7ff7-e7aa-eb6e7b50ba46">
-      <Execution id="7f633074-a082-46e2-9e4d-9d734787fb52" />
-      <TestMethod
-        codeBase="C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\bin\Debug\net8.0\SampleProject.NUnit.dll"
-        adapterTypeName="executor://nunit3testexecutor/"
-        className="SampleProject.NUnit.TestServiceTests" name="TestTheory(True)" />
+    <UnitTest name="TestTheory(True)" storage="c:\dev\liquidtestreports\test\sampleproject\sampleproject.tests.nunit\bin\debug\net8.0\sampleproject.nunit.dll" id="0e1ae64b-f2bf-7ff7-e7aa-eb6e7b50ba46">
+      <Execution id="8970656e-3d19-49d6-9bb4-93d3614d6c58" />
+      <TestMethod codeBase="C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\bin\Debug\net8.0\SampleProject.NUnit.dll" adapterTypeName="executor://nunit3testexecutor/" className="SampleProject.NUnit.TestServiceTests" name="TestTheory(True)" />
     </UnitTest>
-    <UnitTest name="PassingTest"
-      storage="c:\dev\liquidtestreports\test\sampleproject\sampleproject.tests.nunit\bin\debug\net8.0\sampleproject.nunit.dll"
-      id="a810ceed-12fa-d2cb-58ac-46722001948f">
-      <Execution id="e80d5f51-31b8-477e-b61d-5adf04643fa9" />
-      <TestMethod
-        codeBase="C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\bin\Debug\net8.0\SampleProject.NUnit.dll"
-        adapterTypeName="executor://nunit3testexecutor/"
-        className="SampleProject.NUnit.TestServiceTests" name="PassingTest" />
+    <UnitTest name="PassingTest" storage="c:\dev\liquidtestreports\test\sampleproject\sampleproject.tests.nunit\bin\debug\net8.0\sampleproject.nunit.dll" id="a810ceed-12fa-d2cb-58ac-46722001948f">
+      <Execution id="24f865a0-34ff-4d12-aa08-7ed63d992a99" />
+      <TestMethod codeBase="C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\bin\Debug\net8.0\SampleProject.NUnit.dll" adapterTypeName="executor://nunit3testexecutor/" className="SampleProject.NUnit.TestServiceTests" name="PassingTest" />
     </UnitTest>
-    <UnitTest name="TestThrowingException"
-      storage="c:\dev\liquidtestreports\test\sampleproject\sampleproject.tests.nunit\bin\debug\net8.0\sampleproject.nunit.dll"
-      id="911a211d-f3ce-1158-fca5-85dbb77e71b1">
-      <Execution id="f7b09915-1113-4826-a072-4954b929f288" />
-      <TestMethod
-        codeBase="C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\bin\Debug\net8.0\SampleProject.NUnit.dll"
-        adapterTypeName="executor://nunit3testexecutor/"
-        className="SampleProject.NUnit.TestServiceTests" name="TestThrowingException" />
+    <UnitTest name="TestThrowingException" storage="c:\dev\liquidtestreports\test\sampleproject\sampleproject.tests.nunit\bin\debug\net8.0\sampleproject.nunit.dll" id="911a211d-f3ce-1158-fca5-85dbb77e71b1">
+      <Execution id="2e712fc1-0ec0-44b4-9101-a59251e4723c" />
+      <TestMethod codeBase="C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\bin\Debug\net8.0\SampleProject.NUnit.dll" adapterTypeName="executor://nunit3testexecutor/" className="SampleProject.NUnit.TestServiceTests" name="TestThrowingException" />
     </UnitTest>
   </TestDefinitions>
   <TestEntries>
-    <TestEntry testId="c120beeb-67a5-aeb8-f6c3-ac7c5841e7e2"
-      executionId="2e71d5bd-d6c9-4052-8808-b6b3cfe6c3d6"
-      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
-    <TestEntry testId="b0a188dd-3bff-ab15-2c78-59fc7d7de33b"
-      executionId="72012c0b-51d0-4004-9d9f-59543b97d435"
-      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
-    <TestEntry testId="911a211d-f3ce-1158-fca5-85dbb77e71b1"
-      executionId="f7b09915-1113-4826-a072-4954b929f288"
-      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
-    <TestEntry testId="a810ceed-12fa-d2cb-58ac-46722001948f"
-      executionId="e80d5f51-31b8-477e-b61d-5adf04643fa9"
-      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
-    <TestEntry testId="0e1ae64b-f2bf-7ff7-e7aa-eb6e7b50ba46"
-      executionId="7f633074-a082-46e2-9e4d-9d734787fb52"
-      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
-    <TestEntry testId="728830dd-059e-2376-1abd-55d3a563c887"
-      executionId="4879d6f6-dbf8-4bc2-92c9-866f944e3ccd"
-      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
-    <TestEntry testId="1fef8bc5-57be-7221-8d06-4e31bf989466"
-      executionId="585f72fe-873f-428b-a56d-aed5247a58a3"
-      testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="728830dd-059e-2376-1abd-55d3a563c887" executionId="ccefcbde-1b35-44a5-8a3c-cd7724129eb9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a810ceed-12fa-d2cb-58ac-46722001948f" executionId="24f865a0-34ff-4d12-aa08-7ed63d992a99" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b0a188dd-3bff-ab15-2c78-59fc7d7de33b" executionId="0589db3d-3ea3-4b34-852e-fc2905513a24" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="911a211d-f3ce-1158-fca5-85dbb77e71b1" executionId="2e712fc1-0ec0-44b4-9101-a59251e4723c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0e1ae64b-f2bf-7ff7-e7aa-eb6e7b50ba46" executionId="8970656e-3d19-49d6-9bb4-93d3614d6c58" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c120beeb-67a5-aeb8-f6c3-ac7c5841e7e2" executionId="deaf361a-bf4f-4256-869a-8ec9e99b8f1f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1fef8bc5-57be-7221-8d06-4e31bf989466" executionId="ddf2dcbb-d8b7-4d0c-874a-d0a0b76e8643" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
   </TestEntries>
   <TestLists>
     <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
     <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
   </TestLists>
   <ResultSummary outcome="Failed">
-    <Counters total="7" executed="6" passed="3" failed="3" error="0" timeout="0" aborted="0"
-      inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0"
-      warning="0" completed="0" inProgress="0" pending="0" />
+    <Counters total="7" executed="6" passed="3" failed="3" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
     <Output>
-      <StdOut>NUnit Adapter 4.5.0.0: Test execution started&#xD;
-        Running all tests in
-        C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\bin\Debug\net8.0\SampleProject.NUnit.dll&#xD;
-        NUnit3TestExecutor discovered 7 of 7 NUnit test cases using Current Discovery mode,
-        Non-Explicit run&#xD;
-        SkipTest: Ignore test&#xD;
-        NUnit Adapter 4.5.0.0: Test execution complete&#xD;
-        Test 'SkipTest' was skipped in the test run.&#xD;
-      </StdOut>
+      <StdOut>NUnit Adapter 4.6.0.0: Test execution started&#xD;
+Running all tests in C:\Dev\LiquidTestReports\test\SampleProject\SampleProject.Tests.NUnit\bin\Debug\net8.0\SampleProject.NUnit.dll&#xD;
+   NUnit3TestExecutor discovered 7 of 7 NUnit test cases using Current Discovery mode, Non-Explicit run&#xD;
+Attach an image&#xD;
+&#xD;
+Running SampleProject.Tests.NUnit tests&#xD;
+This test will fail&#xD;
+&#xD;
+Running SampleProject.Tests.NUnit tests&#xD;
+&#xD;
+SkipTest: Ignore test&#xD;
+Running SampleProject.Tests.NUnit tests&#xD;
+&#xD;
+Running SampleProject.Tests.NUnit tests&#xD;
+&#xD;
+Running SampleProject.Tests.NUnit tests&#xD;
+&#xD;
+NUnit Adapter 4.6.0.0: Test execution complete&#xD;
+Test 'SkipTest' was skipped in the test run.&#xD;
+</StdOut>
     </Output>
-    <RunInfos>
-      <RunInfo computerName="DESKTOP" outcome="Warning"
-        timestamp="2024-02-22T08:34:30.1566658+10:00">
-        <Text>Attach an image&#xD;
-        </Text>
-      </RunInfo>
-      <RunInfo computerName="DESKTOP" outcome="Warning"
-        timestamp="2024-02-22T08:34:30.1752096+10:00">
-        <Text>Running SampleProject.Tests.NUnit tests&#xD;
-          This test will fail&#xD;
-        </Text>
-      </RunInfo>
-      <RunInfo computerName="DESKTOP" outcome="Warning"
-        timestamp="2024-02-22T08:34:30.1760613+10:00">
-        <Text>Running SampleProject.Tests.NUnit tests&#xD;
-        </Text>
-      </RunInfo>
-      <RunInfo computerName="DESKTOP" outcome="Warning"
-        timestamp="2024-02-22T08:34:30.1821470+10:00">
-        <Text>Running SampleProject.Tests.NUnit tests&#xD;
-        </Text>
-      </RunInfo>
-      <RunInfo computerName="DESKTOP" outcome="Warning"
-        timestamp="2024-02-22T08:34:30.1840081+10:00">
-        <Text>Running SampleProject.Tests.NUnit tests&#xD;
-        </Text>
-      </RunInfo>
-      <RunInfo computerName="DESKTOP" outcome="Warning"
-        timestamp="2024-02-22T08:34:30.1896077+10:00">
-        <Text>Running SampleProject.Tests.NUnit tests&#xD;
-        </Text>
-      </RunInfo>
-    </RunInfos>
   </ResultSummary>
 </TestRun>
