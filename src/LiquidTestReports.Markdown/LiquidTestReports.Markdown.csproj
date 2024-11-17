@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <AssemblyName>LiquidTestReports.Markdown.TestLogger</AssemblyName>
-    <TargetFrameworks>netstandard2.0;net6.0;net7.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net8.0;net9.0</TargetFrameworks>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/kurtmkurtm/LiquidTestReports</PackageProjectUrl>
     <RepositoryUrl>https://github.com/kurtmkurtm/LiquidTestReports</RepositoryUrl>
@@ -10,7 +10,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="17.9.0" />
+    <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="17.11.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LiquidTestReports.Core\LiquidTestReports.Core.csproj" />

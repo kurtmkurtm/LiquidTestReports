@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <AssemblyName>LiquidTestReports.Custom.TestLogger</AssemblyName>
-    <TargetFrameworks>netstandard2.0;net6.0;net7.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net8.0;net9.0</TargetFrameworks>
     <RepositoryUrl>https://github.com/kurtmkurtm/LiquidTestReports</RepositoryUrl>
     <PackageProjectUrl>https://github.com/kurtmkurtm/LiquidTestReports</PackageProjectUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -24,7 +24,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="17.9.0" />
+    <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="17.11.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LiquidTestReports.Core\LiquidTestReports.Core.csproj" />

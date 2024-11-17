@@ -1,13 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30002.166
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35506.116 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiquidTestReports.Core", "LiquidTestReports.Core\LiquidTestReports.Core.csproj", "{8082CCB0-0BD2-42A2-9644-FC97D9ADC386}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiquidTestReports.Markdown", "LiquidTestReports.Markdown\LiquidTestReports.Markdown.csproj", "{0515CD7E-84F0-4C61-9B99-8D14516794DC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{061CA701-2BD3-4463-97FF-152475AB38BE}"
+	ProjectSection(SolutionItems) = preProject
+		..\test\Directory.Build.props = ..\test\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Debug", "Debug", "{64A5806B-2EA2-42C6-8EB8-7612E32CF19F}"
 EndProject
