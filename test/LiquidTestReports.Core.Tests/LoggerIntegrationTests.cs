@@ -13,6 +13,7 @@ namespace LiquidTestReports.Tests
     /// <summary>
     /// Runs integration tests using markdown implementation
     /// </summary>
+    [Collection("Logger Integration Tests")]
     public class LoggerIntegrationTests
     {
         private const string coreLogger = "liquid.custom";
