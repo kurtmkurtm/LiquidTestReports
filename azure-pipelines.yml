@@ -47,9 +47,8 @@ stages:
             inputs:
               command: test
               projects: |
-                **/LiquidTestReports.Core.Tests.csproj
-                **/LiquidTestReports.Cli.Tests.csproj
-              arguments: "--no-build -c $(buildConfiguration)"
+                **/src/LiquidTestReports.sln
+              arguments: "--no-build -c $(buildConfiguration) -- RunConfiguration.DisableParallelization=true"
 
           - task: DotNetCoreCLI@2
             displayName: "dotnet pack"

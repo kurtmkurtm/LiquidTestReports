@@ -34,6 +34,10 @@ namespace LiquidTestReports.Tests.Shared
                 .WithWorkingDirectory(testProjectPath)
                 .WithArguments(args)
                 .WithValidation(CommandResultValidation.None);
+
+            testOutputHelper.WriteLine($"Executing command: {command}");
+            testOutputHelper.WriteLine($"Arguments: {args}");
+
             var result = await command.ExecuteBufferedAsync(cts.Token);
             testOutputHelper.WriteLine(result.StandardOutput);
             testOutputHelper.WriteLine(result.StandardError);

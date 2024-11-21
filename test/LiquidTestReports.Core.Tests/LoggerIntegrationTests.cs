@@ -18,7 +18,7 @@ namespace LiquidTestReports.Tests
     {
         private const string coreLogger = "liquid.custom";
         private const string markdownLogger = "liquid.md";
-        private static readonly string[] frameworks = { "net6.0", "net7.0", "net8.0" };
+        private static readonly string[] frameworks = { "net8.0", "net9.0" };
         private readonly ITestOutputHelper _testOutputHelper;
         public string NUnitTestReport { get; }
         public string MSTestTestReport { get; }
@@ -27,6 +27,7 @@ namespace LiquidTestReports.Tests
         public LoggerIntegrationTests(ITestOutputHelper testOutputHelper)
         {
             _testOutputHelper = testOutputHelper;
+            _testOutputHelper.WriteLine("LoggerIntegrationTests initialized.");
         }
 
         [Theory]
@@ -37,9 +38,15 @@ namespace LiquidTestReports.Tests
         {
             var testPath = Path.GetFullPath(project);
             var resultsPath = Path.Combine(testPath, "TestResults");
+            Directory.CreateDirectory(resultsPath);
             var reportOutput = Path.Combine(resultsPath, file);
             var expectedResultsTable = File.ReadAllText("Resources/ExpectedMdTable.txt");
             TryClean(reportOutput);
+
+            _testOutputHelper.WriteLine($"Running tests for project: {project}");
+            _testOutputHelper.WriteLine($"Test path: {testPath}");
+            _testOutputHelper.WriteLine($"Results path: {resultsPath}");
+            _testOutputHelper.WriteLine($"Report output: {reportOutput}");
 
             await RunTestSamples.RunTest(testOutputHelper: _testOutputHelper,
                 testProjectPath: testPath,
@@ -48,6 +55,7 @@ namespace LiquidTestReports.Tests
                 logFilePrefix: reportOutput);
 
             var files = Directory.GetFiles(resultsPath, $"*{file}*");
+            _testOutputHelper.WriteLine($"Files: {string.Join(",", files)}");
             Assert.Contains(files, f => frameworks.Any(fw => f.Contains(fw)));
             Assert.All(files, f => Assert.Contains(expectedResultsTable, File.ReadAllText(f)));
         }
@@ -60,9 +68,15 @@ namespace LiquidTestReports.Tests
         {
             var testPath = Path.GetFullPath(project);
             var resultsPath = Path.Combine(testPath, "TestResults");
+            Directory.CreateDirectory(resultsPath);
             var reportOutput = Path.Combine(resultsPath, file);
             var expectedText = File.ReadAllText("Resources/ExpectedTextOutput.txt");
             TryClean(reportOutput);
+
+            _testOutputHelper.WriteLine($"Running tests for project: {project}");
+            _testOutputHelper.WriteLine($"Test path: {testPath}");
+            _testOutputHelper.WriteLine($"Results path: {resultsPath}");
+            _testOutputHelper.WriteLine($"Report output: {reportOutput}");
 
             await RunTestSamples.RunTest(testOutputHelper: _testOutputHelper,
                 testProjectPath: testPath,
@@ -71,6 +85,7 @@ namespace LiquidTestReports.Tests
                 logFilePrefix: reportOutput);
 
             var files = Directory.GetFiles(resultsPath, $"*{file}*");
+            _testOutputHelper.WriteLine($"Files: {string.Join(",", files)}");
 
             Assert.Contains(files, f => frameworks.Any(fw => f.Contains(fw)));
             Assert.All(files, f => Assert.Equal(expectedText, File.ReadAllText(f)));
@@ -78,10 +93,9 @@ namespace LiquidTestReports.Tests
 
         private static void TryClean(string path)
         {
-            var id = new DirectoryInfo(path);
-            if (id.Exists)
+            if (File.Exists(path))
             {
-                id.Delete(true);
+                File.Delete(path);
             }
         }
     }
