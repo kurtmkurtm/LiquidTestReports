@@ -6,7 +6,7 @@
     </CleanDependsOn>
   </PropertyGroup>
 
-  <Target Name="CustomClean" BeforeTargets="CoreClean">
+  <Target Name="CustomClean" BeforeTargets="CoreClean" Condition="'$(Configuration)' == 'Debug'">
     <Message Text="Remove old test reports" Importance="high"/>
     <RemoveDir Directories="$(TestResultsFolderPath)" Condition="Exists('$(TestResultsFolderPath)')" />
   </Target>
