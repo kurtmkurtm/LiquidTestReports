@@ -17,7 +17,6 @@ jobs:
       publish: ${{ github.event_name != 'pull_request' }}
     outputs:
       publish: ${{ env.publish }}
-      version: ${{ steps.set_version.outputs.test }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -34,7 +33,8 @@ jobs:
 
       - name: Set Outputs for Version
         id: set_version
-        run: echo "version=${{ steps.version_step.outputs.FullSemVer}}" >> $GITHUB_OUTPUT
+        run: |
+          echo VERSION=${{ steps.version_step.outputs.MajorMinorPatch}}-beta.${{ steps.version_step.outputs.PreReleaseTag }} >> $env:GITHUB_OUTPUT
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
@@ -50,14 +50,14 @@ jobs:
           dotnet tool install --global LiquidTestReports.Cli --version 2.0.0-beta.2
 
       - name: Build
-        run: dotnet build 'src/LiquidTestReports.sln' -p:Version="${{ steps.version_step.outputs.FullSemVer }}" -c Release
+        run: dotnet build 'src/LiquidTestReports.sln' -p:Version="${{ steps.set_version.outputs.VERSION }}" -c Release
 
       - name: Test
-        run: dotnet test 'src/LiquidTestReports.sln' --no-build -c Release --logger "trx;LogFilePrefix=PullRequest" -p:TestTfmsInParallel=false
+        run: dotnet test 'src/LiquidTestReports.sln' -p:TestTfmsInParallel=false --no-build -c Release --logger "trx;LogFilePrefix=PullRequest"
 
       - name: Generate Test Report
         if: ${{ github.event_name == 'pull_request' }}
-        run: liquid --inputs "File=**/*PullRequest*.trx" --title "Test Run ${{ steps.version_step.outputs.FullSemVer }}" --output-file report.md
+        run: liquid --inputs "File=**/*PullRequest*.trx" --title "Test Run ${{ steps.set_version.outputs.VERSION }}" --output-file report.md
 
       - name: Find Comment
         uses: peter-evans/find-comment@v3
@@ -78,7 +78,7 @@ jobs:
           edit-mode: replace
 
       - name: Pack
-        run: dotnet pack 'src/LiquidTestReports.sln' --no-build -o ${{ github.workspace }}/artifacts -c Release -p:Version="${{ steps.version_step.outputs.FullSemVer }}"
+        run: dotnet pack 'src/LiquidTestReports.sln' --no-build -o ${{ github.workspace }}/artifacts -c Release -p:Version="${{ steps.set_version.outputs.VERSION }}"
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
@@ -88,15 +88,12 @@ jobs:
 
   publish:
     runs-on: windows-latest
+    environment: nuget
     needs: build
     if: ${{ needs.build.outputs.publish == 'true' }}
     env:
       publish: ${{needs.build.outputs.publish}}
-      version: ${{needs.build.outputs.version}}
     steps:
-      - name: Check outputs
-        run: echo "$OUTPUT1 $OUTPUT2"
-
       - name: Download Artifact
         uses: actions/download-artifact@v4
         with:
