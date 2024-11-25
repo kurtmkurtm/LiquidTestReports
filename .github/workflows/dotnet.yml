@@ -53,7 +53,7 @@ jobs:
         run: dotnet build 'src/LiquidTestReports.sln' -p:Version="${{ steps.version_step.outputs.FullSemVer }}" -c Release
 
       - name: Test
-        run: dotnet test 'src/LiquidTestReports.sln' --no-build -c Release --logger "trx;LogFilePrefix=PullRequest"
+        run: dotnet test 'src/LiquidTestReports.sln' --no-build -c Release --logger "trx;LogFilePrefix=PullRequest" -p:TestTfmsInParallel=false
 
       - name: Generate Test Report
         if: ${{ github.event_name == 'pull_request' }}
