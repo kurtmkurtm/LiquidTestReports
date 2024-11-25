@@ -1,0 +1,111 @@
+name: CI
+
+on:
+  pull_request:
+    paths:
+      - "**"
+      - "!docs/**"
+      - "!README.md"
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: windows-latest
+    env:
+      publish: ${{ github.event_name != 'pull_request' }}
+    outputs:
+      publish: ${{ env.publish }}
+      version: ${{ steps.set_version.outputs.test }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v3.0.0
+        with:
+          versionSpec: "6.x"
+
+      - name: Determine Version
+        id: version_step
+        uses: gittools/actions/gitversion/execute@v3.0.0
+
+      - name: Set Outputs for Version
+        id: set_version
+        run: echo "version=${{ steps.version_step.outputs.FullSemVer}}" >> $GITHUB_OUTPUT
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.x
+
+      - name: Restore dependencies
+        run: dotnet restore 'src/LiquidTestReports.sln'
+
+      - name: Install LiquidTestReports CLI
+        shell: pwsh
+        run: |
+          dotnet tool install --global LiquidTestReports.Cli --version 2.0.0-beta.2
+
+      - name: Build
+        run: dotnet build 'src/LiquidTestReports.sln' -p:Version="${{ steps.version_step.outputs.FullSemVer }}" -c Release
+
+      - name: Test
+        run: dotnet test 'src/LiquidTestReports.sln' --no-build -c Release --logger "trx;LogFilePrefix=PullRequest"
+
+      - name: Generate Test Report
+        if: ${{ github.event_name == 'pull_request' }}
+        run: liquid --inputs "File=**/*PullRequest*.trx" --title "Test Run ${{ steps.version_step.outputs.FullSemVer }}" --output-file report.md
+
+      - name: Find Comment
+        uses: peter-evans/find-comment@v3
+        if: ${{ github.event_name == 'pull_request' }}
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: "github-actions[bot]"
+          body-includes: Created using Liquid Test Reports
+
+      - name: Create comment
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body-path: "report.md"
+          edit-mode: replace
+
+      - name: Pack
+        run: dotnet pack 'src/LiquidTestReports.sln' --no-build -o ${{ github.workspace }}/artifacts -c Release -p:Version="${{ steps.version_step.outputs.FullSemVer }}"
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: drop
+          path: ${{ github.workspace }}/artifacts
+
+  publish:
+    runs-on: windows-latest
+    needs: build
+    if: ${{ needs.build.outputs.publish == 'true' }}
+    env:
+      publish: ${{needs.build.outputs.publish}}
+      version: ${{needs.build.outputs.version}}
+    steps:
+      - name: Check outputs
+        run: echo "$OUTPUT1 $OUTPUT2"
+
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: drop
+          path: ${{ github.workspace }}/artifacts
+
+      - name: List Artifacts
+        run: |
+          ls ${{ github.workspace }}/artifacts
+
+      - name: Publish to NuGet
+        run: dotnet nuget push ${{ github.workspace }}/artifacts/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
