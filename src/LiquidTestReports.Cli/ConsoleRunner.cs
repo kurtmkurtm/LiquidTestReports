@@ -22,7 +22,7 @@ namespace LiquidTestReports.Cli
         private readonly IAnsiConsole _standardConsole;
         private readonly IEnumerable<ReportInput> _inputs;
         private readonly FileInfo _outputFile;
-        private readonly ParametersInput? _parameters;
+        private readonly ParametersInput _parameters;
 
         internal ConsoleRunner(IEnumerable<ReportInput> inputs, FileInfo outputFile, ParametersInput parameters = null)
         {
